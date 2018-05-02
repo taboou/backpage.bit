@@ -1,0 +1,9 @@
+{
+  "name": "backpage0",
+  "version": "18.5.1",
+  "description": "Backpage0.bit Web Portal",
+  "main": "index.js",
+  "repository": "https://github.com/taboou/backpage0.bit",
+  "author": "Taboo U",
+  "license": "MIT"
+}

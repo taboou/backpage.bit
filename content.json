@@ -1,0 +1,20 @@
+{
+	"address": "1BaCkpagEiEw1yd1wN7Jo8TSbAzvGBACW2",
+	"description": "Backpage.com relaunched on the ZeroNet",
+	"files": {
+		"index.html": {
+			"sha512": "03a69279da5ef7427cebc2a033d244859fd069b21657f6d24375026ca4c20300",
+			"size": 21
+		}
+	},
+	"ignore": "",
+	"inner_path": "content.json",
+	"modified": 1524898721,
+	"signers_sign": "HOsOa8U9dnNeXzPwbEYJgj3BPq5lpRPQstgReamuBOQbBfsATJaQ20UTFtDYsvKFQ5Azd5I4D8d7WSisGi+qWsA=",
+	"signs": {
+		"1BaCkpagEiEw1yd1wN7Jo8TSbAzvGBACW2": "G1h/xTqlow/+bG2J/IA31HGpYEevRP31u3tkX1DJN1L/LLb7FvtWuEdbibR6d+79Dp7U7Yryux30fSUnB8lQYC8="
+	},
+	"signs_required": 1,
+	"title": "Backpage (Free)",
+	"zeronet_version": "0.6.2"
+}

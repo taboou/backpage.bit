@@ -1,0 +1,383 @@
+/*  To Publication?
+--------------------------------------------*/
+
+
+
+/*  General
+--------------------------------------------*/
+
+body {
+    background-color: #fff;
+    font-family: arial, sans-serif;
+    font-size: 12.5px;
+    text-align: center;
+}
+b {
+    font-weight: bold;
+}
+sup {
+    line-height: 1;
+    vertical-align: baseline;
+}
+a {
+    color: #000;
+}
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+h3 {
+    margin: 0;
+    color: #000;
+    font-size: 14px;
+}
+h3 a {
+    color: #000;
+    text-decoration: none;
+}
+h3 a:hover {
+    color: #666;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    padding-left: 0.5em;
+    line-height: 1.2;
+}
+.h1link {
+    float: none !important;
+    color: #000 !important;
+    cursor: default;
+}
+#postAnAd {
+    float: right;
+    padding-bottom: 1em;
+    font-size: 18px;
+    font-weight: bold;
+}
+.geoUnit li {
+    text-transform: capitalize;
+}
+
+
+/*  Layout
+--------------------------------------------*/
+
+
+
+/*  Footer
+--------------------------------------------*/
+
+#footer {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+#navLinkList {
+    margin: 1em 0;
+    padding: 0;
+    font-size: 12px;
+    text-align: center;
+    list-style-type: none;
+}
+#navLinkList li {
+    margin: 0;
+    padding: 0 0.5em;
+    display: inline;
+    border-right: 1px solid #000;
+}
+#navLinkList li:last-child {
+    border-right: none;
+}
+#navLinkList a {
+    color: #000;
+}
+#home[class] #mainWrapper {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto 12px;
+    text-align: left;
+}
+#home[class] #header {
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    font-weight: bold;
+}
+#home[class] sup {
+    line-height: 1;
+    vertical-align: baseline;
+}
+#home[class] h1 {
+    height: 40px;
+    margin: 0 0 0.5em;
+    padding: 0;
+    text-indent: -9999px;
+}
+#home[class] h2 {
+    margin: 0;
+    font-size: 24px;
+}
+#home[class] h3 {
+    margin: 0;
+    font-size: 16px;
+}
+#home[class] #footer {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+#home[class] #footer div {
+    padding-bottom: 1em;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
+#home[class] #navLinkList {
+    margin: 1em 0 0;
+    padding: 0;
+    font-size: 13px;
+    text-align: center;
+    list-style-type: none;
+}
+#home[class] #navLinkList li {
+    margin: 0;
+    padding: 0 0.5em;
+    display: inline;
+    border-right: 1px solid #000;
+}
+#home[class] #navLinkList li:last-child {
+    border-right: none;
+}
+#home[class] .newIcon {
+    color: #c00;
+}
+#home[class] ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* xxx what is this for? */
+#home[class] #geoListings:before, #home[class] #geoListings:after {
+    content: "";
+    display: table;
+}
+#home[class] #geoListings:after {
+    clear: both;
+}
+#home[class] #geoListings {
+    zoom: 1;
+    position: relative;
+    clear: both;
+    margin: 0;
+}
+#home[class] .column {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    zoom: 1;
+    overflow: hidden;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    padding: 0;
+}
+#home[class] .geoBlock {
+    padding: 2px 7px;
+}
+#home[class] .geoBlock .geoUnit {
+    min-width: 100%;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    -o-column-break-inside: avoid;
+    -ms-column-break-inside: avoid;
+    column-break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+#home[class] .geoBlock h2 {
+    max-width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 4px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#home[class] .geoBlock .inner {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    overflow: hidden;
+}
+
+
+/*  RESPONSIVE
+==============================================$re */
+
+/* s-desktop */
+@media (max-width: 860px) {
+    #home[class] .geoBlock .inner {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+/* tablet */
+@media (max-width: 600px) {
+    #home[class] .column {
+        width: 100%;
+    }
+
+    #home[class] .geoBlock .inner {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+/* phone */
+@media screen and (max-width: 500px) {
+    /* increase font-size and spacing */
+    #home[class] .geoUnit h3 {
+        padding-bottom: 2px;
+    }
+    #home[class] .geoUnit li {
+        font-size: 15px;
+        padding-top: 7px;
+    }
+    #home[class] .geoUnit {
+        padding-bottom: 3px;
+    }
+    #home[class] #navLinkList li {
+        font-size: 15px;
+        line-height: 25px;
+        display: inline-block;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-top: 8px;
+    }
+}
+
+/* m-phone */
+@media (max-width: 480px) {
+    /* showing added on click */
+    #home[class] .geoBlock .inner.showing {
+        display: block;
+    }
+    #home[class] .geoBlock .inner {
+        display: none; /* hide geoblock ontent by default click to open */
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        padding: 8px 4px;
+    }
+    #home[class] .geoBlock h2 {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+}
+
+/* s-phone */
+@media (max-width: 310px) {
+
+    #home[class] .geoBlock .inner {
+        /* on very narrow screens switch to one column */
+        -webkit-column-count: auto;
+        -moz-column-count: auto;
+        column-count: auto;
+    }
+
+}
+
+
+
+
+
+#home h2#unitedStates {
+    display: block;
+}
+#home {
+    background-color: #fff;
+    font-family: 'trebuchet ms', verdana, arial, helvetica, helv, swiss, sans, sans-serif;
+    font-size: 14px;
+}
+#home #header {
+    border-bottom: 2px solid #3563a8;
+}
+#home h1 {
+    background: url(../images/logo0bit.png) left center no-repeat;
+}
+#home #postAnAd a {
+    color: #3563a8;
+}
+#home #footer div {
+    border-bottom: 2px solid #3563a8;
+    color: #3563a8;
+}
+#home #navLinkList a {
+    color: #3563a8;
+}
+#home a {
+    color: #b59a28;
+}
+#home a:hover {
+    color: #b59a28;
+    text-decoration: none;
+}
+#home h3 a {
+    color: #000;
+    text-decoration: none;
+}
+#home h3 a:hover {
+    color: #666;
+}
+#home li {
+    padding-left: 0.5em;
+}
+#home .geoUnit {
+    overflow: hidden;
+    margin-bottom: 0.75em;
+    max-width: 150px;
+}
+#home .h1link {
+    float: none;
+    color: #000 ;
+    cursor: default;
+}
+#home .column {
+    background: #fff;
+}
+#home .geoBlock h2 {
+    background-color: #405E8F;
+    color: #fff;
+}
+
+
+
+/* extra special styles for Internet Explorer */
+
+#home[class] .ie9 .geoBlock .inner ul li, #home[class] .ie8 .geoBlock .inner ul li, #home[class] .ie7 .geoBlock .inner ul li {
+    padding-left: 1%;
+    width: 30%;
+    float: left;
+    box-sizing: border-box;
+}
+#home[class] .ie9 .column, #home[class] .ie8 .column, #home[class] .ie7 .column {
+    width: 49.5%;
+}
+#home[class] .ie9 #geoListings {
+    min-width: 400px;
+}
+#home[class] .ie8 #geoListings, #home[class] .ie7 #geoListings {
+    min-width: 800px;
+}
+
+
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}

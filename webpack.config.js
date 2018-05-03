@@ -4,7 +4,7 @@ const path    = require('path')
 
 const HtmlWebpackPlugin       = require('html-webpack-plugin')
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    // title    : 'TESTING!!! Free classifieds - backpage0.bit',
+    title    : 'Free classifieds - backpage0.bit',
     template : './src/index.html',
     filename : 'index.html',
     inject   : 'body'
@@ -25,6 +25,10 @@ module.exports = {
         rules: [
             { 
                 test : /\.css$/,
+                // use  : ExtractTextPlugin.extract({
+                //     fallback : 'style-loader',
+                //     use      : 'css-loader'
+                // })
                 use  : [
                     { loader : 'style-loader' },
                     { loader : 'css-loader' }
@@ -45,7 +49,7 @@ module.exports = {
         ]
     },
     plugins : debug ? [
-        HtmlWebpackPluginConfig
+        HtmlWebpackPluginConfig,
     ] : [
         HtmlWebpackPluginConfig,
         new webpack.optimize.DedupePlugin(),

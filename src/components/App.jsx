@@ -4,7 +4,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                Hello 1st Component
+                Hello 2nd Auto-Updating Component
             </div>
         )
     }

@@ -377,7 +377,20 @@ li {
 }
 
 
+
+
+
+
+
 .link {
     text-decoration: underline;
     cursor: pointer;
 }
+
+/* Backpage.com CSS */
+/*#tlHeader #logo a {
+    background-image: url("/web/20170102025408im_/http://www.backpage.com/images/logo_main.png")!important;
+    background-size: contain;
+    background-color:transparent;
+}
+*/

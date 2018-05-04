@@ -2,6 +2,9 @@ const debug   = process.env.NODE_ENV !== 'production'
 const webpack = require('webpack')
 const path    = require('path')
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const extractCSS        = new ExtractTextPlugin('./src/css/styles.css')
+
 const HtmlWebpackPlugin       = require('html-webpack-plugin')
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     title    : 'Free classifieds - backpage0.bit',
@@ -24,12 +27,14 @@ module.exports = {
     module  : {
         rules: [
             { 
-                test : /\.css$/,
+                test    : /\.css$/,
+                exclude : /node_modules/,
+                // use: extractCSS.extract([ 'style-loader', 'css-loader' ])
                 // use  : ExtractTextPlugin.extract({
                 //     fallback : 'style-loader',
                 //     use      : 'css-loader'
                 // })
-                use  : [
+                use     : [
                     { loader : 'style-loader' },
                     { loader : 'css-loader' }
                 ]
@@ -38,20 +43,23 @@ module.exports = {
                 exclude : /node_modules/,
                 use     : 'babel-loader'
             }, {
-                test    : /\.jsx?$/,
-                exclude : /node_modules/,
-                use     : 'babel-loader'
-                // query: {
-                //     presets: ['react', 'es2015', 'stage-0'],
-                //     plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties']
-                // }
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader',
+                    {
+                        loader  : 'image-webpack-loader',
+                        options : { bypassOnDebug: true }
+                    }
+                ]
             }
         ]
     },
     plugins : debug ? [
         HtmlWebpackPluginConfig,
+        // new ExtractTextPlugin('styles.css')
     ] : [
         HtmlWebpackPluginConfig,
+        // new ExtractTextPlugin('styles.css'),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false })

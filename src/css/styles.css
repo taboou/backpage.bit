@@ -309,7 +309,7 @@ li {
     border-bottom: 2px solid #3563a8;
 }
 #home h1 {
-    background: url(../images/logo0bit.png) left center no-repeat;
+    /*background: url(../images/logo0bit.png) left center no-repeat;*/
 }
 #home #postAnAd a {
     color: #3563a8;

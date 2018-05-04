@@ -26,7 +26,11 @@ export default class Header extends React.Component {
 
         return (
 	      	<div id="header">
-	          	<h1>backpage0.bit</h1>
+	          	{
+	          		/*<h1>backpage0.bit</h1>*/
+	          		// FIXME: Cannot use webpack loader to load this in css
+	          	}
+	          	<img src="../images/logo0bit.png" />
 	      
 	          	<div id="postAnAd" class="link">{ post_ad }</div>
 	      

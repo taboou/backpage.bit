@@ -10,6 +10,9 @@ import {
 	hashHistory
 } from 'react-router'
 
+/* Import the css. */
+import './css/styles.css'
+
 /* Import the full application component. */
 import App from './App'
 

@@ -1,5 +1,14 @@
 import React from 'react'
 
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from 'react-router-dom'
+import Home from './views/Home'
+import Stuff from './views/Stuff'
+import Contact from './views/Contact'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -26,8 +35,20 @@ export default class App extends React.Component {
 		const city = 'city'
 
         return (
+        	<HashRouter>
 		    <div id="mainWrapper">
 		    	<Header now="So far I LIKE today!" />
+
+<ul className="header">
+	<li><NavLink to="/">Home</NavLink></li>
+	<li><NavLink to="/stuff">Stuff</NavLink></li>
+	<li><NavLink to="/contact">Contact</NavLink></li>
+</ul>
+<div className="content">
+	<Route exact path="/" component={ Home }/>
+    <Route path="/stuff" component={ Stuff }/>
+    <Route path="/contact" component={ Contact }/>
+</div>
 
 		        <div id="geoListings">
 		          	<div class="column">
@@ -79,6 +100,7 @@ export default class App extends React.Component {
 		    
 		    	<Footer />
 		    </div>
+		    </HashRouter>
         )
     }
 

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { NavLink } from 'react-router-dom'
+
 import moment from 'moment'
 
 export default class Header extends React.Component {
@@ -32,7 +34,11 @@ export default class Header extends React.Component {
 	          	}
 	          	<img src="../images/logo0bit.png" />
 	      
-	          	<div id="postAnAd" class="link">{ post_ad }</div>
+	          	<div id="postAnAd" class="link">
+                    <div><NavLink to="/">home</NavLink></div>
+                    <div><NavLink to="/post">{ post_ad }</NavLink></div>
+                    <div><NavLink to="/help">help</NavLink></div>
+	          	</div>
 	      
 	          	<div>{ choose_a_location }:</div>
 	          	<h2>{ this.state.now }</h2>

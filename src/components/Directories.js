@@ -53,3 +53,19 @@ export class EU_Directory extends React.Component {
         )
     }
 }
+
+export class Asia_Directory extends React.Component {
+    render() {
+        return (
+			<div class="asia,-pacific,-and-middle-east geoBlock">
+				<h2>Asia, Pacific, and Middle East</h2>
+				<div class="inner">
+					<div v-for="region in asia_mideast_regions" class="geoUnit">
+						<h3><a href="javascript:loadRegion(region)">{ region }</a></h3>
+						<ul><li v-for="city in cities[region]" class="active"><a href="javascript:loadCity('{ city }')">{ city }</a></li></ul>
+					</div>
+				</div>
+			</div>
+        )
+    }
+}

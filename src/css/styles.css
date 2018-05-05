@@ -51,12 +51,6 @@ li {
     color: #000 !important;
     cursor: default;
 }
-#postAnAd {
-    float: right;
-    padding-bottom: 1em;
-    font-size: 18px;
-    font-weight: bold;
-}
 .geoUnit li {
     text-transform: capitalize;
 }
@@ -99,11 +93,6 @@ li {
     max-width: 980px;
     margin: 0 auto 12px;
     text-align: left;
-}
-#home[class] #header {
-    margin-bottom: 1em;
-    padding-bottom: 0.5em;
-    font-weight: bold;
 }
 #home[class] sup {
     line-height: 1;
@@ -305,15 +294,6 @@ li {
     font-family: 'trebuchet ms', verdana, arial, helvetica, helv, swiss, sans, sans-serif;
     font-size: 14px;
 }
-#home #header {
-    border-bottom: 2px solid #3563a8;
-}
-#home h1 {
-    /*background: url(../images/logo0bit.png) left center no-repeat;*/
-}
-#home #postAnAd a {
-    color: #3563a8;
-}
 #home #footer div {
     border-bottom: 2px solid #3563a8;
     color: #3563a8;
@@ -376,21 +356,3 @@ li {
     min-width: 800px;
 }
 
-
-
-
-
-
-
-.link {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-/* Backpage.com CSS */
-/*#tlHeader #logo a {
-    background-image: url("/web/20170102025408im_/http://www.backpage.com/images/logo_main.png")!important;
-    background-size: contain;
-    background-color:transparent;
-}
-*/

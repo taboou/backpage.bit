@@ -16,6 +16,7 @@ export default class Home extends React.Component {
         const city = 'city'
 
         return (
+<div id="home" class="backpage">
             <div id="mainWrapper">
                 <div id="geoListings">
                     <div class="column">
@@ -65,6 +66,7 @@ export default class Home extends React.Component {
                   <div class="clearfix"></div>
                 </div>
             </div>
+</div>
         )
     }
 }

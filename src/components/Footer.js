@@ -5,6 +5,7 @@ import moment from 'moment'
 export default class Footer extends React.Component {
     render() {
         return (
+<div id="home" class="backpage">
 	      	<div id="footer">
 	          	<div>
 	            	Place free classified ads with video.
@@ -22,6 +23,7 @@ export default class Footer extends React.Component {
 	      
 	          	<br/><br/>
 	      	</div>
+</div>
         )
     }
 }

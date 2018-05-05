@@ -6,6 +6,8 @@ import {
     HashRouter
 } from 'react-router-dom'
 
+import { observer } from 'mobx-react'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -13,13 +15,17 @@ import Home     from './views/Home'
 import Post     from './views/Post'
 import Help     from './views/Help'
 
+@observer
 export default class App extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             isInitialized : false
         }
+
+        /* Localize store to class object. */
+        this.store = this.props.store
     }
 
     render() {
@@ -28,10 +34,18 @@ export default class App extends React.Component {
                 <div>
                     <Header now="So far I LIKE today!" />
 
-                    <div class="content">
-                        <Route exact path="/"   component={ Home }/>
-                        <Route path="/post"     component={ Post }/>
-                        <Route path="/help"     component={ Help }/>
+                    <div class="container">
+                        <Route 
+                            exact path = "/"
+                            component  = { () => (<Home store={ this.store } />) }/>
+                        
+                        <Route
+                            path      = "/post"
+                            component = { () => (<Post store={ this.store } />) }/>
+                        
+                        <Route 
+                            path      = "/help"
+                            component = { () => (<Help store={ this.store } />) }/>
                     </div>
                 
                     <Footer />

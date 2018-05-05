@@ -1,10 +1,23 @@
 import React from 'react'
  
+import { observer } from 'mobx-react'
+
+@observer
 export default class Post extends React.Component {
+    constructor(props) {
+        super(props)
+
+        /* Localize store to class object. */
+        this.store = this.props.store
+    }
+
     render() {
         return (
             <div>
                 <h2>NEW POST</h2>
+
+<h2>Post #1 { this.store.posts[0] }</h2>
+
 
                 <div class="disclaimerAgreement">
                     <h3>Disclaimer</h3>

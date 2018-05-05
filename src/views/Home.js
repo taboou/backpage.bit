@@ -1,5 +1,7 @@
 import React from 'react'
  
+import { observer } from 'mobx-react'
+
 import {
     US_Directory,
     CA_Directory,
@@ -7,6 +9,7 @@ import {
     Asia_Directory,
 } from '../components/Directories'
 
+@observer
 export default class Home extends React.Component {
     render() {
         const region = 'region'

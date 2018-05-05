@@ -16,6 +16,9 @@ import './css/styles.css'
 /* Import the full application component. */
 import App from './App'
 
+/* Import the app store. */
+import store from './store'
+
 /* Reference the DOM's app id. */
 const app = document.getElementById('app')
 
@@ -26,5 +29,5 @@ const app = document.getElementById('app')
 // 	</Router>, 
 // 	app
 // )
-ReactDOM.render(<App />, app)
+ReactDOM.render(<App store={ store } />, app)
 

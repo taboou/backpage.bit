@@ -8,6 +8,10 @@ import {
 
 import { observer } from 'mobx-react'
 
+/* Import Bootstrap globally. */
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -19,10 +23,6 @@ import Help     from './views/Help'
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            isInitialized : false
-        }
 
         /* Localize store to class object. */
         this.store = this.props.store

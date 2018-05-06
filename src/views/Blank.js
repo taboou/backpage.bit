@@ -3,7 +3,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 
 @observer
-export default class Post extends React.Component {
+export default class Blank extends React.Component {
     constructor(props) {
         super(props)
 
@@ -12,10 +12,9 @@ export default class Post extends React.Component {
     }
 
     render() {
-console.log('what are the props in Post.js', this.props)
         return (
             <div class="container-fluid">
-                <h2>Post #</h2>
+                <h2>Blank View</h2>
                 
                 <p>
                     What goes here?

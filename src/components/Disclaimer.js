@@ -12,7 +12,7 @@ export default class Disclaimer extends React.Component {
 
     render() {
         return (
-            <div>
+            <div class="container-fluid">
                 <h2>Disclaimer</h2>
 
                 <div class="row">
@@ -23,6 +23,9 @@ export default class Disclaimer extends React.Component {
                         A false representation may be a criminal offense.
                     </div>
                 </div>
+
+                <br />
+
                 <div class="row">
                     <div class="col">
                         I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my state of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law. 
@@ -31,17 +34,16 @@ export default class Disclaimer extends React.Component {
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                        <hr />
-                    </div>
-                </div>
+                <br /><hr />
 
                 <div class="row">
                     <div class="col">
                         <strong>I have read and agree to this disclaimer as well as the <a href="javascript://">Terms of Use</a>.</strong>
                     </div>
                 </div>
+
+                <br />
+
                 <div class="row">
                     <div class="col text-center">
                         <button type="button" class="btn btn-primary btn-lg btn-block" onClick={ this.agree.bind(this) }>

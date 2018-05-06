@@ -64,11 +64,6 @@ li {
 /*  Footer
 --------------------------------------------*/
 
-#footer {
-    clear: both;
-    margin-top: 1em;
-    padding-top: 1em;
-}
 #navLinkList {
     margin: 1em 0;
     padding: 0;
@@ -111,17 +106,6 @@ li {
 #home[class] h3 {
     margin: 0;
     font-size: 16px;
-}
-#home[class] #footer {
-    clear: both;
-    margin-top: 1em;
-    padding-top: 1em;
-}
-#home[class] #footer div {
-    padding-bottom: 1em;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
 }
 #home[class] #navLinkList {
     margin: 1em 0 0;
@@ -293,10 +277,6 @@ li {
     background-color: #fff;
     font-family: 'trebuchet ms', verdana, arial, helvetica, helv, swiss, sans, sans-serif;
     font-size: 14px;
-}
-#home #footer div {
-    border-bottom: 2px solid #3563a8;
-    color: #3563a8;
 }
 #home #navLinkList a {
     color: #3563a8;

@@ -15,22 +15,20 @@ export default class Header extends React.Component {
 		const choose_a_location = 'Choose a location'
 
         return (
-<div id="home" class="backpage">
 	      	<div id="container" style={ styles.container }>
 	      		<div class="row">
-		      		<div class="col-6">
+		      		<div class="col-6" style={ styles.logo }>
 			          	<img src="../images/logo0bit.png" />
 
 			          	<div>{ choose_a_location }:</div>
 		      		</div>
 		      		<div class="col-5 text-right">
 	                    <div><NavLink to="/">Home <FontAwesome name='home' /></NavLink></div>
-	                    <div><NavLink to="/post">Post <FontAwesome name='file' /></NavLink></div>
+	                    <div><NavLink to="/new-post">Post <FontAwesome name='file' /></NavLink></div>
 	                    <div><NavLink to="/help">Help <FontAwesome name='question-circle' /></NavLink></div>
 		      		</div>
 	      		</div>
 	      	</div>
-</div>
         )
     }
 }
@@ -39,11 +37,15 @@ export default class Header extends React.Component {
 const styles = {
   	container: {
   		// color: '#3563a8',
-    	fontSize: '1.2em',
+    	fontSize: '1.1em',
     	fontWeight: 'bold',
 
   		borderBottom  : '2px solid #3563a8',
   		marginBottom  : '1em',
     	paddingBottom : '0.5em',
+  	},
+  	logo: {
+  		marginTop  : '5px',
+  		marginLeft : '10px'
   	}
 }

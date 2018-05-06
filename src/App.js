@@ -15,9 +15,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import Home     from './views/Home'
-import Post     from './views/Post'
-import Help     from './views/Help'
+import Home    from './views/Home'
+import Buy     from './views/Buy'
+import Help    from './views/Help'
+import Account from './views/Account'
+import NewPost from './views/NewPost'
+import Post    from './views/Post'
+import Privacy from './views/Privacy'
+import Terms   from './views/Terms'
 
 @observer
 export default class App extends React.Component {
@@ -34,18 +39,24 @@ export default class App extends React.Component {
                 <div>
                     <Header store={ this.store } />
 
-                    <Route 
-                        exact path = "/"
-                        component  = { () => (<Home store={ this.store } />) }/>
-                    
-                    <Route
-                        path      = "/post"
-                        component = { () => (<Post store={ this.store } />) }/>
-                    
-                    <Route 
-                        path      = "/help"
+                    <Route path   = "/" exact 
+                        component = { () => (<Home store={ this.store } />) }/>
+
+                    <Route path   = "/buy"
+                        component = { () => (<Buy store={ this.store } />) }/>
+                    <Route path   = "/help"
                         component = { () => (<Help store={ this.store } />) }/>
-                
+                    <Route path   = "/account"
+                        component = { () => (<Account store={ this.store } />) }/>
+                    <Route path   = "/new-post"
+                        component = { () => (<NewPost store={ this.store } />) }/>
+                    <Route path   = "/post/:postId"
+                        component = { () => (<Post store={ this.store } />) }/>
+                    <Route path   = "/privacy"
+                        component = { () => (<Privacy store={ this.store } />) }/>
+                    <Route path   = "/terms"
+                        component = { () => (<Terms store={ this.store } />) }/>
+                    
                     <Footer store={ this.store } />
                 </div>
             </HashRouter>
@@ -53,6 +64,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-this.store.loadHello()
+// this.store.loadHello()
+this.store.loadNetworkStatus()
     }
 }

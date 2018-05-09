@@ -15,13 +15,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import Home    from './views/Home'
+import Home    from './views/Home'          // start page
 import Buy     from './views/Buy'
 import Help    from './views/Help'
 import Account from './views/Account'
 import NewPost from './views/NewPost'
 import Post    from './views/Post'
 import Privacy from './views/Privacy'
+import Status  from './views/Status'
 import Terms   from './views/Terms'
 
 @observer
@@ -54,6 +55,8 @@ export default class App extends React.Component {
                         component = { () => (<Post store={ this.store } />) }/>
                     <Route path   = "/privacy"
                         component = { () => (<Privacy store={ this.store } />) }/>
+                    <Route path   = "/status"
+                        component = { () => (<Status store={ this.store } />) }/>
                     <Route path   = "/terms"
                         component = { () => (<Terms store={ this.store } />) }/>
 

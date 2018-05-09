@@ -17,9 +17,9 @@ export default class Disclaimer extends React.Component {
 
                 <div class="row">
                     <div class="col">
-                        This section contains sexual content, including pictorial nudity and adult language. 
-                        It is to be accessed only by persons who are 18 years of age or older (and is not considered to be a minor in his/her state of residence) and who live in a community or local jurisdiction where nude pictures and explicit adult materials are not prohibited by law. 
-                        By accessing this website, you are representing to us that you meet the above qualifications. 
+                        This section contains sexual content, including pictorial nudity and adult language.
+                        It is to be accessed only by persons who are 18 years of age or older (and is not considered to be a minor in his/her state of residence) and who live in a community or local jurisdiction where nude pictures and explicit adult materials are not prohibited by law.
+                        By accessing this website, you are representing to us that you meet the above qualifications.
                         A false representation may be a criminal offense.
                     </div>
                 </div>
@@ -28,8 +28,8 @@ export default class Disclaimer extends React.Component {
 
                 <div class="row">
                     <div class="col">
-                        I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my state of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law. 
-                        I agree to report any illegal services or activities which violate the Terms of Use. 
+                        I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my state of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law.
+                        I agree to report any illegal services or activities which violate the Terms of Use.
                         I also agree to <a href="javascript://">report suspected exploitation of minors and/or human trafficking</a> to the appropriate authorities.
                     </div>
                 </div>
@@ -50,7 +50,7 @@ export default class Disclaimer extends React.Component {
                         I agree <FontAwesome name='thumbs-up' /></button>
                     </div>
                     <div class="col text-center">
-                        <button type="button" class="btn btn-danger btn-lg btn-block">
+                        <button type="button" class="btn btn-danger btn-lg btn-block" onClick={ this.deny.bind(this) }>
                         I don't agree <FontAwesome name='thumbs-down' /></button>
                     </div>
                 </div>
@@ -58,9 +58,14 @@ export default class Disclaimer extends React.Component {
         )
     }
 
+    /* User agrees to the disclaimer. */
     agree() {
-console.log('fired the Post agree')
-        this.store.agree()
+        this.store.agreeToDisclaimer()
+    }
+
+    /* User denies to the disclaimer. */
+    deny() {
+        this.store.denyDisclaimer()
     }
 
 }

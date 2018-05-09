@@ -9,18 +9,17 @@ import moment from 'moment'
 export default class Header extends React.Component {
 	constructor(props) {
 		super(props)
+
+        /* Localize store to class object. */
+        this.store = this.props.store
 	}
 
     render() {
-		const choose_a_location = 'Choose a location'
-
         return (
 	      	<div id="container" style={ styles.container }>
 	      		<div class="row">
-		      		<div class="col-6" style={ styles.logo }>
-			          	<img src="../images/logo0bit.png" />
-
-			          	<div>{ choose_a_location }:</div>
+		      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
+			          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
 		      		</div>
 
 		      		<div class="col-5 text-right" style={ styles.navLinks }>
@@ -48,6 +47,12 @@ const styles = {
   		marginTop  : '5px',
   		marginLeft : '10px'
   	},
+    logoImg: {
+        width: '265px'
+    },
+    logoImgPhone: {
+        width: '225px'
+    },
   	navLinks: {
     	fontSize: '1.2em'
   	}

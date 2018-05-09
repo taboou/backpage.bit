@@ -1,6 +1,8 @@
 import React from 'react'
- 
+
 import { observer } from 'mobx-react'
+
+import { NavLink } from 'react-router-dom'
 
 @observer
 export default class Help extends React.Component {
@@ -33,6 +35,17 @@ export default class Help extends React.Component {
                         <div class="row">
                             twitter.com/taboou
                         </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-4 text-right">
+
+                    </div>
+                    <div class="col">
+                        <NavLink to="/status">Status Page</NavLink>
                     </div>
                 </div>
 

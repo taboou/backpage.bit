@@ -1,6 +1,8 @@
 import React from 'react'
- 
+
 import { observer } from 'mobx-react'
+
+import { NavLink } from 'react-router-dom'
 
 @observer
 export default class Blank extends React.Component {
@@ -15,9 +17,10 @@ export default class Blank extends React.Component {
         return (
             <div class="container-fluid">
                 <h2>Blank View</h2>
-                
+
                 <p>
-                    What goes here?
+                    Where would you like to go?<br />
+                    <NavLink to="/">Take Me Home</NavLink>
                 </p>
             </div>
         )

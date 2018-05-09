@@ -4,10 +4,27 @@ import Web3 from 'web3'
 
 class TabooStore {
 
+    /* Constructor. */
     constructor() {
         /* Load and set the current network status. */
-        const loadNetworkStatus = require('./store/loadNetworkStatus')
-              loadNetworkStatus.loadNetworkStatus.bind(this)()
+        require('./store/loadNetworkStatus').default.bind(this)()
+
+        /* Initialize the device info. */
+        this.device = {}
+
+        /* Initailize the device width. */
+        this.device.width = window.innerWidth ||
+                            document.documentElement.clientWidth ||
+                            document.body.clientWidth;
+
+        /* Initailize the device height. */
+        this.device.height = window.innerHeight ||
+                             document.documentElement.clientHeight ||
+                             document.body.clientHeight;
+
+        /* Initialize phone boolean. */
+// FIXME: Utilize a 3rd-party library to properly detect phone status.
+        this.device.isPhone = (this.device.width <= 480) ? true : false
     }
 
 	/* Initialize system variables. */
@@ -57,34 +74,16 @@ class TabooStore {
         }
 	}
 
-	get completedPostsCount() {
-    	return this.posts.filter(
-			todo => todo.completed === true
-		).length
-    }
-
-    set addPost(task) {
+    set addPost(post) {
 		this.posts.push({
-			task      : task,
+			post      : post,
 			completed : false,
             assignee  : null
 		})
 	}
 
-	/**
-	 * @notice Posters must agree to the service disclaimer. At the moment
-	 *		   all that is required is a button click. However, content
-	 *         control in development & testing include:
-	 *             1. Phone number verification
-	 *             2. ID verification
-	 *             3. Other 3rd-party service verification
-	 */
-	agree() {
-console.log('i agree to eerything u say', this.hasAgreedToDisclaimer)
-
-		/* Toggle agreed for boolean. */
-		this.hasAgreedToDisclaimer = true
-	}
+    agreeToDisclaimer = require('./store/agreeToDisclaimer').default
+    denyDisclaimer    = require('./store/denyDisclaimer').default
 
     async loadProvider() {
         const Web3 = require('web3')
@@ -149,8 +148,3 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
 const store = window.store = new TabooStore
 
 export default store
-
-autorun(() => {
-	console.log('posts #1 --', store.posts[0])
-	console.log('filter --', store.filter)
-})

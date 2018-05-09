@@ -6,7 +6,9 @@
  * @dev Uses the `Web3` library to communicate with the blockchain.
  *      Use http://web3js.readthedocs.io/en/1.0/index.html as a reference.
  */
-export function loadNetworkStatus() {
+export default async function() {
+    console.info('Now loading the network status...')
+
     /* Initialize Web3 library. */
     const Web3 = require('web3')
 
@@ -19,11 +21,10 @@ export function loadNetworkStatus() {
         // var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/'))
     }
 
-console.log('loading network status')
-    /* Load the last block number. */
-    web3.eth.getBlockNumber()
-        .then(blockNum => {
-console.log('found last block', blockNum)
-            this.eth.lastBlockNum = blockNum
-        })
+    /* Request the last block number. */
+    const lastBlockNum = await web3.eth.getBlockNumber()
+    console.info('    -> Network Status: Last block was #', lastBlockNum)
+
+    /* Update the store. */
+    this.eth.lastBlockNum = lastBlockNum
 }

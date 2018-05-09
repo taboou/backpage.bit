@@ -39,7 +39,7 @@ export default class App extends React.Component {
                 <div>
                     <Header store={ this.store } />
 
-                    <Route path   = "/" exact 
+                    <Route path   = "/" exact
                         component = { () => (<Home store={ this.store } />) }/>
 
                     <Route path   = "/buy"
@@ -56,15 +56,10 @@ export default class App extends React.Component {
                         component = { () => (<Privacy store={ this.store } />) }/>
                     <Route path   = "/terms"
                         component = { () => (<Terms store={ this.store } />) }/>
-                    
+
                     <Footer store={ this.store } />
                 </div>
             </HashRouter>
         )
-    }
-
-    componentDidMount() {
-// this.store.loadHello()
-this.store.loadNetworkStatus()
     }
 }

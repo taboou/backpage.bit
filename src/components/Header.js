@@ -22,10 +22,10 @@ export default class Header extends React.Component {
 
 			          	<div>{ choose_a_location }:</div>
 		      		</div>
-		      		<div class="col-5 text-right">
+
+		      		<div class="col-5 text-right" style={ styles.navLinks }>
 	                    <div><NavLink to="/">Home <FontAwesome name='home' /></NavLink></div>
-	                    <div><NavLink to="/new-post">Post <FontAwesome name='file' /></NavLink></div>
-	                    <div><NavLink to="/help">Help <FontAwesome name='question-circle' /></NavLink></div>
+	                    <div><NavLink to="/new-post">Post ad <FontAwesome name='bullhorn' /></NavLink></div>
 		      		</div>
 	      		</div>
 	      	</div>
@@ -47,5 +47,8 @@ const styles = {
   	logo: {
   		marginTop  : '5px',
   		marginLeft : '10px'
+  	},
+  	navLinks: {
+    	fontSize: '1.2em'
   	}
 }

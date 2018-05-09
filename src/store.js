@@ -3,6 +3,13 @@ import { autorun, computed, observable } from 'mobx'
 import Web3 from 'web3'
 
 class TabooStore {
+
+    constructor() {
+        /* Load and set the current network status. */
+        const loadNetworkStatus = require('./store/loadNetworkStatus')
+              loadNetworkStatus.loadNetworkStatus.bind(this)()
+    }
+
 	/* Initialize system variables. */
 	@observable hasAgreedToDisclaimer = false
 
@@ -17,6 +24,11 @@ class TabooStore {
 		accounts     : [],
 		balance      : ''
 	}
+
+    @observable provider = {
+        name : '',
+        age  : 0
+    }
 
 	/* Set a global web3 object (especially for utility functions). */
 	web3 = new Web3(new Web3.providers.HttpProvider(this.eth.provider))
@@ -36,7 +48,7 @@ class TabooStore {
 
 	@computed get networkName() {
         switch(this.eth.networkId) {
-            case 1: 
+            case 1:
                 return 'Mainnet'
             case 3:
                 return 'Ropsten'
@@ -51,15 +63,7 @@ class TabooStore {
 		).length
     }
 
-	report() {
-		if (this.posts.length === 0)
-			return "<none>"
-		
-		return `Next todo: "${this.posts[0].task}". ` +
-			`Progress: ${this.completedPostsCount} / ${this.posts.length}`
-	}
-
-    addPost(task) {
+    set addPost(task) {
 		this.posts.push({
 			task      : task,
 			completed : false,
@@ -69,7 +73,7 @@ class TabooStore {
 
 	/**
 	 * @notice Posters must agree to the service disclaimer. At the moment
-	 *		   all that is required is a button click. However, content 
+	 *		   all that is required is a button click. However, content
 	 *         control in development & testing include:
 	 *             1. Phone number verification
 	 *             2. ID verification
@@ -77,62 +81,37 @@ class TabooStore {
 	 */
 	agree() {
 console.log('i agree to eerything u say', this.hasAgreedToDisclaimer)
-		
+
 		/* Toggle agreed for boolean. */
 		this.hasAgreedToDisclaimer = true
 	}
 
-
-    loadHello() {
+    async loadProvider() {
         const Web3 = require('web3')
 
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider)
         } else {
-            // set the provider you want from Web3.providers
-            var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'))
-            // var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/'))
-        }
-        console.log('web3', web3)
-
-        const abiArray = [{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteBool","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteBytes","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteInt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteString","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"}],"name":"deleteUint","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"address"}],"name":"setAddress","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"bool"}],"name":"setBool","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"bytes"}],"name":"setBytes","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"int256"}],"name":"setInt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"string"}],"name":"setString","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"bytes32"},{"name":"_value","type":"uint256"}],"name":"setUint","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getBool","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getBytes","outputs":[{"name":"","type":"bytes"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getInt","outputs":[{"name":"","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getString","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"bytes32"}],"name":"getUint","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}]
-        const address = '0x20c5f6d890c8777433203dd683eb8dccfdfc5fdd'
-        const options = {}
-        const myContract = new web3.eth.Contract(abiArray, address, options)
-
-        const result = myContract.methods.getString(web3.utils.utf8ToHex('hello')).call()
-        result.then(val => {
-            console.log('%s [ %s ]', val, val.toString())
-        })
-
-    }
-
-    /**
-     * @notify Load the user's blockchain account.
-     *
-     * @dev Uses the `Web3` library to communicate with the blockchain.
-     *      Use http://web3js.readthedocs.io/en/1.0/index.html as a reference.
-     */
-    loadNetworkStatus() {
-        /* Initialize Web3 library. */
-        const Web3 = require('web3')
-
-        /* Initialize web3 object. */
-        if (typeof web3 !== 'undefined') {
-            web3 = new Web3(web3.currentProvider)
-        } else {
-            // set the provider you want from Web3.providers
-            var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/'))
-            // var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/'))
+            /* Set the current provider. */
+            let web3 = new Web3(new Web3.providers.HttpProvider(this.provider))
         }
 
-console.log('loading network status')
-        /* Load the last block number. */
-        web3.eth.getBlockNumber()
-            .then(blockNum => {
-console.log('found last block', blockNum)
-            	this.eth.lastBlockNum = blockNum
-            })
+        const abiArray = [{"constant":true,"inputs":[{"name":"_account","type":"address"}],"name":"getProvider","outputs":[{"name":"name","type":"string"},{"name":"age","type":"int256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_account","type":"address"},{"name":"_name","type":"string"}],"name":"addProvider","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
+        const address  = '0x6feb7e63242fcb536d409f40f8eb985d4a7ba750'
+        const options  = {}
+        const contract = new web3.eth.Contract(abiArray, address, options)
+
+        const accounts = await web3.eth.getAccounts()
+        const hash = web3.utils.soliditySha3(accounts[0], '.name')
+console.log('provider.name.<account>', hash)
+
+        const provider = await contract.methods.getProvider(accounts[0]).call()
+console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
+
+        /* Update the store. */
+        this.provider.name = provider.name != '' ? provider.name : 'Unknown'
+
+        return provider
     }
 
     /**
@@ -141,7 +120,7 @@ console.log('found last block', blockNum)
      * @notify Updates the active blockchain network id.
      * @param networkId This numeric id of the active network.
      */
-    updateNetworkId(networkId) {
+    set networkId(networkId) {
     	this.eth.networkId = networkId
     }
 
@@ -151,7 +130,7 @@ console.log('found last block', blockNum)
      * @notify Updates the active list of blockchain accounts.
      * @param accounts An array of active accounts.
      */
-    updateAccounts(accounts) {
+    set accounts(accounts) {
     	this.eth.accounts = accounts
     }
 
@@ -161,7 +140,7 @@ console.log('found last block', blockNum)
      * @notify Updates the balance from the active account.
      * @param balance Account value (in wei).
      */
-    updateBalance(balance) {
+    set balance(balance) {
     	this.eth.balance = balance
     }
 

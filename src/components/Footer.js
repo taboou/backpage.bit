@@ -9,19 +9,22 @@ export default class Footer extends React.Component {
         return (
 			<div id="container" style={ styles.container }>
 	          	<div style={ styles.tagline }>
-	            	Place free classified ads to the blockchain.
+	            	Place free classified ads to the <em><u>blockchain</u></em>.
 	          	</div>
-	      
-	          	<ul id="navLinkList">
-	              	<li><NavLink to="/account">My Account</NavLink></li>
-	              	<li><NavLink to="/buy">Buy Credits</NavLink></li>
-	            	<li><NavLink to="/help">Help</NavLink></li>
-	            	<li><NavLink to="/privacy">Privacy</NavLink></li>
-	            	<li><NavLink to="/terms">Terms</NavLink></li>
-	            	<li>&copy; 2018 Backpage0.bit</li>
+
+	          	<ul style={ styles.navLinkList }>
+	              	<li style={ styles.navLinkList_li }><NavLink to="/account">My Account</NavLink></li>
+	              	<li style={ styles.navLinkList_li }><NavLink to="/buy">Buy Credits</NavLink></li>
+	            	<li style={ styles.navLinkList_li }><NavLink to="/help">Help</NavLink></li>
+	            	<li style={ styles.navLinkList_li }><NavLink to="/privacy">Privacy</NavLink></li>
+	            	<li style={ styles.navLinkList_li_last }><NavLink to="/terms">Terms</NavLink></li>
 	          	</ul>
-	      
-	          	<br/><br/>
+
+                <div class="row">
+                    <div class="col text-center" style={ styles.copyright }>
+                        &copy; 2018 Backpage0.bit
+                    </div>
+                </div>
 	      	</div>
         )
     }
@@ -41,5 +44,30 @@ const styles = {
 
 	    borderBottom : '2px solid #3563a8',
 	    color        : '#3563a8'
-  	}
+  	},
+    navLinkList: {
+        margin: '1em 0',
+        padding: 0,
+        fontSize: '0.8em',
+        textAlign: 'center',
+        listStyleType: 'none'
+    },
+    navLinkList_li: {
+        margin: 0,
+        padding: '0 0.5em',
+        display: 'inline',
+        borderRight: '1px solid #000'
+    },
+    navLinkList_li_last: {
+        margin: 0,
+        padding: '0 0.5em',
+        display: 'inline',
+    },
+    copyright: {
+        margin: 0,
+        fontSize: '0.8em',
+        padding: '0 0.5em',
+        display: 'inline',
+        textAlign: 'center'
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
- 
+
 import { observer } from 'mobx-react'
 
 import {
@@ -7,6 +7,9 @@ import {
     CA_Directory,
     EU_Directory,
     Asia_Directory,
+    AU_Oceania_Directory,
+    Latin_America_Caribbean_Directory,
+    Africa_Directory
 } from '../components/Directories'
 
 @observer
@@ -16,57 +19,64 @@ export default class Home extends React.Component {
         const city = 'city'
 
         return (
-<div id="home" class="backpage">
-            <div id="mainWrapper">
-                <div id="geoListings">
-                    <div class="column">
-                        <US_Directory />
+            <div style={ styles.home } id="home" class="">
+                <div style={ styles.home_mainWrapper } id="mainWrapper">
+                    <div style={ styles.home_geoListings } id="geoListings">
+                        <div style={ styles.home_column }>
+                            <US_Directory />
+                        </div>
+
+                        <div style={ styles.home_column }>
+                            <CA_Directory />
+                            <EU_Directory />
+                            <Asia_Directory />
+                            <AU_Oceania_Directory />
+                            <Latin_America_Caribbean_Directory />
+                            <Africa_Directory />
+                        </div>
+
+                        <div class="clearfix"></div>
                     </div>
-
-                    <div class="column">
-                        <CA_Directory />
-                        <EU_Directory />
-                        <Asia_Directory />
-
-                
-                    
-                
-                    
-                        <div class="australia-and-oceania geoBlock">
-                          <h2>Australia and Oceania</h2>
-                          <div class="inner">
-                          <div v-for="region in au_oceania_regions" class="geoUnit">
-                            <h3><a href="javascript:loadRegion(region)">{ region }</a></h3>
-                            <ul><li v-for="city in cities[region]" class="active"><a href="javascript:loadCity('{ city }')">{ city }</a></li></ul>
-                        </div>
-                          </div>
-                        </div>
-
-                <div class="latin-america-and-caribbean geoBlock">
-                          <h2>Latin America and Caribbean</h2>
-                          <div class="inner">
-                          <div v-for="region in latin_caribbean_regions" class="geoUnit">
-                            <h3><a href="javascript:loadRegion(region)">{ region }</a></h3>
-                            <ul><li v-for="city in cities[region]" class="active"><a href="javascript:loadCity('{ city }')">{ city }</a></li></ul>
-                        </div>
-                          </div>
-                        </div>
-                    
-                <div class="africa geoBlock">
-                          <h2>Africa</h2>
-                          <div class="inner">
-                          <div v-for="region in african_regions" class="geoUnit">
-                            <h3><a href="javascript:loadRegion(region)">{ region }</a></h3>
-                            <ul><li v-for="city in cities[region]" class="active"><a href="javascript:loadCity('{ city }')">{ city }</a></li></ul>
-                        </div>
-                          </div>
-                        </div>
-                  </div>
-
-                  <div class="clearfix"></div>
                 </div>
             </div>
-</div>
         )
+    }
+
+    loadRegion = (regionName) => {
+    	alert('loading ' + regionName + '...')
+    	// document.location = 'disclaimer.html'
+    }
+}
+
+/* Initialize stylesheet. */
+const styles = {
+    home: {
+        backgroundColor: '#fff',
+        fontFamily: "'trebuchet ms', verdana, arial, helvetica, helv, swiss, sans, sans-serif",
+        fontSize: '14px'
+    },
+    home_mainWrapper: {
+        width: '100%',
+        maxWidth: '980px',
+        margin: '0 auto 12px',
+        textAlign: 'left'
+    },
+    home_geoListings: {
+        zoom: '1',
+        position: 'relative',
+        clear: 'both',
+        margin: '0'
+    },
+    home_column: {
+        background: '#fff',
+        width: '50%',
+        float: 'left',
+        boxSizing: 'border-box',
+        zoom: '1',
+        overflow: 'hidden',
+        WebkitColumnCount: '1',
+        MozColumnCount: '1',
+        columnCount: '1',
+        padding: '0'
     }
 }

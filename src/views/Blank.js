@@ -26,3 +26,8 @@ export default class Blank extends React.Component {
         )
     }
 }
+
+/* Initialize stylesheet. */
+const styles = {
+
+}

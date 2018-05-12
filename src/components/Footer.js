@@ -1,10 +1,20 @@
 import React from 'react'
 
+import { observer } from 'mobx-react'
+
 import { NavLink } from 'react-router-dom'
 
 import moment from 'moment'
 
+@observer
 export default class Footer extends React.Component {
+    constructor(props) {
+        super(props)
+
+        /* Localize store to class object. */
+        this.store = this.props.store
+    }
+
     render() {
         return (
 			<div id="container" style={ styles.container }>

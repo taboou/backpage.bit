@@ -14,32 +14,38 @@ import {
 
 @observer
 export default class Home extends React.Component {
+    constructor(props) {
+        super(props)
+
+        /* Localize store to class object. */
+        this.store = this.props.store
+    }
+
     render() {
         const region = 'region'
         const city = 'city'
 
-        return (
-            <div style={ styles.home } id="home" class="">
-                <div style={ styles.home_mainWrapper } id="mainWrapper">
-                    <div style={ styles.home_geoListings } id="geoListings">
-                        <div style={ styles.home_column }>
-                            <US_Directory />
-                        </div>
-
-                        <div style={ styles.home_column }>
-                            <CA_Directory />
-                            <EU_Directory />
-                            <Asia_Directory />
-                            <AU_Oceania_Directory />
-                            <Latin_America_Caribbean_Directory />
-                            <Africa_Directory />
-                        </div>
-
-                        <div class="clearfix"></div>
+        return <div style={ styles.home } id="home" class="">
+<h4>Current Account<br />{ this.store.eth.accounts[0] }</h4>
+            <div style={ styles.home_mainWrapper } id="mainWrapper">
+                <div style={ styles.home_geoListings } id="geoListings">
+                    <div style={ styles.home_column }>
+                        <US_Directory />
                     </div>
+
+                    <div style={ styles.home_column }>
+                        <CA_Directory />
+                        <EU_Directory />
+                        <Asia_Directory />
+                        <AU_Oceania_Directory />
+                        <Latin_America_Caribbean_Directory />
+                        <Africa_Directory />
+                    </div>
+
+                    <div class="clearfix"></div>
                 </div>
             </div>
-        )
+        </div>
     }
 
     loadRegion = (regionName) => {

@@ -17,9 +17,7 @@ export default class District extends React.Component {
         // console.log('what are the props in District.js', this.props)
         return (
             <div class="container-fluid">
-                <h2>District</h2>
-
-                <h5>District Id: { this.getPostId() }</h5>
+                <h2>{ this.getDistrictId() }</h2>
 
                 <p>
                     Where would you like to go?<br />
@@ -42,7 +40,7 @@ console.log('District.js has been mounted');
      *
      * @dev TODO Handle this using ReactJs native router function.
      */
-    getPostId() {
+    getDistrictId() {
         /* Retrieve the current url. */
         const currentUrl = window.location.href
 

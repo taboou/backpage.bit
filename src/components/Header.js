@@ -1,24 +1,28 @@
 import React from 'react'
 
+import { observer } from 'mobx-react'
+
 import FontAwesome from 'react-fontawesome'
 
 import { NavLink } from 'react-router-dom'
 
 import moment from 'moment'
 
+@observer
 export default class Header extends React.Component {
-	constructor(props) {
-		super(props)
+    constructor(props) {
+        super(props)
 
         /* Localize store to class object. */
         this.store = this.props.store
-	}
+    }
 
     render() {
         return <div id="container" style={ styles.container }>
       		<div class="row">
 	      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
 		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
+                    <div>{ this.accountLinks() }</div>
 	      		</div>
 
 	      		<div class="col-5 text-right" style={ styles.navLinks }>
@@ -40,6 +44,18 @@ export default class Header extends React.Component {
 	      		</div>
       		</div>
       	</div>
+    }
+
+    accountLinks() {
+        if (this.store.eth.accounts[0])
+            return <div style={ styles.accountAddr }>
+                You are signed in. [ <NavLink to="/signout">sign out</NavLink> ]<br />
+                <NavLink to="/account">{ this.store.eth.accounts[0] }</NavLink>
+            </div>
+        else
+            return <div style={ styles.accountLinks }>
+                [ <NavLink to="/signin">Sign in to your account</NavLink> ]
+            </div>
     }
 }
 
@@ -69,5 +85,11 @@ const styles = {
   	},
     buttons: {
         marginTop: '5px'
+    },
+    accountAddr: {
+        fontSize: '0.9em'
+    },
+    accountLinks: {
+        fontSize: '1.1em'
     }
 }

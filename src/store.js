@@ -38,7 +38,7 @@ class TabooStore {
 		network      : 'ropten',
 		provider     : 'https://ropsten.infura.io/',	// mainnet.infura.io
 		networkId    : null,
-		accounts     : [],
+		accounts     : [null],
 		balance      : ''
 	}
 
@@ -82,6 +82,7 @@ class TabooStore {
 		})
 	}
 
+    signIn = require('./store/signIn').default
     agreeToDisclaimer = require('./store/agreeToDisclaimer').default
     denyDisclaimer    = require('./store/denyDisclaimer').default
 

@@ -15,20 +15,31 @@ export default class Header extends React.Component {
 	}
 
     render() {
-        return (
-	      	<div id="container" style={ styles.container }>
-	      		<div class="row">
-		      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
-			          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
-		      		</div>
-
-		      		<div class="col-5 text-right" style={ styles.navLinks }>
-	                    <div><NavLink to="/">Home <FontAwesome name='home' /></NavLink></div>
-	                    <div><NavLink to="/new-post">Post ad <FontAwesome name='bullhorn' /></NavLink></div>
-		      		</div>
+        return <div id="container" style={ styles.container }>
+      		<div class="row">
+	      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
+		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
 	      		</div>
-	      	</div>
-        )
+
+	      		<div class="col-5 text-right" style={ styles.navLinks }>
+                    <div style={ styles.buttons }>
+                        <NavLink to="/">
+                            <button type="submit" class="btn btn-outline-info">
+                                Home <FontAwesome name='home' />
+                            </button>
+                        </NavLink>
+                    </div>
+
+                    <div style={ styles.buttons }>
+                        <NavLink to="/new-post">
+                            <button type="submit" class="btn btn-outline-secondary">
+                                Post ad <FontAwesome name='bullhorn' />
+                            </button>
+                        </NavLink>
+                    </div>
+	      		</div>
+      		</div>
+      	</div>
     }
 }
 
@@ -55,5 +66,8 @@ const styles = {
     },
   	navLinks: {
     	fontSize: '1.2em'
-  	}
+  	},
+    buttons: {
+        marginTop: '5px'
+    }
 }

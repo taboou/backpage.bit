@@ -36,36 +36,40 @@ export default class App extends React.Component {
     }
 
     render() {
-        return (
-            <HashRouter>
-                <div>
-                    <Header store={ this.store } />
+        const getConfirmation = (message, callback) => {
+console.log('getConfirmation', message);
+            const allowTransition = window.confirm(message)
+            callback(allowTransition)
+        }
 
-                    <Route path   = "/" exact
-                        component = { () => (<Home store={ this.store } />) }/>
+        return <HashRouter getUserConfirmation={ getConfirmation }>
+            <div>
+                <Header store={ this.store } />
 
-                    <Route path   = "/buy"
-                        component = { () => (<Buy store={ this.store } />) }/>
-                    <Route path   = "/district/:districtId"
-                        component = { () => (<District store={ this.store } />) }/>
-                    <Route path   = "/help"
-                        component = { () => (<Help store={ this.store } />) }/>
-                    <Route path   = "/account"
-                        component = { () => (<Account store={ this.store } />) }/>
-                    <Route path   = "/new-post"
-                        component = { () => (<NewPost store={ this.store } />) }/>
-                    <Route path   = "/post/:postId"
-                        component = { () => (<Post store={ this.store } />) }/>
-                    <Route path   = "/privacy"
-                        component = { () => (<Privacy store={ this.store } />) }/>
-                    <Route path   = "/status"
-                        component = { () => (<Status store={ this.store } />) }/>
-                    <Route path   = "/terms"
-                        component = { () => (<Terms store={ this.store } />) }/>
+                <Route path   = "/" exact
+                    component = { () => (<Home store={ this.store } />) }/>
 
-                    <Footer store={ this.store } />
-                </div>
-            </HashRouter>
-        )
+                <Route path   = "/buy"
+                    component = { () => (<Buy store={ this.store } />) }/>
+                <Route path   = "/district/:districtId"
+                    component = { () => (<District store={ this.store } />) }/>
+                <Route path   = "/help"
+                    component = { () => (<Help store={ this.store } />) }/>
+                <Route path   = "/account"
+                    component = { () => (<Account store={ this.store } />) }/>
+                <Route path   = "/new-post"
+                    component = { () => (<NewPost store={ this.store } />) }/>
+                <Route path   = "/post/:postId"
+                    component = { () => (<Post store={ this.store } />) }/>
+                <Route path   = "/privacy"
+                    component = { () => (<Privacy store={ this.store } />) }/>
+                <Route path   = "/status"
+                    component = { () => (<Status store={ this.store } />) }/>
+                <Route path   = "/terms"
+                    component = { () => (<Terms store={ this.store } />) }/>
+
+                <Footer store={ this.store } />
+            </div>
+        </HashRouter>
     }
 }

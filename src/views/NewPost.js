@@ -14,6 +14,8 @@ export default class NewPost extends React.Component {
 
         /* Localize store to class object. */
         this.store = this.props.store
+
+
     }
 
     render() {
@@ -32,8 +34,30 @@ export default class NewPost extends React.Component {
             return <SignIn store={ this.store } />
 
         return <div class="container-fluid">
-            <h2>LET'S START A NEW POST</h2>
+            <h2>Add a new post</h2>
+
+            <div class="row">
+                <div class="col text-center">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={ this.addPost.bind(this) }>
+                    Submit New Post <FontAwesome name='thumbs-up' /></button>
+                </div>
+                <div class="col text-center">
+                    <button type="button" class="btn btn-danger btn-lg btn-block" onClick={ this.addPost.bind(this) }>
+                    Cancel <FontAwesome name='thumbs-down' /></button>
+                </div>
+            </div>
 
         </div>
     }
+
+    /* User agrees to the disclaimer. */
+    addPost() {
+        const pkg = {
+            title: 'First sample form post',
+            body: 'Just a lil love this time.'
+        }
+
+        this.store.newPost = JSON.stringify(pkg)
+    }
+
 }

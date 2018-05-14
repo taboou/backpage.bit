@@ -18,12 +18,15 @@ console.log('privateKey', privateKey)
 console.log('account', account)
 
     /* Retrieve the available accounts. */
-    const { accounts } = this.eth
+    // const { accounts } = this.eth
 
+console.log('this.eth.accounts[0]', this.eth.accounts[0])
+console.log('this.eth.accounts[0] == null', this.eth.accounts[0] == null);
     /* Update the store. */
-    this.eth.accounts[0] = account.address
-    // this.eth.accounts.push(account.address)
-    // accounts.push(account.address)
+    if (this.eth.accounts[0] == null)
+        this.eth.accounts[0] = account
+    else
+        this.eth.accounts.push(account)
 
 console.log('this.eth.accounts', this.eth.accounts);
 }

@@ -35,10 +35,10 @@ class TabooStore {
 
 	@observable eth = {
 		lastBlockNum : 'loading...',
-		network      : 'ropten',
+		network      : 'ropsten',
 		provider     : 'https://ropsten.infura.io/',	// mainnet.infura.io
 		networkId    : null,
-		accounts     : [null],
+		accounts     : [null],        // NOTE: static page render problem w/out `[null]`
 		balance      : ''
 	}
 
@@ -74,12 +74,34 @@ class TabooStore {
         }
 	}
 
-    set addPost(post) {
-		this.posts.push({
-			post      : post,
-			completed : false,
-            assignee  : null
-		})
+    set newPost(post) {
+        /* Initialize ethers module. */
+        const ethers = require('ethers')
+
+        /* Initialize moment module. */
+        const moment = require('moment')
+
+        /* Initialize default provider. */
+        const provider = ethers.providers.getDefaultProvider('ropsten')
+
+        /* Retrieve private key from active account. */
+        const privateKey = this.eth.accounts[0].privateKey
+console.log('privateKey', privateKey)
+
+        const wallet = new ethers.Wallet(privateKey, provider)
+console.log('wallet', wallet)
+
+        /* Generate timestamp (in milliseconds). */
+        const nonce = moment().valueOf()
+console.log('nonce', nonce)
+
+        /* Create message for signing. */
+        const msgForSigning = 'auth.for.taboou.api.v1.' + nonce
+console.log('msg to be signed ->', msgForSigning);
+
+        /* Create signed message. */
+        const signed = wallet.signMessage(msgForSigning)
+console.log('signed', signed);
 	}
 
     signIn = require('./store/signIn').default

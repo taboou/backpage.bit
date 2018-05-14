@@ -50,7 +50,7 @@ export default class Header extends React.Component {
         if (this.store.eth.accounts[0])
             return <div style={ styles.accountAddr }>
                 You are signed in. [ <NavLink to="/signout">sign out</NavLink> ]<br />
-                <NavLink to="/account">{ this.store.eth.accounts[0] }</NavLink>
+                <NavLink to="/account">{ this.store.eth.accounts[0].address }</NavLink>
             </div>
         else
             return <div style={ styles.accountLinks }>

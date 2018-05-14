@@ -19,6 +19,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.1.1",
     "css-loader": "^0.28.11",
+    "ethers": "^3.0.15",
     "exports-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",

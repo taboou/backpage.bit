@@ -26,7 +26,6 @@ export default class Home extends React.Component {
         const city = 'city'
 
         return <div style={ styles.home } id="home" class="">
-<h4>Current Account<br />{ this.store.eth.accounts[0] }</h4>
             <div style={ styles.home_mainWrapper } id="mainWrapper">
                 <div style={ styles.home_geoListings } id="geoListings">
                     <div style={ styles.home_column }>

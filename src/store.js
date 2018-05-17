@@ -74,7 +74,7 @@ class TabooStore {
         }
 	}
 
-    set newPost(post) {
+    set addPost(post) {
         /* Initialize ethers module. */
         const ethers = require('ethers')
 
@@ -86,10 +86,10 @@ class TabooStore {
 
         /* Retrieve private key from active account. */
         const privateKey = this.eth.accounts[0].privateKey
-console.log('privateKey', privateKey)
+// console.log('privateKey', privateKey)
 
         const wallet = new ethers.Wallet(privateKey, provider)
-console.log('wallet', wallet)
+// console.log('wallet', wallet)
 
         /* Generate timestamp (in milliseconds). */
         const nonce = moment().valueOf()
@@ -97,11 +97,11 @@ console.log('nonce', nonce)
 
         /* Create message for signing. */
         const msgForSigning = 'auth.for.taboou.api.v1.' + nonce
-console.log('msg to be signed ->', msgForSigning);
+// console.log('msg to be signed ->', msgForSigning)
 
         /* Create signed message. */
         const signed = wallet.signMessage(msgForSigning)
-console.log('signed', signed);
+console.log('signed', signed)
 	}
 
     signIn = require('./store/signIn').default
@@ -134,34 +134,6 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
         this.provider.name = provider.name != '' ? provider.name : 'Unknown'
 
         return provider
-    }
-
-    async loadPosts(districtId) {
-        const Web3 = require('web3')
-
-        if (typeof web3 !== 'undefined') {
-            web3 = new Web3(web3.currentProvider)
-        } else {
-            /* Set the current provider. */
-            let web3 = new Web3(new Web3.providers.HttpProvider(this.provider))
-        }
-
-        const abiArray = [{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"countryId","type":"bytes32"},{"name":"districtId","type":"bytes32"},{"name":"postId","type":"uint256"}],"name":"addPostId","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[{"name":"_countryId","type":"bytes32"},{"name":"_districtId","type":"bytes32"},{"name":"_blockNum","type":"uint256"}],"name":"getPostIds","outputs":[{"name":"postIds","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalPosted","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
-        const address  = '0x0159e048889f308a1832752ac608b698955d78e2'
-        const options  = {}
-        const contract = new web3.eth.Contract(abiArray, address, options)
-
-//         const accounts = await web3.eth.getAccounts()
-//         const hash = web3.utils.soliditySha3(accounts[0], '.name')
-// console.log('provider.name.<account>', hash)
-
-        const posts = await contract.methods.getPostIds(districtId, districtId, 3202527).call()
-console.log('[ %s ] %s', posts, JSON.stringify(posts))
-
-        /* Update the store. */
-        // this.provider.name = provider.name != '' ? provider.name : 'Unknown'
-
-        return posts
     }
 
     /**

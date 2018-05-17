@@ -11,22 +11,22 @@ console.log('Signing in with', email, password)
 
     /* Generate a new private key from the user's email and password. */
     const privateKey = this.web3.utils.soliditySha3(email, password)
-console.log('privateKey', privateKey)
+// console.log('privateKey', privateKey)
 
     /* Generate a new wallet based on entropy. */
     const account = this.web3.eth.accounts.privateKeyToAccount(privateKey)
-console.log('account', account)
+// console.log('account', account)
 
     /* Retrieve the available accounts. */
     // const { accounts } = this.eth
 
-console.log('this.eth.accounts[0]', this.eth.accounts[0])
-console.log('this.eth.accounts[0] == null', this.eth.accounts[0] == null);
+// console.log('this.eth.accounts[0]', this.eth.accounts[0])
+// console.log('this.eth.accounts[0] == null', this.eth.accounts[0] == null);
     /* Update the store. */
     if (this.eth.accounts[0] == null)
         this.eth.accounts[0] = account
     else
         this.eth.accounts.push(account)
 
-console.log('this.eth.accounts', this.eth.accounts);
+console.log('this.eth.accounts', this.eth.accounts)
 }

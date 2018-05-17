@@ -23,6 +23,8 @@ import Account  from './views/Account'
 import NewPost  from './views/NewPost'
 import Post     from './views/Post'
 import Privacy  from './views/Privacy'
+import SignIn   from './views/SignIn'
+import SignOut  from './views/SignOut'
 import Status   from './views/Status'
 import Terms    from './views/Terms'
 
@@ -63,6 +65,10 @@ console.log('getConfirmation', message);
                     component = { () => (<Post store={ this.store } />) }/>
                 <Route path   = "/privacy"
                     component = { () => (<Privacy store={ this.store } />) }/>
+                <Route path   = "/signin"
+                    component = { () => (<SignIn store={ this.store } />) }/>
+                <Route path   = "/signout"
+                    component = { () => (<SignOut store={ this.store } />) }/>
                 <Route path   = "/status"
                     component = { () => (<Status store={ this.store } />) }/>
                 <Route path   = "/terms"

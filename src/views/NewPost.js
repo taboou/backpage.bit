@@ -53,11 +53,15 @@ export default class NewPost extends React.Component {
     /* User agrees to the disclaimer. */
     addPost() {
         const pkg = {
-            title: 'First sample form post',
-            body: 'Just a lil love this time.'
+	        cover: null,
+	        title: 'Hello Taboo',
+	        body: 'We are sooo ❤️in\' this new District Manager.',
+	        meta:   null,
+	        photos: ['https://i.imgur.com/81LFQ92.jpg'],
+	        videos: null
         }
 
-        this.store.newPost = JSON.stringify(pkg)
+        this.store.addPost = JSON.stringify(pkg)
     }
 
 }

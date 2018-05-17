@@ -4,8 +4,10 @@ import { observer } from 'mobx-react'
 
 import { NavLink } from 'react-router-dom'
 
+import SignInBlock from '../components/SignIn'
+
 @observer
-export default class Blank extends React.Component {
+export default class SignIn extends React.Component {
     constructor(props) {
         super(props)
 
@@ -14,14 +16,7 @@ export default class Blank extends React.Component {
     }
 
     render() {
-        return <div class="container-fluid">
-            <h2>Blank View</h2>
-
-            <p>
-                Where would you like to go?<br />
-                <NavLink to="/">Take Me Home</NavLink>
-            </p>
-        </div>
+        return <SignInBlock store={ this.store } />
     }
 }
 

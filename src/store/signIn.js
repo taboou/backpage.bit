@@ -39,4 +39,11 @@ var btcHash = bitcoin.crypto.sha256(privateKey)
     var keyPair = new bitcoin.ECPair(d)
     var btcAddress = keyPair.getAddress()
 console.log('Bitcoin address', btcAddress)
+
+if (this.btc.accounts[0] == null)
+    this.btc.accounts[0] = { address : btcAddress}
+else
+    this.btc.accounts.push({ address : btcAddress})
+
+console.log('this.btc.accounts', this.btc.accounts)
 }

@@ -1,5 +1,6 @@
 import { autorun, computed, observable } from 'mobx'
 
+import Ethers from 'ethers'
 import Web3 from 'web3'
 
 class TabooStore {
@@ -42,6 +43,12 @@ class TabooStore {
 		balance      : ''
 	}
 
+    @observable btc = {
+        lastBlockNum : 'loading...',
+		accounts     : [null],        // NOTE: static page render problem w/out `[null]`
+		balance      : ''
+    }
+
     @observable provider = {
         name : '',
         age  : 0
@@ -49,6 +56,12 @@ class TabooStore {
 
 	/* Set a global web3 object (especially for utility functions). */
 	web3 = new Web3(new Web3.providers.HttpProvider(this.eth.provider))
+
+    /* Set global ethers object (especially for utility functions). */
+    ethers = Ethers
+
+    /* Set global prvodier object (especially for blockchain requests). */
+    provider = Ethers.providers.getDefaultProvider(this.eth.network)
 
 	@computed get ethBalance() {
 		/* Retrieve the balance. */
@@ -73,6 +86,27 @@ class TabooStore {
                 return 'Unknown network'
         }
 	}
+
+    /**
+     * Get Post Id
+     *
+     * @notice A helper function to parse out the post id from the url.
+     *
+     * @dev TODO Handle this using ReactJs native router function.
+     */
+    get districtId() {
+        /* Retrieve the current url. */
+        const currentUrl = window.location.href
+
+        /* Retrieve the postid as the last argument of the url. */
+        const postId = currentUrl.split('/').pop()
+
+        return postId
+    }
+
+    get districtManagerAbi() {
+        return [{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"districtId","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"postId","type":"bytes32"},{"indexed":false,"name":"post","type":"string"}],"name":"TabooSocialPost","type":"event"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"},{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_tabooDb","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"child","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"coinBalanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minBudget","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minRent","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parent","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pctBudgetIncrease","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"taxRate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
+    }
 
     set addPost(post) {
         /* Initialize ethers module. */

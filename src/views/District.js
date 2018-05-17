@@ -4,12 +4,29 @@ import { observer } from 'mobx-react'
 
 import { NavLink } from 'react-router-dom'
 
-import ethers from 'ethers'
+import districts from '../data/districts'
 
-import districts from '../data/districts.js'
+import Post from '../components/Post'
 
-/* Set the event topic for `TabooSocialPost(address,address,bytes32,string)`. */
-const EVENT_TOPIC = '0x3aea8c937778fbbab5bd352e90c878b0c81ccc351154210756ea6d483b7cd5dc'
+function PostList(_props) {
+    /* Retrieve the posts from props. */
+    const posts = _props.posts
+
+    /* Map all posts to list items. */
+    const listItems = posts.map((post) =>
+        <div key={ post.id }>
+            <p>
+                <strong>{ post.t }</strong><br/>
+                <strong>{ post.b }</strong><br/>
+                <strong>{ post.e }</strong>
+            </p>
+            <hr/>
+        </div>
+    )
+
+    /* Return the list items. */
+    return listItems
+}
 
 @observer
 export default class District extends React.Component {
@@ -19,95 +36,109 @@ export default class District extends React.Component {
         /* Localize store to class object. */
         this.store = this.props.store
 
-        /* Localize network to class object. */
-        this.network = this.store.eth.network
-
-        /* Retrieve the district id. */
-        this.districtId = this.getDistrictId()
-
         /* Retrive the district name. */
-        this.districtName = districts[this.getDistrictId()].name
+        this.districtName = districts[this.store.districtId].name
 
         /* Retrive the district manager. */
-        this.districtManager = districts[this.getDistrictId()].manager
+        this.districtManager = districts[this.store.districtId].manager
 
         this.state = {
-            displayed: 'We need to show some log data from PostManager.'
+            isLoading: true,
+            posts: []
         }
     }
 
     render() {
+        if (this.state.isLoading)
+            return <div class="container-fluid">
+                <h2>{ this.districtName }</h2>
+
+                <strong>{ this.districtManager }</strong>
+
+                <br></br><br></br>
+
+                <h3>loading posts, please wait...</h3>
+            </div>
+
         return <div class="container-fluid">
             <h2>{ this.districtName }</h2>
 
             <strong>{ this.districtManager }</strong>
 
-            <p>
-                { this.state.displayed }
-            </p>
+            <PostList posts={ this.state.posts } />
         </div>
     }
 
     componentDidMount() {
-        /* Localize this. */
-        const self = this
+        /* Load the most recent posts. */
+        this.loadPosts()
+    }
 
-        /* Initialize provider. */
-        const provider = ethers.providers.getDefaultProvider(this.network)
+    loadPosts() {
+        /* Initialize the current network. */
+        const network = this.store.eth.network
 
-        /* Set listener for the last XXX blocks. */
+        /* Initialize providers. */
+        const providers = this.store.ethers.providers
+
+        /* Connect to INFURA. */
+        const infuraProvider = new providers.InfuraProvider(network)
+
+        /* Connect to Etherscan. */
+        const etherscanProvider = new providers.EtherscanProvider(network)
+
+        /* Initialize a NEW provider (with fallback). */
+        const provider = new providers.FallbackProvider([
+            infuraProvider,
+            etherscanProvider
+        ])
+
+        /* Reset provider pointer for the last XXX blocks. */
         provider.resetEventsBlock ( 3244720 )
 
-        /* Start listeninig for events. */
-        provider.on([ EVENT_TOPIC ], (log) => {
-            console.log('Event Log', log)
+        /* Initialize new District Manager contract. */
+        const contract = new this.store.ethers.Contract(
+            this.districtManager,
+            this.store.districtManagerAbi,
+            provider)
 
-            /* Validate district account. */
-            if (log.address.toUpperCase() != this.districtManager.toUpperCase())
-                return
+        /* Initialize listener for log events. */
+        contract.ontaboosocialpost = (_districtId, _owner, _postId, _post) => {
+            console.log('owner  : ', _owner)
+            console.log('postId : ', _postId)
+            console.log('post   : ', _post)
 
-            /* Retrieve the post data from log. */
-            const encodedData = log.data
-console.log('Encoded Data', encodedData)
-
-            /* Retrieve the post data. */
-            const postId = encodedData.slice(0, 66)
-console.log('Post Id', postId)
-
-            /* Decode the data. */
-            const postData = ethers.utils.toUtf8String('0x' + encodedData.slice(194))
-console.log('Post Data', postData)
-
-            /* Update the state. */
-            self.setState({ displayed: this.state.displayed + ' --- ' + postId + ' --- ' + postData })
-        })
-
-        const abi = [{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"districtId","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"postId","type":"bytes32"},{"indexed":false,"name":"post","type":"string"}],"name":"TabooSocialPost","type":"event"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"},{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_tabooDb","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"child","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"coinBalanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minBudget","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minRent","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parent","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pctBudgetIncrease","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"taxRate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
-        const address = '0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6';
-        const contract = new ethers.Contract(address, abi, provider);
-
-        contract.ontaboosocialpost = function(districtId, owner, postId, post) {
-            console.log('districtId: ', districtId)
-            console.log('owner: ', owner)
-            console.log('postId: ', postId)
-            console.log('post: ', post)
+            /* Display post. */
+            this.displayPost(_owner, _postId, _post)
         }
     }
 
-    /**
-     * Get Post Id
-     *
-     * @notice A helper function to parse out the post id from the url.
-     *
-     * @dev TODO Handle this using ReactJs native router function.
-     */
-    getDistrictId() {
-        /* Retrieve the current url. */
-        const currentUrl = window.location.href
+    displayPost(_owner, _postId, _post) {
+        try {
+            /* Parse the JSON data. */
+            const post = JSON.parse(_post)
 
-        /* Retrieve the postid as the last argument of the url. */
-        const postId = currentUrl.split('/').pop()
+            /* Add owner to post data. */
+            post.owner = _owner
 
-        return postId
+            /* Add post id to post data. */
+            post.id = _postId
+
+            /* Validate the post data. */
+            if (!post || !post.t || !post.b || !post.e)
+                return console.error('Incorrect data format for [ %s ]', JSON.stringify(post))
+
+            /* Retrieve the current posts. */
+            const posts = this.state.posts
+
+            /* Clear loading message (if needed). */
+            if (posts[0] == 'loading posts, please wait...')
+                this.setState({ isLoading: false, posts: [post] })
+            else
+                this.setState({ isLoading: false, posts: [post, ...posts] })
+        } catch(e) {
+            // silently fail if data format is incorrect
+            return console.error('Incorrect data format for [ %s ]', JSON.stringify(post))
+        }
     }
 }

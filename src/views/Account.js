@@ -16,16 +16,24 @@ export default class Account extends React.Component {
 
     render() {
         /* Retrieve the current account. */
-        const account = this.store.eth.accounts[0]
+        const ethAccount = this.store.eth.accounts[0]
+        const btcAccount = this.store.btc.accounts[0]
 
         /* Initialize address. */
-        let address = null
+        let ethAddress = null
+        let btcAddress = null
 
         /* Retrieve the current address. */
-        if (account && account.address)
-            address = account.address
+        if (ethAccount && ethAccount.address)
+            ethAddress = ethAccount.address
         else
-            address = 'Unknown account'
+            ethAddress = 'Unknown account'
+
+        /* Retrieve the bitcoin address. */
+        if (btcAccount && btcAccount.address)
+            btcAddress = btcAccount.address
+        else
+            btcAddress = 'Unknown account'
 
         return (
             <div class="container-fluid">
@@ -44,7 +52,7 @@ export default class Account extends React.Component {
                         Account address
                     </div>
                     <div class="col">
-                        { address }
+                        { ethAddress }
                     </div>
                 </div>
                 <div class="row">
@@ -53,6 +61,17 @@ export default class Account extends React.Component {
                     </div>
                     <div class="col">
                         Ξ{ this.store.ethBalance }
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-3 text-right">
+                        Bitcoin address
+                    </div>
+                    <div class="col">
+                        { btcAddress }
                     </div>
                 </div>
 

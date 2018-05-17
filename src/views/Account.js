@@ -15,6 +15,18 @@ export default class Account extends React.Component {
     }
 
     render() {
+        /* Retrieve the current account. */
+        const account = this.store.eth.accounts[0]
+
+        /* Initialize address. */
+        let address = null
+
+        /* Retrieve the current address. */
+        if (account && account.address)
+            address = account.address
+        else
+            address = 'Unknown account'
+
         return (
             <div class="container-fluid">
                 <h2>My Account</h2>
@@ -29,10 +41,10 @@ export default class Account extends React.Component {
                 </div>
                 <div class="row">
                     <div class="col-3 text-right">
-                        Account
+                        Account address
                     </div>
                     <div class="col">
-                        { this.store.eth.accounts[0] }
+                        { address }
                     </div>
                 </div>
                 <div class="row">
@@ -180,15 +192,15 @@ console.log('The current network Id is', networkId)
                 console.log('Active accounts', accounts)
 
                 /* Update the store. */
-                self.store.accounts = accounts
+                // self.store.accounts = accounts
 
                 /* Load balances. */
-                if (accounts && accounts.length > 0) {
-                    self.loadBalances(web3, accounts)
+                // if (accounts && accounts.length > 0) {
+                //     self.loadBalances(web3, accounts)
 
 //                     let hash = web3.utils.soliditySha3('provider.name.', accounts[0])
 // console.log('`provider.name.` hash', hash);
-                }
+                // }
             })
             .catch(console.error)
     }

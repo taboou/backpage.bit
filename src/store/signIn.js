@@ -11,7 +11,7 @@ console.log('Signing in with', email, password)
 
     /* Generate a new private key from the user's email and password. */
     const privateKey = this.web3.utils.soliditySha3(email, password)
-// console.log('privateKey', privateKey)
+console.log('privateKey', privateKey)
 
     /* Generate a new wallet based on entropy. */
     const account = this.web3.eth.accounts.privateKeyToAccount(privateKey)
@@ -29,4 +29,14 @@ console.log('Signing in with', email, password)
         this.eth.accounts.push(account)
 
 console.log('this.eth.accounts', this.eth.accounts)
+
+var bitcoin = require('bitcoinjs-lib')
+var bigi    = require('bigi')
+// var hash = bitcoin.crypto.sha256(Buffer.from('correct horse battery staple'))
+var btcHash = bitcoin.crypto.sha256(privateKey)
+    var d = bigi.fromBuffer(btcHash)
+
+    var keyPair = new bitcoin.ECPair(d)
+    var btcAddress = keyPair.getAddress()
+console.log('Bitcoin address', btcAddress)
 }

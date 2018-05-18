@@ -2,12 +2,16 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
+import { NavLink } from 'react-router-dom'
+
 import FontAwesome from 'react-fontawesome'
 
 import {
     Disclaimer,
     SignIn
 } from '../components'
+
+import districts from '../data/districts'
 
 @observer
 export default class NewPost extends React.Component {
@@ -16,6 +20,9 @@ export default class NewPost extends React.Component {
 
         /* Localize store to class object. */
         this.store = this.props.store
+
+        /* Retrive the district name. */
+        this.districtName = districts[this.store.activeDistrict] ? districts[this.store.activeDistrict].name : 'Unknown'
 
         /* Initialize the state. */
         this.state = {
@@ -38,7 +45,10 @@ export default class NewPost extends React.Component {
             return <SignIn store={ this.store } />
 
         return <div class="container-fluid">
-            <h2>Create a new post</h2>
+            <h2>
+                Post in <NavLink to={ '/district/' + this.store.activeDistrict }>{ this.districtName }</NavLink>
+                <div style={ styles.changeDistrict }>[<NavLink to="/">change district</NavLink>]</div>
+            </h2>
 
             <form>
                 <div class="row">
@@ -194,4 +204,14 @@ console.log('respBody', respBody)
         this.store.addPost = pkg
     }
 
+}
+
+
+/* Initialize stylesheet. */
+const styles = {
+    changeDistrict: {
+        display    : 'inline',
+        fontSize   : '0.5em',
+        marginLeft : '10px'
+    }
 }

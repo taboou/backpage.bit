@@ -30,10 +30,10 @@ export default class District extends React.Component {
         this.store = this.props.store
 
         /* Retrive the district name. */
-        this.districtName = districts[this.store.districtId].name
+        this.districtName = districts[this.store.loadedDistrict] ? districts[this.store.loadedDistrict].name : 'Unknown location'
 
         /* Retrive the district manager. */
-        this.districtManager = districts[this.store.districtId].manager
+        this.districtManager = districts[this.store.loadedDistrict] ? districts[this.store.loadedDistrict].manager : null
 
         this.state = {
             isLoading: true,
@@ -51,9 +51,7 @@ export default class District extends React.Component {
                     { this.districtManager }</a>
                 </div>
 
-                <br></br><br></br>
-
-                <h3>loading posts, please wait...</h3>
+                { this.loadingPosts() }
             </div>
 
         return <div class="container-fluid">
@@ -70,7 +68,17 @@ export default class District extends React.Component {
 
     componentDidMount() {
         /* Load the most recent posts. */
-        this.loadPosts()
+        if (this.districtManager)
+            this.loadPosts()
+    }
+
+    loadingPosts() {
+        if (this.districtManager)
+            return <div>
+                <br /><br />
+
+                <h3>loading posts, please wait...</h3>
+            </div>
     }
 
     loadPosts() {
@@ -134,7 +142,7 @@ export default class District extends React.Component {
             if (posts[0] == 'loading posts, please wait...')
                 this.setState({ isLoading: false, posts: [post] })
             else
-                this.setState({ isLoading: false, posts: [post, ...posts] })
+                this.setState({ posts: [post, ...posts] })
         } catch(e) {
             // silently fail if data format is incorrect
             return console.error('Incorrect data format for [ %s ]', JSON.stringify(_post))

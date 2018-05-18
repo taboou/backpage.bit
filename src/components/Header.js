@@ -87,7 +87,7 @@ const styles = {
         marginTop: '5px'
     },
     accountAddr: {
-        fontSize: '0.9em'
+        fontSize: '0.8em'
     },
     accountLinks: {
         fontSize: '1.1em'

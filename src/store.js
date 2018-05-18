@@ -3,6 +3,8 @@ import { autorun, computed, observable } from 'mobx'
 import Ethers from 'ethers'
 import Web3 from 'web3'
 
+import districts from './data/districts'
+
 class TabooStore {
 
     /* Constructor. */
@@ -30,6 +32,9 @@ class TabooStore {
 
 	/* Initialize system variables. */
 	@observable hasAgreedToDisclaimer = false
+
+    /* Initialize the active (default) district. */
+    @observable activeDistrict = null
 
 	@observable posts = ['come by tonight', 'new provider']
 	@observable filter = ''
@@ -88,18 +93,21 @@ class TabooStore {
 	}
 
     /**
-     * Get Post Id
+     * Retrieves the district's id (slug) from the url.
      *
      * @notice A helper function to parse out the post id from the url.
      *
      * @dev TODO Handle this using ReactJs native router function.
      */
-    get districtId() {
+    get loadedDistrict() {
         /* Retrieve the current url. */
         const currentUrl = window.location.href
 
         /* Retrieve the postid as the last argument of the url. */
         const postId = currentUrl.split('/').pop()
+
+        /* Update the store's active district. */
+        this.activeDistrict = postId
 
         return postId
     }
@@ -139,6 +147,10 @@ console.log('signed', signed)
 
 let endpoint = 'https://api.taboou.com/v1/posts'
 let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
+
+        /* Add the current district manager to the request. */
+        _post.dm = districts[this.activeDistrict].manager
+
         /* Upload base64 data to imgur (anonymously). */
         request
             .post(endpoint)
@@ -191,8 +203,8 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
      * @notify Updates the active blockchain network id.
      * @param networkId This numeric id of the active network.
      */
-    set networkId(networkId) {
-    	this.eth.networkId = networkId
+    set networkId(_networkId) {
+    	this.eth.networkId = _networkId
     }
 
     /**
@@ -201,8 +213,8 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
      * @notify Updates the active list of blockchain accounts.
      * @param accounts An array of active accounts.
      */
-    set accounts(accounts) {
-    	this.eth.accounts = accounts
+    set accounts(_accounts) {
+    	this.eth.accounts = _accounts
     }
 
     /**
@@ -211,8 +223,8 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
      * @notify Updates the balance from the active account.
      * @param balance Account value (in wei).
      */
-    set balance(balance) {
-    	this.eth.balance = balance
+    set balance(_balance) {
+    	this.eth.balance = _balance
     }
 
 }

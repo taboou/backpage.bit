@@ -108,21 +108,18 @@ class TabooStore {
         return [{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"districtId","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"postId","type":"bytes32"},{"indexed":false,"name":"post","type":"string"}],"name":"TabooSocialPost","type":"event"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"},{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_tabooDb","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"child","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"coinBalanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minBudget","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minRent","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parent","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pctBudgetIncrease","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"taxRate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
     }
 
-    set addPost(post) {
-        /* Initialize ethers module. */
-        const ethers = require('ethers')
-
+    set addPost(_post) {
         /* Initialize moment module. */
         const moment = require('moment')
 
         /* Initialize default provider. */
-        const provider = ethers.providers.getDefaultProvider('ropsten')
+        const provider = this.ethers.providers.getDefaultProvider('ropsten')
 
         /* Retrieve private key from active account. */
         const privateKey = this.eth.accounts[0].privateKey
 // console.log('privateKey', privateKey)
 
-        const wallet = new ethers.Wallet(privateKey, provider)
+        const wallet = new this.ethers.Wallet(privateKey, provider)
 // console.log('wallet', wallet)
 
         /* Generate timestamp (in milliseconds). */
@@ -136,11 +133,29 @@ console.log('nonce', nonce)
         /* Create signed message. */
         const signed = wallet.signMessage(msgForSigning)
 console.log('signed', signed)
+
+        /* Initialize superagent request. */
+        const request = require('superagent')
+
+let endpoint = 'https://api.taboou.com/v1/posts'
+let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
+        /* Upload base64 data to imgur (anonymously). */
+        request
+            .post(endpoint)
+            .send(_post)
+            .set('Authorization', auth)
+            .set('accept', 'json')
+            .end((err, res) => {
+                if (err) console.error(err)
+
+console.log('res.body', res.body)
+            })
 	}
 
-    signIn = require('./store/signIn').default
+    signIn            = require('./store/signIn').default
     agreeToDisclaimer = require('./store/agreeToDisclaimer').default
     denyDisclaimer    = require('./store/denyDisclaimer').default
+    hashDataUrl       = require('./store/hashDataUrl').default
 
     async loadProvider() {
         const Web3 = require('web3')

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 import districts from '../data/districts'
 
-import Post from '../components/Post'
+import { Post } from '../components'
 
 function PostList(_props) {
     /* Retrieve the posts from props. */
@@ -14,14 +14,7 @@ function PostList(_props) {
 
     /* Map all posts to list items. */
     const listItems = posts.map((post) =>
-        <div key={ post.id }>
-            <p>
-                <strong>{ post.t }</strong><br/>
-                <strong>{ post.b }</strong><br/>
-                <strong>{ post.e }</strong>
-            </p>
-            <hr/>
-        </div>
+        <Post key={ post.id } post={ post } />
     )
 
     /* Return the list items. */
@@ -32,7 +25,7 @@ function PostList(_props) {
 export default class District extends React.Component {
     constructor(props) {
         super(props)
-// console.log('props', props);
+
         /* Localize store to class object. */
         this.store = this.props.store
 
@@ -53,7 +46,10 @@ export default class District extends React.Component {
             return <div class="container-fluid">
                 <h2>{ this.districtName }</h2>
 
-                <strong>{ this.districtManager }</strong>
+                <div style={ styles.districtManager }>
+                    => <a href="https://ropsten.etherscan.io/address/0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6" target="_blank">
+                    { this.districtManager }</a>
+                </div>
 
                 <br></br><br></br>
 
@@ -63,7 +59,10 @@ export default class District extends React.Component {
         return <div class="container-fluid">
             <h2>{ this.districtName }</h2>
 
-            <strong>{ this.districtManager }</strong>
+            <div style={ styles.districtManager }>
+                => <a href="https://ropsten.etherscan.io/address/0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6" target="_blank">
+                { this.districtManager }</a>
+            </div>
 
             <PostList posts={ this.state.posts } />
         </div>
@@ -138,7 +137,20 @@ export default class District extends React.Component {
                 this.setState({ isLoading: false, posts: [post, ...posts] })
         } catch(e) {
             // silently fail if data format is incorrect
-            return console.error('Incorrect data format for [ %s ]', JSON.stringify(post))
+            return console.error('Incorrect data format for [ %s ]', JSON.stringify(_post))
         }
     }
+}
+
+/* Initialize stylesheet. */
+const styles = {
+  	districtManager: {
+        fontSize  : '0.5em',
+        fontStyle : 'italic',
+        color     : '#a99',
+
+        marginTop    : '-7px',
+        marginBottom : '15px',
+        marginLeft   : '5px'
+  	}
 }

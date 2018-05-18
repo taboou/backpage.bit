@@ -4,10 +4,10 @@ import { observer } from 'mobx-react'
 
 import { NavLink } from 'react-router-dom'
 
-import SignInBlock from '../components/SignIn'
+import { SignIn } from '../components'
 
 @observer
-export default class SignIn extends React.Component {
+export default class SignInScreen extends React.Component {
     constructor(props) {
         super(props)
 
@@ -16,7 +16,7 @@ export default class SignIn extends React.Component {
     }
 
     render() {
-        return <SignInBlock store={ this.store } />
+        return <SignIn store={ this.store } />
     }
 }
 

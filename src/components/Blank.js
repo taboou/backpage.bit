@@ -9,10 +9,13 @@ export default class Blank extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-            	<h1>Blank Component</h1>
-            </div>
-        )
+        return <div>
+        	<h1>Blank Component</h1>
+        </div>
     }
+}
+
+/* Initialize stylesheet. */
+const styles = {
+
 }

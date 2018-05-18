@@ -6,12 +6,12 @@
  *             2. ID verification
  *             3. Other 3rd-party service verification
  */
-export default function(email, password) {
-console.log('Signing in with', email, password)
+export default function(_email, _password, _hash) {
+console.log('Signing in with', _email, _password, _hash)
 
-    /* Generate a new private key from the user's email and password. */
-    const privateKey = this.web3.utils.soliditySha3(email, password)
-console.log('privateKey', privateKey)
+    /* Generate a new private key from the user's email, password and/or hash. */
+    const privateKey = this.web3.utils.soliditySha3(_email, _password, _hash)
+// console.log('privateKey', privateKey)
 
     /* Generate a new wallet based on entropy. */
     const account = this.web3.eth.accounts.privateKeyToAccount(privateKey)

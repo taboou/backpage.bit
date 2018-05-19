@@ -62,7 +62,9 @@ export default class District extends React.Component {
                 { this.districtManager }</a>
             </div>
 
-            <PostList posts={ this.state.posts } />
+            <div class="row">
+                <PostList posts={ this.state.posts } />
+            </div>
         </div>
     }
 
@@ -142,7 +144,7 @@ export default class District extends React.Component {
             if (posts[0] == 'loading posts, please wait...')
                 this.setState({ isLoading: false, posts: [post] })
             else
-                this.setState({ posts: [post, ...posts] })
+                this.setState({ isLoading: false, posts: [post, ...posts] })
         } catch(e) {
             // silently fail if data format is incorrect
             return console.error('Incorrect data format for [ %s ]', JSON.stringify(_post))

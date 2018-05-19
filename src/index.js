@@ -5,8 +5,6 @@ import ReactDOM from 'react-dom'
 /* Import the css. */
 import './css/styles.css'
 import './css/font-awesome.min.css'
-// import 'font-awesome/css/font-awesome.min.css'
-// require('font-awesome-webpack')
 
 /* Import the full application component. */
 import App from './App'
@@ -18,4 +16,3 @@ import store from './store'
 const app = document.getElementById('app')
 
 ReactDOM.render(<App store={ store } />, app)
-

@@ -194,9 +194,9 @@ console.log('respBody', respBody)
         	t:this.state.title,
         	b:this.state.body,
         	m:null,
-        	ic:null,
+        	ic:this.state.imageCoverUrl,
         	ig:null,
-        	pg:[this.state.imageCoverUrl],
+        	pg:null,
         	vg:null,
         	e:timestamp + (24 * 60 * 60 * 1000)    // 24-hour default (in milliseconds)
         }

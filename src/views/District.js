@@ -79,7 +79,7 @@ export default class District extends React.Component {
             return <div>
                 <br /><br />
 
-                <h3>loading posts, please wait...</h3>
+                <h3>Loading blockchain posts, please wait...</h3>
             </div>
     }
 
@@ -103,7 +103,7 @@ export default class District extends React.Component {
         ])
 
         /* Reset provider pointer for the last 17,280 (3-days of) blocks. */
-        provider.resetEventsBlock ( this.store.eth.lastBlockNum - 17280 )
+        provider.resetEventsBlock ( this.store.eth.lastBlockNum - 172800 )
 
         /* Initialize new District Manager contract. */
         const contract = new this.store.ethers.Contract(

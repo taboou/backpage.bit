@@ -24,7 +24,7 @@ export default class Header extends React.Component {
         return <div id="container" style={ styles.container }>
       		<div class="row">
 	      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
-		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
+		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="images/logo0bit.png" />
                     <div>{ this.accountLinks(deviceWidth) }</div>
 	      		</div>
 
@@ -99,6 +99,6 @@ const styles = {
         fontSize: '1.1em'
     },
     accountLinks_480: {
-        fontSize: '0.8em'
+        fontSize: '0.75em'
     }
 }

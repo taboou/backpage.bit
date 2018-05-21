@@ -10,7 +10,7 @@ import { observer } from 'mobx-react'
 
 /* Import Bootstrap globally. */
 import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Header from './components/Header'
 import Footer from './components/Footer'

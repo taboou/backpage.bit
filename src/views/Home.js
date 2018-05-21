@@ -22,23 +22,23 @@ export default class Home extends React.Component {
     }
 
     render() {
-        const region = 'region'
-        const city = 'city'
+        /* Retrieve the device width. */
+        const deviceWidth = this.store.device.width
 
         return <div style={ styles.home } id="home" class="">
             <div style={ styles.home_mainWrapper } id="mainWrapper">
                 <div style={ styles.home_geoListings } id="geoListings">
                     <div style={ styles.home_column }>
-                        <US_Directory />
+                        <US_Directory deviceWidth={ deviceWidth } />
                     </div>
 
                     <div style={ styles.home_column }>
-                        <CA_Directory />
-                        <EU_Directory />
-                        <Asia_Directory />
-                        <AU_Oceania_Directory />
-                        <Latin_America_Caribbean_Directory />
-                        <Africa_Directory />
+                        <CA_Directory deviceWidth={ deviceWidth } />
+                        <EU_Directory deviceWidth={ deviceWidth } />
+                        <Asia_Directory deviceWidth={ deviceWidth } />
+                        <AU_Oceania_Directory deviceWidth={ deviceWidth } />
+                        <Latin_America_Caribbean_Directory deviceWidth={ deviceWidth } />
+                        <Africa_Directory deviceWidth={ deviceWidth } />
                     </div>
 
                     <div class="clearfix"></div>

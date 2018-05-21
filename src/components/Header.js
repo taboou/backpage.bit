@@ -18,11 +18,14 @@ export default class Header extends React.Component {
     }
 
     render() {
+        /* Retrieve the device width. */
+        const deviceWidth = this.store.device.width
+
         return <div id="container" style={ styles.container }>
       		<div class="row">
 	      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
 		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="../images/logo0bit.png" />
-                    <div>{ this.accountLinks() }</div>
+                    <div>{ this.accountLinks(deviceWidth) }</div>
 	      		</div>
 
 	      		<div class="col-5 text-right" style={ styles.navLinks }>
@@ -46,14 +49,14 @@ export default class Header extends React.Component {
       	</div>
     }
 
-    accountLinks() {
+    accountLinks(deviceWidth) {
         if (this.store.eth.accounts[0])
-            return <div style={ styles.accountAddr }>
+            return <div style={ (deviceWidth <= 480) ? styles.accountAddr_480 : styles.accountAddr }>
                 You are signed in. [ <NavLink to="/signout">sign out</NavLink> ]<br />
                 <NavLink to="/account">{ this.store.eth.accounts[0].address }</NavLink>
             </div>
         else
-            return <div style={ styles.accountLinks }>
+            return <div style={ (deviceWidth <= 480) ? styles.accountLinks_480 : styles.accountLinks }>
                 [ <NavLink to="/signin">Sign in to your account</NavLink> ]
             </div>
     }
@@ -89,7 +92,13 @@ const styles = {
     accountAddr: {
         fontSize: '0.8em'
     },
+    accountAddr_480: {
+        fontSize: '0.55em'
+    },
     accountLinks: {
         fontSize: '1.1em'
+    },
+    accountLinks_480: {
+        fontSize: '0.8em'
     }
 }

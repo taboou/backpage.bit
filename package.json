@@ -57,7 +57,7 @@
     "test": "echo \"No test specified\"",
     "dev": "webpack-dev-server --content-base src --watch-content-base",
     "build": "NODE_ENV=production webpack --config ./webpack.config.js --progress --profile --colors",
-    "build-temp": "webpack -p --progress --profile --colors"
+    "build2": "webpack -p --progress --profile --colors"
   },
   "devDependencies": {
     "webpack-cli": "^2.1.2"

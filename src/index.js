@@ -3,7 +3,7 @@ import React    from 'react'
 import ReactDOM from 'react-dom'
 
 /* Import the css. */
-import './css/styles.css'
+// import './css/styles.css'
 import './css/font-awesome.min.css'
 
 /* Import the full application component. */

@@ -28,7 +28,7 @@ export default class Post extends React.Component {
                     </p>
 
                     <p class="card-text text-right">
-                        <small>expires in { expiration }</small>
+                        <small>expires { expiration }</small>
                     </p>
 
                     <a href="javascript://" class="btn btn-primary">open details</a>

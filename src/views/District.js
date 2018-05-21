@@ -47,7 +47,7 @@ export default class District extends React.Component {
                 <h2>{ this.districtName }</h2>
 
                 <div style={ styles.districtManager }>
-                    => <a href="https://ropsten.etherscan.io/address/0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6" target="_blank">
+                    => <a href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
                     { this.districtManager }</a>
                 </div>
 
@@ -58,7 +58,7 @@ export default class District extends React.Component {
             <h2>{ this.districtName }</h2>
 
             <div style={ styles.districtManager }>
-                => <a href="https://ropsten.etherscan.io/address/0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6" target="_blank">
+                => <a href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
                 { this.districtManager }</a>
             </div>
 
@@ -102,8 +102,8 @@ export default class District extends React.Component {
             etherscanProvider
         ])
 
-        /* Reset provider pointer for the last XXX blocks. */
-        provider.resetEventsBlock ( 3244720 )
+        /* Reset provider pointer for the last 17,280 (3-days of) blocks. */
+        provider.resetEventsBlock ( this.store.eth.lastBlockNum - 17280 )
 
         /* Initialize new District Manager contract. */
         const contract = new this.store.ethers.Contract(
@@ -113,9 +113,9 @@ export default class District extends React.Component {
 
         /* Initialize listener for log events. */
         contract.ontaboosocialpost = (_districtId, _owner, _postId, _post) => {
-            console.log('owner  : ', _owner)
-            console.log('postId : ', _postId)
-            console.log('post   : ', _post)
+// console.log('owner  : ', _owner)
+// console.log('postId : ', _postId)
+// console.log('post   : ', _post)
 
             /* Display post. */
             this.displayPost(_owner, _postId, _post)

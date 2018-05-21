@@ -85,7 +85,9 @@ export default class NewPost extends React.Component {
                         <div class="form-group">
                             <label for="imageCover" class="bmd-label-floating">Upload a Image Cover</label>
 
-                            <input type="file" class="form-control-file" id="imageCover" onChange={ this.readFile.bind(this) } />
+                            <label class="btn btn-default">
+                                Browse <input type="file" class="form-control-file" id="imageCover" hidden onChange={ this.readFile.bind(this) } />
+                            </label>
 
                             <small class="text-muted">
                                 Upload an image cover for your post.<br />
@@ -198,7 +200,7 @@ console.log('respBody', respBody)
         	ig:null,
         	pg:null,
         	vg:null,
-        	e:timestamp + (24 * 60 * 60 * 1000)    // 24-hour default (in milliseconds)
+        	e:timestamp + (3 * 24 * 60 * 60 * 1000)    // 72-hour default (in milliseconds)
         }
 
         this.store.addPost = pkg

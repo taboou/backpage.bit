@@ -132,7 +132,7 @@ class TabooStore {
 
         /* Generate timestamp (in milliseconds). */
         const nonce = moment().valueOf()
-console.log('nonce', nonce)
+// console.log('nonce', nonce)
 
         /* Create message for signing. */
         const msgForSigning = 'auth.for.taboou.api.v1.' + nonce
@@ -161,6 +161,9 @@ let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
                 if (err) console.error(err)
 
 console.log('res.body', res.body)
+const target = `#/district/${this.activeDistrict}`
+console.log('new target', target);
+document.location = target
             })
 	}
 

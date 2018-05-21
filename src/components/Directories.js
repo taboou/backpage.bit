@@ -8,7 +8,7 @@ export class US_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.unitedStates_h2 }>United States</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.us_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -21,7 +21,7 @@ export class CA_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Canada</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.ca_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -34,7 +34,7 @@ export class EU_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Europe</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.eu_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -47,7 +47,7 @@ export class Asia_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Asia, Pacific, and Middle East</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.asia_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -60,7 +60,7 @@ export class AU_Oceania_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Australia and Oceania</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.au_oceania_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -73,7 +73,7 @@ export class Latin_America_Caribbean_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Latin America and Caribbean</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.latin_caribbean_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -86,7 +86,7 @@ export class Africa_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Africa</h2>
-            <div style={ styles.geoBlock_inner }>
+            <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.african_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
@@ -182,6 +182,18 @@ const styles = {
         MozColumnCount: 3,
         columnCount: 3,
         overflow: 'hidden'
+    },
+    geoBlock_inner_310: {
+        WebkitColumnCount: 'auto',
+        MozColumnCount: 'auto',
+        ColumnCount: 'auto'
+    },
+    geoBlock_inner_480: {
+        // display: 'none', /* hide geoblock ontent by default click to open */
+        WebkitColumnCount: 2,
+        MozColumnCount: 2,
+        ColumnCount: 2,
+        padding: '8px 4px'
     },
     geoBlock_geoUnit: {
         minWidth: '100%',

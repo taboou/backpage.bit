@@ -56,8 +56,8 @@ export default class Disclaimer extends React.Component {
 
                     <br />
 
-                    Image Cover Preview<br/>
-                    <img id="img" width="150" height="150" />
+                    File Preview<br/>
+                    <img class="img-thumbnail" id="img" width="150" height="150" />
                 </form>
 
                 <br /><hr />

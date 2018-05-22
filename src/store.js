@@ -38,6 +38,7 @@ class TabooStore {
 
 	@observable posts = ['come by tonight', 'new provider']
 	@observable filter = ''
+	@observable errorMsg = ''
 
 	@observable eth = {
 		lastBlockNum : 'loading...',
@@ -161,13 +162,15 @@ let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
                 if (err) console.error(err)
 
 // console.log('res.body', res.body)
-                if (res.body && res.body.error) {
-                    /* Retrieve the error. */
-                    const error = res.body.error
+                if (res.body && res.body.errorMsg) {
+                    /* Retrieve the error message. */
+                    const errorMsg = res.body.errorMsg
+
+                    /* Update the error message. */
+                    this.errorMsg = errorMsg
 
                     /* Alert the user of the error. */
-// TODO Create/replace to a modal window with countdown timer.
-                    window.alert(error)
+                    $('#modalRateLimit').modal()
                 } else {
                     /* Retrieve the active district url. */
                     const target = `#/district/${this.activeDistrict}`

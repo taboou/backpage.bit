@@ -23,6 +23,17 @@ districts['us-ar-little-rock'] = { name: 'Little Rock', manager: '0xd1dae31df76D
 // US | California (CA)
 districts['us-ca-los-angeles'] = { name: 'Los Angeles', manager: '0x9F34CF486A4078f79fA97F2a499913aE7be7A4d3' }
 
+// US | Colorado (CO)
+districts['us-co-denver'] = { name: 'Denver', manager: '0xaFd17E7f0296db152E5Bbc800120ed6eCc1D62C2' }
+
+// US | Connecticut (CT)
+districts['us-ct-hartford'] = { name: 'Hartford', manager: '0x9FB54e00a1fe2dF35F685F46C9C78B7cFcc9c5CB' }
+
+// US | Delaware (DE)
+
+// US | District of Columbia (DC)
+districts['us-dc'] = { name: 'Washington D.C.', manager: '0x88129c616a7fb56CE879D74Ee2E23EF1d4C6d1f8' }
+
 // US | Florida (FL)
 districts['us-fl-miami'] = { name: 'Miami', manager: '0x48Aaf85e8C754e6fDbF01878849285ac02b6DEC3' }
 

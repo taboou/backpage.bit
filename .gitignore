@@ -130,6 +130,6 @@ $RECYCLE.BIN/
 
 .ftpconfig
 sftp-config.json
-NOTES
+NOTES.md
 /bin
 /temp

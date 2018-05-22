@@ -165,7 +165,26 @@ export default class NewPost extends React.Component {
                     </button>
                   </div>
                   <div class="modal-body">
-                    Please select an image cover for your new post.
+                    Please upload an image cover for your new post.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="modalRateLimit" tabIndex="-1" role="dialog" aria-labelledby="modalRateLimit" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Rate Limit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    { this.store.errorMsg }
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
@@ -225,7 +244,7 @@ export default class NewPost extends React.Component {
 
                         /* Retrieve the response body. */
                         const respBody = res.body
-console.log('respBody', respBody)
+// console.log('respBody', respBody)
 
                         /* Set cover image url. */
                         self.setState({ imageCoverUrl : respBody.data.link })

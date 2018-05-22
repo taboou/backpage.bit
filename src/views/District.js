@@ -8,6 +8,8 @@ import districts from '../data/districts'
 
 import { Post } from '../components'
 
+import moment from 'moment'
+
 function PostList(_props) {
     /* Retrieve the posts from props. */
     const posts = _props.posts
@@ -117,38 +119,42 @@ export default class District extends React.Component {
 // console.log('postId : ', _postId)
 // console.log('post   : ', _post)
 
-            /* Display post. */
-            this.displayPost(_owner, _postId, _post)
+            try {
+                /* Parse the JSON data. */
+                const post = JSON.parse(_post)
+
+                /* Validate post expiration is recent. */
+                if (post.e < moment().subtract(30, 'days').valueOf())
+                    return
+
+                /* Display post. */
+                this.displayPost(_owner, _postId, post)
+            } catch(e) {
+                // silently fail if data format is incorrect
+                return console.error('Check the data for [ %s ]', _post)
+            }
         }
     }
 
     displayPost(_owner, _postId, _post) {
-        try {
-            /* Parse the JSON data. */
-            const post = JSON.parse(_post)
+        /* Add owner to post data. */
+        _post.owner = _owner
 
-            /* Add owner to post data. */
-            post.owner = _owner
+        /* Add post id to post data. */
+        _post.id = _postId
 
-            /* Add post id to post data. */
-            post.id = _postId
+        /* Validate the post data. */
+        if (!_post || !_post.t || !_post.b || !_post.e)
+            return console.error('Incorrect data format for [ %s ]', _post)
 
-            /* Validate the post data. */
-            if (!post || !post.t || !post.b || !post.e)
-                return console.error('Incorrect data format for [ %s ]', JSON.stringify(post))
+        /* Retrieve the current posts. */
+        const posts = this.state.posts
 
-            /* Retrieve the current posts. */
-            const posts = this.state.posts
-
-            /* Clear loading message (if needed). */
-            if (posts[0] == 'loading posts, please wait...')
-                this.setState({ isLoading: false, posts: [post] })
-            else
-                this.setState({ isLoading: false, posts: [post, ...posts] })
-        } catch(e) {
-            // silently fail if data format is incorrect
-            return console.error('Incorrect data format for [ %s ]', JSON.stringify(_post))
-        }
+        /* Clear loading message (if needed). */
+        if (posts[0] == 'loading posts, please wait...')
+            this.setState({ isLoading: false, posts: [_post] })
+        else
+            this.setState({ isLoading: false, posts: [_post, ...posts] })
     }
 }
 

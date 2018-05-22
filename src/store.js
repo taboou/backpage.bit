@@ -160,7 +160,13 @@ let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
             .end((err, res) => {
                 if (err) console.error(err)
 
-console.log('res.body', res.body)
+// console.log('res.body', res.body)
+                if (res.body && res.body.error) {
+                    let error = res.body.error
+
+                    window.alert(error)
+                }
+
 const target = `#/district/${this.activeDistrict}`
 console.log('new target', target);
 document.location = target

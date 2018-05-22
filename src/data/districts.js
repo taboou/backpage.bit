@@ -7,6 +7,10 @@
  */
 const districts = {}
 
+// US | Alabama
+districts['us-al-auburn'] = { name: 'Auburn', manager: '0x64991997308EE37F299fFB02509Ea1027Ae2Ce53' }
+districts['us-al-birmingham'] = { name: 'Birmingham', manager: '0x55178d57eec0476b9A6cBbfeB1E80e082dA2fCEa' }
+
 // US | California
 districts['us-ca-los-angeles'] = { name: 'Los Angeles', manager: '0x9F34CF486A4078f79fA97F2a499913aE7be7A4d3' }
 
@@ -15,6 +19,9 @@ districts['us-fl-miami'] = { name: 'Miami', manager: '0x48Aaf85e8C754e6fDbF01878
 
 // US | Georgia
 districts['us-ga-atlanta'] = { name: 'Atlanta', manager: '0x96b3816af6970D42C13bd74BD307743Ed8326A1a' }
+
+// US | Illinois
+districts['us-il-chicago'] = { name: 'Chicago', manager: '0x508C00Ff412841b845Cc07EB73Cf7e6BB095d310' }
 
 // US | New York
 districts['us-ny-bronx']     = { name: 'Bronx',     manager: '0xBF9438FfeaA029CE75B5aE620bbAdA0e84aE9130' }

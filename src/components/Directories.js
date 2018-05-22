@@ -2,7 +2,8 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-import locations from '../data/locations.js'
+import districts from '../data/districts'
+import locations from '../data/locations'
 
 export class US_Directory extends React.Component {
     render() {
@@ -108,7 +109,9 @@ class Region extends React.Component {
             <h3 style={ styles.home_h3 }><NavLink style={ styles.h3_navLink } to={ "/district/africa-" + this.region.replace(/ /g, '-').toLowerCase() }>{ this.region }</NavLink></h3>
             <ul style={ styles.home_ul }>
                 { locations.districts[this.region].map((district, index) => {
-                    return <District key={ index } district={ district } />
+                    /* Retrieve only active districts. */
+                    if (district.id && districts[district.id])
+                        return <District key={ index } district={ district } />
                 }) }
             </ul>
         </div>

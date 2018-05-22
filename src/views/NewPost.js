@@ -85,9 +85,7 @@ export default class NewPost extends React.Component {
                         <div class="form-group">
                             <label for="imageCover" class="bmd-label-floating">Upload a Image Cover</label>
 
-                            <label class="btn btn-default">
-                                Browse <input type="file" class="form-control-file" id="imageCover" hidden onChange={ this.readFile.bind(this) } />
-                            </label>
+                            <input type="file" accept="image/*" class="form-control-file" id="imageCover" onChange={ this.readFile.bind(this) } />
 
                             <small class="text-muted">
                                 Upload an image cover for your post.<br />

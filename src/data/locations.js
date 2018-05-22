@@ -34,7 +34,7 @@ districts[us_regions[regionIndex++]] = ['Big Island', 'Honolulu', 'Kauai', 'Maui
 // Idaho
 districts[us_regions[regionIndex++]] = ['Boise', 'East Idaho', 'Lewiston', 'Twin Falls']
 // Illinois
-districts[us_regions[regionIndex++]] = ['Bloomington', 'Carbondale', 'Chambana', 'Chicago', 'Decatur', 'La Salle County', 'Mattoon', 'Peoria', 'Rockford', 'Springfield', 'Western Illinois']
+districts[us_regions[regionIndex++]] = ['Bloomington', 'Carbondale', 'Chambana', { id: 'us-il-chicago', name: 'Chicago' }, 'Decatur', 'La Salle County', 'Mattoon', 'Peoria', 'Rockford', 'Springfield', 'Western Illinois']
 // Indiana
 districts[us_regions[regionIndex++]] = ['Bloomington', 'Evansville', 'Ft Wayne', 'Indianapolis', 'Kokomo', 'Lafayette', 'Muncie', 'Richmond', 'South Bend', 'Terre Haute']
 // Iowa

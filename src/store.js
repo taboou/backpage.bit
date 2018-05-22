@@ -162,14 +162,19 @@ let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
 
 // console.log('res.body', res.body)
                 if (res.body && res.body.error) {
-                    let error = res.body.error
+                    /* Retrieve the error. */
+                    const error = res.body.error
 
+                    /* Alert the user of the error. */
+// TODO Create/replace to a modal window with countdown timer.
                     window.alert(error)
-                }
+                } else {
+                    /* Retrieve the active district url. */
+                    const target = `#/district/${this.activeDistrict}`
 
-const target = `#/district/${this.activeDistrict}`
-console.log('new target', target);
-document.location = target
+                    /* Redirect to district page. */
+                    document.location = target
+                }
             })
 	}
 

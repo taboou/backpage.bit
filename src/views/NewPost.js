@@ -117,6 +117,63 @@ export default class NewPost extends React.Component {
                 </div>
             </div>
 
+            <div class="modal fade" id="modalMissingTitle" tabIndex="-1" role="dialog" aria-labelledby="modalMissingTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Missing Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Please enter a title for your new post.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="modalMissingBody" tabIndex="-1" role="dialog" aria-labelledby="modalMissingBody" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Missing Body</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Please enter a message / body for your new post.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="modalMissingCover" tabIndex="-1" role="dialog" aria-labelledby="modalMissingCover" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Missing Image Cover</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Please select an image cover for your new post.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
         </div>
     }
 
@@ -183,6 +240,27 @@ console.log('respBody', respBody)
 
     /* User agrees to the disclaimer. */
     addPost() {
+        /* Retrieve the title. */
+        const title = this.state.title
+
+        /* Validate the title. */
+        if (!title || title == '')
+            return $('#modalMissingTitle').modal()
+
+        /* Retrieve the body. */
+        const body = this.state.body
+
+        /* Validate the body. */
+        if (!body || body == '')
+            return $('#modalMissingBody').modal()
+
+        /* Retrieve the image cover url. */
+        const imageCoverUrl = this.state.imageCoverUrl
+
+        /* Validate the image cover url. */
+        if (!imageCoverUrl || imageCoverUrl == '')
+            return $('#modalMissingCover').modal()
+
         /* Initialize moment module. */
         const moment = require('moment')
 
@@ -191,10 +269,10 @@ console.log('respBody', respBody)
 
         /* Build the post package. */
         const pkg = {
-        	t:this.state.title,
-        	b:this.state.body,
+        	t:title,
+        	b:body,
         	m:null,
-        	ic:this.state.imageCoverUrl,
+        	ic:imageCoverUrl,
         	ig:null,
         	pg:null,
         	vg:null,

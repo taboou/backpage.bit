@@ -62,7 +62,7 @@ export class AU_Oceania_Directory extends React.Component {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Australia and Oceania</h2>
             <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
-                { locations.au_oceania_regions.map((region, index) => {
+                { locations.oceania_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
             </div>
@@ -75,7 +75,7 @@ export class Latin_America_Caribbean_Directory extends React.Component {
         return <div style={ styles.geoBlock }>
             <h2 style={ styles.geoBlock_h2 }>Latin America and Caribbean</h2>
             <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
-                { locations.latin_caribbean_regions.map((region, index) => {
+                { locations.latin_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
                 }) }
             </div>

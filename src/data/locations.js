@@ -36,7 +36,7 @@ districts[us_regions[regionIndex++]] = ['Boise', 'East Idaho', 'Lewiston', 'Twin
 // Illinois (IL)
 districts[us_regions[regionIndex++]] = ['Bloomington', 'Carbondale', 'Chambana', { id: 'us-il-chicago', name: 'Chicago' }, 'Decatur', 'La Salle County', 'Mattoon', 'Peoria', 'Rockford', 'Springfield', 'Western Illinois']
 // Indiana (IN)
-districts[us_regions[regionIndex++]] = ['Bloomington', 'Evansville', 'Ft Wayne', 'Indianapolis', 'Kokomo', 'Lafayette', 'Muncie', 'Richmond', 'South Bend', 'Terre Haute']
+districts[us_regions[regionIndex++]] = ['Bloomington', 'Evansville', 'Ft Wayne', { id: 'us-in-indianapolis', name: 'Indianapolis' }, 'Kokomo', 'Lafayette', 'Muncie', 'Richmond', 'South Bend', 'Terre Haute']
 // Iowa (IA)
 districts[us_regions[regionIndex++]] = ['Ames', 'Cedar Rapids', 'Desmoines', 'Dubuque', 'Fort Dodge', 'Iowa City', 'Mason City', 'Quad Cities', 'Sioux City', 'Southest Iowa', 'Waterloo']
 // Kansas (KS)
@@ -48,9 +48,9 @@ districts[us_regions[regionIndex++]] = ['Alexandria', 'Baton Rouge', 'Houma', 'L
 // Maine (ME)
 districts[us_regions[regionIndex++]] = ['']
 // Maryland (MD)
-districts[us_regions[regionIndex++]] = ['Annapolis', 'Baltimore', 'Cumberland Valley', 'Eastern Shore', 'Frederick', 'Western Maryland']
+districts[us_regions[regionIndex++]] = ['Annapolis', { id: 'us-md-baltimore', name: 'Baltimore' }, 'Cumberland Valley', 'Eastern Shore', 'Frederick', 'Western Maryland']
 // Massachusetts (MA)
-districts[us_regions[regionIndex++]] = ['Boston', 'Brockton', 'Cape Cod', 'Lowell', 'South Coast', 'Springfield', 'Worcester']
+districts[us_regions[regionIndex++]] = [{ id: 'us-ma-boston', name: 'Boston' }, 'Brockton', 'Cape Cod', 'Lowell', 'South Coast', 'Springfield', 'Worcester']
 // Michigan (MI)
 districts[us_regions[regionIndex++]] = ['Ann Arbor', 'Battle Creek', 'Central Michigan', 'Detroit', 'Flint', 'Grand Rapids', 'Holland', 'Jackson', 'Kalamazoo', 'Lansing', 'Monroe', 'Muskegon', 'Northern Michigan', 'Port Huron', 'Saginaw', 'Southwest Michigan', 'Upper Peninsula']
 // Minnesota (MN)
@@ -64,7 +64,7 @@ districts[us_regions[regionIndex++]] = ['Billings', 'Bozeman', 'Butte', 'Great F
 // Nebraska (NE)
 districts[us_regions[regionIndex++]] = ['Grand Island', 'Lincoln', 'North Platte', 'Omaha', 'Scottsbluff']
 // Nevada (NV)
-districts[us_regions[regionIndex++]] = ['Elko', 'Las Vegas', 'Reno']
+districts[us_regions[regionIndex++]] = ['Elko', { id: 'us-nv-las-vegas', name: 'Las Vegas' }, 'Reno']
 // New Hampshire (NH)
 districts[us_regions[regionIndex++]] = ['']
 // New Jersey (NJ)
@@ -84,7 +84,7 @@ districts[us_regions[regionIndex++]] = ['Lawton', 'Norman', 'Oklahoma City', 'St
 // Oregon (OR)
 districts[us_regions[regionIndex++]] = ['Bend', 'Corvallis', 'East Oregon', 'Eugene', 'Klamath Falls', 'Medford', 'Oregon Coast', 'Portland', 'Roseburg', 'Salem']
 // Pennsylvania (PA)
-districts[us_regions[regionIndex++]] = ['Allentown', 'Altoona', 'Chambersburg', 'Erie', 'Harrisburg', 'Lancaster', 'Meadville', 'Penn State', 'Philadelphia', 'Pittsburgh', 'Poconos', 'Reading', 'Scranton', 'Williamsport', 'York']
+districts[us_regions[regionIndex++]] = ['Allentown', 'Altoona', 'Chambersburg', 'Erie', 'Harrisburg', 'Lancaster', 'Meadville', 'Penn State', { id: 'us-pa-philadelphia', name: 'Philadelphia' }, 'Pittsburgh', 'Poconos', 'Reading', 'Scranton', 'Williamsport', 'York']
 // Rhode Island (RI)
 districts[us_regions[regionIndex++]] = ['Providence', 'Warwick']
 // South Carolina (SC)
@@ -94,7 +94,7 @@ districts[us_regions[regionIndex++]] = ['Aberdeen', 'Pierre', 'Rapid City', 'Sio
 // Tennessee (TN)
 districts[us_regions[regionIndex++]] = ['Chattanooga', 'Clarksville', 'Cookeville', 'Johnson City', 'Knoxville', 'Memphis', 'Nashville', 'Tri-Cities']
 // Texas (TX)
-districts[us_regions[regionIndex++]] = ['Abilene', 'Amarillo', 'Austin', 'Beaumont', 'Brownsville', 'College Station', 'Corpus Christi', 'Dallas', 'Del Rio', 'Denton', 'El Paso', 'Fort Worth', 'Galveston', 'Houston', 'Huntsville', 'Killeen', 'Laredo', 'Longview', 'Lubbock', 'Mcallen', 'Mid Cities', 'Odessa', 'San Antonio', 'San Marcos', 'Texarkana', 'Texoma', 'Tyler', 'Victoria', 'Waco', 'Wichita Falls']
+districts[us_regions[regionIndex++]] = ['Abilene', 'Amarillo', { id: 'us-tx-austin', name: 'Austin' }, 'Beaumont', 'Brownsville', 'College Station', 'Corpus Christi', 'Dallas', 'Del Rio', 'Denton', 'El Paso', 'Fort Worth', 'Galveston', 'Houston', 'Huntsville', 'Killeen', 'Laredo', 'Longview', 'Lubbock', 'Mcallen', 'Mid Cities', 'Odessa', 'San Antonio', 'San Marcos', 'Texarkana', 'Texoma', 'Tyler', 'Victoria', 'Waco', 'Wichita Falls']
 // Utah (UT)
 districts[us_regions[regionIndex++]] = ['Logan', 'Ogden', 'Provo', 'Salt Lake City', 'St. George']
 // Vermont (VT)
@@ -118,27 +118,27 @@ const ca_regions = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 
 /* Re-initialize region index. */
 regionIndex = 0
 
-// Alberta
+// Alberta (AB)
 districts[ca_regions[regionIndex++]] = ['Calgary', 'Edmonton', 'Ft Mcmurray', 'Grande Prairie', 'Lethbridge', 'Medicine Hat', 'Red Deer', 'St. Albert']
-// British Columbia
-districts[ca_regions[regionIndex++]] = ['Abbotsford', 'Cariboo', 'Comox Valley', 'Cranbrook', 'Kamloops', 'Kelowna', 'Nanaimo', 'Peace River Country', 'Prince George', 'Skeena', 'Sunshine Coast', 'Vancouver', 'Victoria', 'Whistler']
-// Manitoba
+// British Columbia (BC)
+districts[ca_regions[regionIndex++]] = ['Abbotsford', 'Cariboo', 'Comox Valley', 'Cranbrook', 'Kamloops', 'Kelowna', 'Nanaimo', 'Peace River Country', 'Prince George', 'Skeena', 'Sunshine Coast', { id: 'ca-bc-vancouver', name: 'Vancouver' }, 'Victoria', 'Whistler']
+// Manitoba (MB)
 districts[ca_regions[regionIndex++]] = ['Brandon', 'Winnipeg']
-// New Brunswick
+// New Brunswick (NB)
 districts[ca_regions[regionIndex++]] = ['Fredericton', 'Moncton', 'St. John']
-// Newfoundland and Labrador
+// Newfoundland and Labrador (NL)
 districts[ca_regions[regionIndex++]] = ['']
-// Northwest Territories
+// Northwest Territories (NT)
 districts[ca_regions[regionIndex++]] = ['']
-// Nova Scotia
+// Nova Scotia (NS)
 districts[ca_regions[regionIndex++]] = ['']
-// Ontario
-districts[ca_regions[regionIndex++]] = [{ id: 'ca-ontario-barrie', name: 'Barrie' }, { id: 'ca-ontario-belleville', name: 'Belleville' }, { id: 'ca-ontario-brantford', name: 'Brantford' }, { id: 'ca-ontario-chatham', name: 'Chatham' }, { id: 'ca-ontario-cornwall', name: 'Cornwall' }, { id: 'ca-ontario-guelph', name: 'Guelph' }, { id: 'ca-ontario-hamilton', name: 'Hamilton' }, { id: 'ca-ontario-kingston', name: 'Kingston' }, { id: 'ca-ontario-kitchener', name: 'Kitchener' }, { id: 'ca-ontario-london', name: 'London' }, { id: 'ca-ontario-niagara', name: 'Niagara' }, { id: 'ca-ontario-ottawa', name: 'Ottawa' }, { id: 'ca-ontario-owen-sound', name: 'Owen Sound' }, { id: 'ca-ontario-peterborough', name: 'Peterborough' }, { id: 'ca-ontario-sarnia', name: 'Sarnia' }, { id: 'ca-ontario-sault-ste-marie', name: 'Sault Ste Marie' }, { id: 'ca-ontario-sudbury', name: 'Sudbury' }, { id: 'ca-ontario-thunder-bay', name: 'Thunder Bay' }, { id: 'us-al-toronto', name: 'Toronto' }, { id: 'us-al-windsor', name: 'Windsor' }]
-// Quebec
+// Ontario (ON)
+districts[ca_regions[regionIndex++]] = [{ id: 'ca-on-barrie', name: 'Barrie' }, { id: 'ca-on-belleville', name: 'Belleville' }, { id: 'ca-on-brantford', name: 'Brantford' }, { id: 'ca-on-chatham', name: 'Chatham' }, { id: 'ca-on-cornwall', name: 'Cornwall' }, { id: 'ca-on-guelph', name: 'Guelph' }, { id: 'ca-on-hamilton', name: 'Hamilton' }, { id: 'ca-on-kingston', name: 'Kingston' }, { id: 'ca-on-kitchener', name: 'Kitchener' }, { id: 'ca-on-london', name: 'London' }, { id: 'ca-on-niagara', name: 'Niagara' }, { id: 'ca-on-ottawa', name: 'Ottawa' }, { id: 'ca-on-owen-sound', name: 'Owen Sound' }, { id: 'ca-on-peterborough', name: 'Peterborough' }, { id: 'ca-on-sarnia', name: 'Sarnia' }, { id: 'ca-on-sault-ste-marie', name: 'Sault Ste Marie' }, { id: 'ca-on-sudbury', name: 'Sudbury' }, { id: 'ca-on-thunder-bay', name: 'Thunder Bay' }, { id: 'ca-on-toronto', name: 'Toronto' }, { id: 'us-al-windsor', name: 'Windsor' }]
+// Quebec (QC)
 districts[ca_regions[regionIndex++]] = ['Montreal', 'Quebec City', 'Saguenay', 'Sherbrooke', 'Trois-Rivières']
-// Saskatchewan
+// Saskatchewan (SK)
 districts[ca_regions[regionIndex++]] = ['Prince Albert', 'Regina', 'Saskatoon']
-// Yukon
+// Yukon (YT)
 districts[ca_regions[regionIndex++]] = ['']
 
 
@@ -173,8 +173,8 @@ districts[eu_regions[regionIndex++]] = ['Aarhus', 'København']
 districts[eu_regions[regionIndex++]] = ['Tallinn']
 // Finland
 districts[eu_regions[regionIndex++]] = ['Helsinki']
-// France
-districts[eu_regions[regionIndex++]] = ['Bordeaux', 'Bretagne', 'Corse', 'Départements d\'Outre Mer', 'Grenoble', 'Lille', 'Loire', 'Lyon', 'Marseille', 'Montpellier', 'Nantes', 'Nice', 'Normandie', 'Paris', 'Strasbourg', 'Toulouse']
+// France (FR)
+districts[eu_regions[regionIndex++]] = ['Bordeaux', 'Bretagne', 'Corse', 'Départements d\'Outre Mer', 'Grenoble', 'Lille', 'Loire', 'Lyon', 'Marseille', 'Montpellier', 'Nantes', 'Nice', 'Normandie', { id: 'eu-fr-paris', name: 'Paris' }, 'Strasbourg', 'Toulouse']
 // Germany
 districts[eu_regions[regionIndex++]] = ['Berlin', 'Bodensee', 'Bremen', 'Dortmund', 'Dresden', 'Düsseldorf', 'Essen', 'Frankfurt', 'Freiburg', 'Hamburg', 'Hannover', 'Heidelberg', 'Kaiserslautern', 'Karlsruhe', 'Kiel', 'Köln', 'Leipzig', 'Lübeck', 'Mannheim', 'München', 'Nürnberg', 'Rostock', 'Saarbrücken', 'Schwerin', 'Stuttgart']
 // Greece
@@ -230,7 +230,7 @@ districts[eu_regions[regionIndex++]] = ['Basel', 'Bern', 'Genève', 'Lausanne', 
 // Ukraine
 districts[eu_regions[regionIndex++]] = ['Dnipropetrovsk', 'Donetsk', 'Kharkiv', 'Kyiv', 'Lviv', 'Odessa', 'Zaporizhia']
 // United Kingdom
-districts[eu_regions[regionIndex++]] = ['Aberdeen', 'Bath', 'Belfast', 'Birmingham', 'Brighton', 'Bristol', 'Cambridge', 'Devon', 'East Anglia', 'East Midlands', 'Edinburgh', 'Essex', 'Glasgow', 'Hampshire', 'Kent', 'Leeds', 'Liverpool', 'London', 'Manchester', 'Newcastle', 'Oxford', 'Sheffield', 'Wales']
+districts[eu_regions[regionIndex++]] = ['Aberdeen', 'Bath', 'Belfast', 'Birmingham', 'Brighton', 'Bristol', 'Cambridge', 'Devon', 'East Anglia', 'East Midlands', 'Edinburgh', 'Essex', 'Glasgow', 'Hampshire', 'Kent', 'Leeds', 'Liverpool', { id: 'eu-uk-london', name: 'London' }, 'Manchester', 'Newcastle', 'Oxford', 'Sheffield', 'Wales']
 
 
 
@@ -242,118 +242,118 @@ regionIndex = 0
 
 // Albania
 districts[asia_regions[regionIndex++]] = ['Manama']
-// Bangladesh
+// Bangladesh (BD)
 districts[asia_regions[regionIndex++]] = ['Bangladesh']
-// China
-districts[asia_regions[regionIndex++]] = ['Beijing', 'Chengdu', 'Chongqing', 'Dalian', 'Guangzhou', 'Hangzhou', 'Nanjing', 'Shanghai', 'Shenyang', 'Shenzhen', 'Wuhan', 'Xi\'an']
-// Hong Kong
-districts[asia_regions[regionIndex++]] = [{ id: 'asia-hk', name: 'HK' }, { id: 'asia-hk-kowloon', name: 'Kowloon' }, { id: 'asia-hk-new-territories', name: 'New Territories' }]
-// India
-districts[asia_regions[regionIndex++]] = ['Ahmedabad', 'Bangalore', 'Bhubaneswar', 'Chandigarh', 'Chennai', 'Delhi', 'Goa', 'Hyderabad', 'Indore', 'Jaipur', 'Kanpur', 'Kerala', 'Kolkata', 'Lucknow', 'Mumbai', 'Nagpur', 'Pune', 'Surat', 'Visakhapatnam']
-// Indonesia
+// China (CN)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-cn-beijing', name: 'Beijing' }, 'Chengdu', 'Chongqing', 'Dalian', 'Guangzhou', 'Hangzhou', 'Nanjing', 'Shanghai', 'Shenyang', 'Shenzhen', 'Wuhan', 'Xi\'an']
+// Hong Kong (HK)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-hk', name: 'Hong Kong' }, { id: 'asia-hk-kowloon', name: 'Kowloon' }, { id: 'asia-hk-new-territories', name: 'New Territories' }]
+// India (IN)
+districts[asia_regions[regionIndex++]] = ['Ahmedabad', 'Bangalore', 'Bhubaneswar', 'Chandigarh', 'Chennai', 'Delhi', 'Goa', 'Hyderabad', 'Indore', 'Jaipur', 'Kanpur', 'Kerala', 'Kolkata', 'Lucknow', { id: 'asia-in-mumbai', name: 'Mumbai' }, 'Nagpur', 'Pune', 'Surat', 'Visakhapatnam']
+// Indonesia (ID)
 districts[asia_regions[regionIndex++]] = ['Bali', 'Bandung', 'Batam', 'Jakarta', 'Makassar', 'Medan', 'Surabaya']
-// Japan
-districts[asia_regions[regionIndex++]] = ['Fukuoka', 'Hiroshima', 'Nagoya', 'Okinawa', 'Osaka-Kobe-Kyoto', 'Sapporo', 'Sendai', 'Tokyo']
-// Jordan
+// Japan (JP)
+districts[asia_regions[regionIndex++]] = ['Fukuoka', 'Hiroshima', 'Nagoya', 'Okinawa', 'Osaka-Kobe-Kyoto', 'Sapporo', 'Sendai', { id: 'asia-jp-tokyo', name: 'Tokyo' }]
+// Jordan (JO)
 districts[asia_regions[regionIndex++]] = ['Amman']
-// Korea
-districts[asia_regions[regionIndex++]] = ['Busan', 'Changwon', 'Daegu', 'Daejeon', 'Gwangju', 'Incheon', 'Seoul', 'Suwon', 'Ulsan']
-// Kuwait
+// South Korea (KR)
+districts[asia_regions[regionIndex++]] = ['Busan', 'Changwon', 'Daegu', 'Daejeon', 'Gwangju', 'Incheon', { id: 'asia-kr-seoul', name: 'Seoul' }, 'Suwon', 'Ulsan']
+// Kuwait (KW)
 districts[asia_regions[regionIndex++]] = ['Kuwait']
-// Lebanon
+// Lebanon (LB)
 districts[asia_regions[regionIndex++]] = ['Beirut', 'Sidon', 'Tripoli']
-// Macau
-districts[asia_regions[regionIndex++]] = [{ id: 'asia-macau', name: 'Macau' }]
-// Malaysia
+// Macau (MO)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-mo', name: 'Macau' }]
+// Malaysia (MY)
 districts[asia_regions[regionIndex++]] = ['Ipoh', 'Johor Bahru', 'Kota Bharu', 'Kota Kinabalu', 'Kuala Lumpur', 'Kuching', 'Penang', 'Petaling Jaya']
-// Mongolia
+// Mongolia (MN)
 districts[asia_regions[regionIndex++]] = ['Ulaanbaatar']
-// Oman
+// Oman (OM)
 districts[asia_regions[regionIndex++]] = ['Muscat']
-// Pakistan
+// Pakistan (PK)
 districts[asia_regions[regionIndex++]] = ['Faisalabad', 'Islamabad', 'Karachi', 'Lahore']
-// Philippines
-districts[asia_regions[regionIndex++]] = ['Cebu', 'Davao', 'Manila', 'Pampanga']
-// Qatar
+// Philippines (PH)
+districts[asia_regions[regionIndex++]] = ['Cebu', 'Davao', { id: 'asia-ph-manila', name: 'Manila' }, 'Pampanga']
+// Qatar (QA)
 districts[asia_regions[regionIndex++]] = ['Doha']
-// Singapore
-districts[asia_regions[regionIndex++]] = [{ id: 'asia-singapore', name: 'Singapore' }]
-// Taiwan
+// Singapore (SG)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-sg', name: 'Singapore' }]
+// Taiwan (TW)
 districts[asia_regions[regionIndex++]] = [{ id: 'asia-tw-taipei', name: 'Taipei' }]
-// Thailand
-districts[asia_regions[regionIndex++]] = [{ id: 'asia-thailand-bangkok', name: 'Bangkok' }]
-// Turkey
+// Thailand (TH)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-th-bangkok', name: 'Bangkok' }]
+// Turkey (TR)
 districts[asia_regions[regionIndex++]] = ['Ankara', 'Antalya', 'Istanbul']
-// United Arab Emirates
+// United Arab Emirates (UA)
 districts[asia_regions[regionIndex++]] = ['Abudhabi', 'Ajman', 'Al Ain', 'Dubai', 'Sharjah']
-// Vietnam
-districts[asia_regions[regionIndex++]] = [{ id: 'asia-vietnam', name: 'Vietnam' }]
+// Vietnam (VN)
+districts[asia_regions[regionIndex++]] = [{ id: 'asia-vn', name: 'Vietnam' }]
 
 
 
 /* Initialize AU & Oceania regions array. */
-const au_oceania_regions = ['Australia', 'Guam', 'New Zealand']
+const oceania_regions = ['Australia', 'Guam', 'New Zealand']
 
 /* Re-initialize region index. */
 regionIndex = 0
 
-// Australia
-districts[au_oceania_regions[regionIndex++]] = ['Adelaide', 'Brisbane', 'Cairns', 'Canberra', 'Darwin', 'Gold Coast', 'Hobart', 'Launceston', 'Melbourne', 'Newcastle', 'Perth', { id: 'au_oceania-au-sydney', name: 'Sydney' }]
-// Guam
-districts[au_oceania_regions[regionIndex++]] = [{ id: 'au_oceania-guam-dededo-village', name: 'Dededo Village' }]
-// New Zealand
-districts[au_oceania_regions[regionIndex++]] = [{ id: 'au_oceania-nz-auckland', name: 'Auckland' }, 'Christchurch', 'Dunedin', 'Hamilton', 'Wellington']
+// Australia (AU)
+districts[oceania_regions[regionIndex++]] = ['Adelaide', 'Brisbane', 'Cairns', 'Canberra', 'Darwin', 'Gold Coast', 'Hobart', 'Launceston', 'Melbourne', 'Newcastle', 'Perth', { id: 'oceania-au-sydney', name: 'Sydney' }]
+// Guam (GU)
+districts[oceania_regions[regionIndex++]] = [{ id: 'oceania-gu-dededo-village', name: 'Dededo Village' }]
+// New Zealand (NZ)
+districts[oceania_regions[regionIndex++]] = [{ id: 'oceania-nz-auckland', name: 'Auckland' }, 'Christchurch', 'Dunedin', 'Hamilton', 'Wellington']
 
 
 
 /* Initialize Latin America and Caribbean regions array. */
-const latin_caribbean_regions = ['Argentina', 'Belize', 'Bolivia', 'Brazil', 'Caribbean', 'Chile', 'Colombia', 'Costa Rica', 'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Honduras', 'Mexico', 'Nicaragua', 'Panama', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
+const latin_regions = ['Argentina', 'Belize', 'Bolivia', 'Brazil', 'Caribbean', 'Chile', 'Colombia', 'Costa Rica', 'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Honduras', 'Mexico', 'Nicaragua', 'Panama', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
 
 /* Re-initialize region index. */
 regionIndex = 0
 
 // Argentina
-districts[latin_caribbean_regions[regionIndex++]] = ['Buenos Aires', 'Cordoba', 'Laplata', 'Mendoza', 'Rosario', 'Salta', 'South Argentina', 'Tucuman']
+districts[latin_regions[regionIndex++]] = ['Buenos Aires', 'Cordoba', 'Laplata', 'Mendoza', 'Rosario', 'Salta', 'South Argentina', 'Tucuman']
 // Belize
-districts[latin_caribbean_regions[regionIndex++]] = [{ id: 'latin-carib-belize-city', name: 'Belize City' }]
+districts[latin_regions[regionIndex++]] = [{ id: 'latin-belize-city', name: 'Belize City' }]
 // Bolivia
-districts[latin_caribbean_regions[regionIndex++]] = [{ id: 'latin-carib-bolivia-la-paz', name: 'La Paz' }]
-// Brazil
-districts[latin_caribbean_regions[regionIndex++]] = ['Bahia', 'Belem', 'Belo Horizonte', 'Brasilia', 'Curitiba', 'Fortaleza', 'Goiânia', 'Manaus', 'Porto Alegre', 'Recife', 'Rio de Janeiro', 'São Paulo']
+districts[latin_regions[regionIndex++]] = [{ id: 'latin-bolivia-la-paz', name: 'La Paz' }]
+// Brazil (BR)
+districts[latin_regions[regionIndex++]] = ['Bahia', 'Belem', 'Belo Horizonte', 'Brasilia', 'Curitiba', 'Fortaleza', 'Goiânia', 'Manaus', 'Porto Alegre', 'Recife', 'Rio de Janeiro', { id: 'latin-br-sao-paulo', name: 'São Paulo' }]
 // Caribbean
-districts[latin_caribbean_regions[regionIndex++]] = ['Bahamas', 'Dominican Republic', 'Jamaica', 'Other Caribbean', 'Puerto Rico', 'Virgin Islands']
+districts[latin_regions[regionIndex++]] = ['Bahamas', 'Dominican Republic', 'Jamaica', 'Other Caribbean', 'Puerto Rico', 'Virgin Islands']
 // Chile
-districts[latin_caribbean_regions[regionIndex++]] = ['Antofagasta', 'Chillán', 'Concepcion', 'Iquique', 'La Serena', 'Montt', 'Rancagua', 'Santiago', 'Talca', 'Temuco', 'Valparaiso']
+districts[latin_regions[regionIndex++]] = ['Antofagasta', 'Chillán', 'Concepcion', 'Iquique', 'La Serena', 'Montt', 'Rancagua', 'Santiago', 'Talca', 'Temuco', 'Valparaiso']
 // Colombia
-districts[latin_caribbean_regions[regionIndex++]] = ['Barranquilla', 'Bogota', 'Bucaramanga', 'Cali', 'Cartagena', 'Cucuta', 'Ibagué', 'Medellin', 'Neiva', 'Pasto', 'Pereira', 'Santa Marta']
+districts[latin_regions[regionIndex++]] = ['Barranquilla', 'Bogota', 'Bucaramanga', 'Cali', 'Cartagena', 'Cucuta', 'Ibagué', 'Medellin', 'Neiva', 'Pasto', 'Pereira', 'Santa Marta']
 // Costa Rica
-districts[latin_caribbean_regions[regionIndex++]] = [{ id: 'latin-carib-costa-rica', name: 'San José' }]
+districts[latin_regions[regionIndex++]] = [{ id: 'latin-costa-rica', name: 'San José' }]
 // Ecuador
-districts[latin_caribbean_regions[regionIndex++]] = ['Ambato', 'Cuenca', 'Esmeraldas', 'Guayaquil', 'Machala', 'Manta', 'Quito', 'Santo Domingo']
+districts[latin_regions[regionIndex++]] = ['Ambato', 'Cuenca', 'Esmeraldas', 'Guayaquil', 'Machala', 'Manta', 'Quito', 'Santo Domingo']
 // El Salvador
-districts[latin_caribbean_regions[regionIndex++]] = ['San Miguel', 'San Salvador', 'Santa Ana']
+districts[latin_regions[regionIndex++]] = ['San Miguel', 'San Salvador', 'Santa Ana']
 // Guatemala
-districts[latin_caribbean_regions[regionIndex++]] = [{ id: 'latin-carib-guatemala-city', name: 'Guatemala City' }]
+districts[latin_regions[regionIndex++]] = [{ id: 'latin-guatemala-city', name: 'Guatemala City' }]
 // Guyana
-districts[latin_caribbean_regions[regionIndex++]] = [{ id: 'latin-carib-guyana-georgetown', name: 'Georgetown' }]
+districts[latin_regions[regionIndex++]] = [{ id: 'latin-guyana-georgetown', name: 'Georgetown' }]
 // Honduras
-districts[latin_caribbean_regions[regionIndex++]] = ['Tegucigalpa']
+districts[latin_regions[regionIndex++]] = ['Tegucigalpa']
 // Mexico
-districts[latin_caribbean_regions[regionIndex++]] = ['Acapulco', 'Baja California', 'Chihuahua', 'Ciudad Juárez', 'Df', 'Guadalajara', 'Guanajuato', 'Hermosillo', 'Hidalgo', 'Mazatlán', 'Monterrey', 'Oaxaca', 'Puebla', 'Puerto Vallarta', 'Querétaro', 'San Luis Potosí', 'Tijuana', 'Toluca', 'Vera Cruz', 'Yucatán']
+districts[latin_regions[regionIndex++]] = ['Acapulco', 'Baja California', 'Chihuahua', 'Ciudad Juárez', 'Df', 'Guadalajara', 'Guanajuato', 'Hermosillo', 'Hidalgo', 'Mazatlán', 'Monterrey', 'Oaxaca', 'Puebla', 'Puerto Vallarta', 'Querétaro', 'San Luis Potosí', 'Tijuana', 'Toluca', 'Vera Cruz', 'Yucatán']
 // Nicaragua
-districts[latin_caribbean_regions[regionIndex++]] = ['Managua']
+districts[latin_regions[regionIndex++]] = ['Managua']
 // Panama
-districts[latin_caribbean_regions[regionIndex++]] = ['Ciudad de Panamá', 'Colón', 'David']
+districts[latin_regions[regionIndex++]] = ['Ciudad de Panamá', 'Colón', 'David']
 // Paraguay
-districts[latin_caribbean_regions[regionIndex++]] = ['Asunción']
+districts[latin_regions[regionIndex++]] = ['Asunción']
 // Peru
-districts[latin_caribbean_regions[regionIndex++]] = ['Arequipa', 'Chiclayo', 'Chimbote', 'Cusco', 'Huancayo', 'Iquitos', 'Lima', 'Piura', 'Trujillo']
+districts[latin_regions[regionIndex++]] = ['Arequipa', 'Chiclayo', 'Chimbote', 'Cusco', 'Huancayo', 'Iquitos', 'Lima', 'Piura', 'Trujillo']
 // Suriname
-districts[latin_caribbean_regions[regionIndex++]] = ['Paramaribo']
+districts[latin_regions[regionIndex++]] = ['Paramaribo']
 // Uruguay
-districts[latin_caribbean_regions[regionIndex++]] = ['Montevideo']
+districts[latin_regions[regionIndex++]] = ['Montevideo']
 // Venezuela
-districts[latin_caribbean_regions[regionIndex++]] = ['Caracas']
+districts[latin_regions[regionIndex++]] = ['Caracas']
 
 
 
@@ -373,16 +373,16 @@ districts[african_regions[regionIndex++]] = [{ id: 'africa-ivory-coast-abidjan',
 districts[african_regions[regionIndex++]] = [{ id: 'africa-morocco-casablanca', name: 'Casablanca' }, { id: 'africa-morocco-rabat', name: 'Rabat' }]
 // Nigeria
 districts[african_regions[regionIndex++]] = [{ id: 'africa-nigeria-lagos', name: 'Lagos' }, { id: 'africa-nigeria-kano', name: 'Kano' }]
-// South Africa
-districts[african_regions[regionIndex++]] = [{ id: 'africa-south-africa-cape-town', name: 'Cape Town' }, { id: 'africa-south-africa-durban', name: 'Durban' }, { id: 'africa-south-africa-johannesburg', name: 'Johannesburg' }, { id: 'africa-south-africa-port-elizabeth', name: 'Port Elizabeth' }, { id: 'africa-south-africa-pretoria', name: 'Pretoria' }]
+// South Africa (SA)
+districts[african_regions[regionIndex++]] = [{ id: 'africa-sa-cape-town', name: 'Cape Town' }, { id: 'africa-sa-durban', name: 'Durban' }, { id: 'africa-sa-johannesburg', name: 'Johannesburg' }, { id: 'africa-sa-port-elizabeth', name: 'Port Elizabeth' }, { id: 'africa-sa-pretoria', name: 'Pretoria' }]
 
 export default {
     us_regions,
     ca_regions,
     eu_regions,
     asia_regions,
-    au_oceania_regions,
-    latin_caribbean_regions,
+    oceania_regions,
+    latin_regions,
     african_regions,
     districts
 }

@@ -141,7 +141,7 @@ class TabooStore {
 
         /* Create signed message. */
         const signed = wallet.signMessage(msgForSigning)
-console.log('signed', signed)
+// console.log('signed', signed)
 
         /* Initialize superagent request. */
         const request = require('superagent')

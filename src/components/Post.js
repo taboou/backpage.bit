@@ -24,7 +24,7 @@ export default class Post extends React.Component {
                     <h5 class="card-title">{ this.post.t }</h5>
 
                     <p class="card-text">
-                        { this.post.b }
+                        { this._displayBody(this.post.b) }
                     </p>
 
                     <p class="card-text text-right">
@@ -35,6 +35,14 @@ export default class Post extends React.Component {
                 </div>
             </div>
         </div>
+    }
+
+    _displayBody(body) {
+        if (body.length > 500)
+            /* Return the first 500 characters of the body. */
+            return body.slice(0, 500) + ' ...'
+        else
+            return body
     }
 }
 

@@ -2,9 +2,11 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 import FontAwesome from 'react-fontawesome'
+
+import Dropzone from 'react-dropzone'
 
 import {
     Disclaimer,
@@ -28,21 +30,28 @@ export default class NewPost extends React.Component {
         this.state = {
             title : '',
             body  : '',
-            imageCoverUrl : ''
+            imageCoverUrl : '',
+            files: [],
+
+            fileAsDataUrl: '',
+            fileOutput: '',
+            fileOutput2: '',
+            progress: ''
         }
     }
 
     render() {
         /* Verify agreement of disclaimer. */
-        if (!this.store.hasAgreedToDisclaimer)
-            return <Disclaimer store={ this.store } />
+        // if (!this.store.hasAgreedToDisclaimer)
+        //     return <Disclaimer store={ this.store } />
 
         /* Retrieve the available accounts. */
         const { accounts } = this.store.eth
 
         /* Verify available accounts. */
         if (accounts[0] == null)
-            return <SignIn store={ this.store } />
+            return <Redirect to="/signin"/>
+            // return <SignIn store={ this.store } />
 
         return <div class="container-fluid">
             <h2>
@@ -82,19 +91,23 @@ export default class NewPost extends React.Component {
 
                 <div class="row">
                     <div class="col-7">
-                        <div class="form-group">
-                            <label for="imageCover" class="bmd-label-floating">Upload a Image Cover</label>
-
-                            <input type="file" accept="image/*" class="form-control-file" id="imageCover" onChange={ this.readFile.bind(this) } />
-
-                            <small class="text-muted">
-                                Upload an image cover for your post.<br />
-                                Accepted formats: JPG, GIF or PNG
-                            </small>
+                        <div class="container">
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>Add your photos...</span>
+                                <input id="fileupload" type="file" name="files[]" multiple/>
+                            </span>
+                            <br/>
+                            <br/>
+                            <div id="progress" class="progress">
+                                <div class="progress-bar progress-bar-success"></div>
+                            </div>
+                            <div id="files" class="files"></div>
                         </div>
                     </div>
+
                     <div class="col-5 text-right">
-                        <img class="img-thumbnail" id="img" width="150" height="150" /><br/>
+                        <img class="img-thumbnail" id="img" width="300" height="300" /><br/>
 
                         <small>
                             <a href={ this.state.imageCoverUrl } target="_blank">
@@ -108,7 +121,7 @@ export default class NewPost extends React.Component {
 
             <div class="row">
                 <div class="col text-center">
-                    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={ this.addPost.bind(this) }>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={ this._addPost.bind(this) }>
                     Submit New Post <FontAwesome name='thumbs-up' /></button>
                 </div>
                 <div class="col text-center">
@@ -197,68 +210,155 @@ export default class NewPost extends React.Component {
     }
 
     componentDidMount() {
-// console.log('page has mounted')
-    }
-
-    readFile(el) {
         /* Localize this. */
         const self = this
 
-        /* Verify file array exists. */
-        if (el && el.target && el.target.files[0]) {
-            /* Initialize file reader. */
-            const FR = new FileReader()
+        const url = 'https://api.imgur.com/3/image'
 
-            /* Initialize new event listener. */
-            FR.addEventListener('load', (e) => {
-                /* Retrieve the data result. */
-                const dataUrl = e.target.result
-// console.log('dataUrl', dataUrl)
+        $('#fileupload').fileupload({
+            url: url,
+            headers: {
+                Authorization: 'Client-ID 5561cfd1619a32b'
+            },
+            // xhrFields: {
+            //     withCredentials: true
+            // },
+            dataType: 'json',
+            autoUpload: false,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            // maxFileSize: 99999000,
+            // Enable image resizing, except for Android and Opera,
+            // which actually support image resizing, but fail to
+            // send Blob objects via XHR requests:
+            disableImageResize: /Android(?!.*Chrome)|Opera/
+                .test(window.navigator.userAgent),
+            // previewMaxWidth: 300,
+            // previewMaxHeight: 300,
+            previewCrop: false
+        }).on('fileuploadadd', function (e, data) {
+            data.context = $('<div/>').appendTo('#files');
 
-                /* Load the image preview. */
-                document.getElementById('img').src = dataUrl
-
-                /* Intialize imgur client id. */
-                const clientId = '5561cfd1619a32b'
-
-                /* Generate authorization string. */
-                const auth = 'Client-ID ' + clientId
-
-                /* Initialize imgur endpoint. */
-                const imgurUrl = 'https://api.imgur.com/3/image'
-
-                /* Initialize superagent request. */
-                const request = require('superagent')
-
-                /* Parse the base64 data from the url. */
-                const base64Data = dataUrl.split(',')[1]
-
-                /* Upload base64 data to imgur (anonymously). */
-                request
-                    .post(imgurUrl)
-                    .send({ image: base64Data })
-                    .set('Authorization', auth)
-                    .set('accept', 'json')
-                    .end((err, res) => {
-                        if (err) return console.error(err)
-
-                        /* Retrieve the response body. */
-                        const respBody = res.body
-// console.log('respBody', respBody)
-
-                        /* Set cover image url. */
-                        self.setState({ imageCoverUrl : respBody.data.link })
-                    })
+            $.each(data.files, function (index, file) {
+                var node = $('<p/>')
+                        .append($('<span/>').text(file.name));
+                node.appendTo(data.context);
             })
 
-            /* Read the image data. */
-            FR.readAsDataURL( el.target.files[0] )
-        }
+        }).on('fileuploadprocessalways', function (e, data) {
+            var index = data.index,
+                file = data.files[index],
+                node = $(data.context.children()[index]);
 
+            if (file.preview) {
+console.log('data', data);
+                try {
+                    let img = data.files[0]
+                    // let img = file.preview
+                        img.crossOrigin = "Anonymous"   // TODO Do we still need this???
+
+                    let dataUrl = img.toDataURL()
+
+                    self._processDataUrl(dataUrl)
+                } catch(e) {
+                    console.error(e)
+
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        const dataUrl = reader.result
+
+                        self._processDataUrl(dataUrl)
+                    }
+                    reader.readAsDataURL(data.files[0])
+                }
+
+                node
+                    .prepend('<br>')
+                    .prepend(file.preview);
+            }
+
+            if (file.error) {
+                node
+                    .append('<br>')
+                    .append($('<span class="text-danger"/>').text(file.error));
+            }
+
+            data.submit().always(function (err, result) {
+console.log('submitted!!!!!');
+                    // $this.remove();
+                    console.error('data.submit err', err)
+                    console.log('data.submit result', result)
+
+                })
+
+//             data.submit()
+//                 .then((err, result) => {
+// console.error('data.submit err', err)
+// console.log('data.submit result', result)
+//                 })
+//                 .catch(err => console.error('data.submit CAUGHT error', err))
+
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+
+        }).on('fileuploadfail', function (e, data) {
+            $.each(data.files, function (index) {
+                var error = $('<span class="text-danger"/>').text('File upload failed.');
+                $(data.context.children()[index])
+                    .append('<br>')
+                    .append(error);
+            });
+
+        }).prop('disabled', !$.support.fileInput)
+            .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    }
+
+
+    _processDataUrl(dataUrl) {
+        /* Localize this. */
+        const self = this
+
+        /* Load the image preview. */
+        document.getElementById('img').src = dataUrl
+
+        /* Intialize imgur client id. */
+        const clientId = '5561cfd1619a32b'
+
+        /* Generate authorization string. */
+        const auth = 'Client-ID ' + clientId
+
+        /* Initialize imgur endpoint. */
+        const imgurUrl = 'https://api.imgur.com/3/image'
+
+        /* Initialize superagent request. */
+        const request = require('superagent')
+
+        /* Parse the base64 data from the url. */
+        const base64Data = dataUrl.split(',')[1]
+
+        /* Upload base64 data to imgur (anonymously). */
+        request
+            .post(imgurUrl)
+            .send({ image: base64Data })
+            .set('Authorization', auth)
+            .set('accept', 'json')
+            .end((err, res) => {
+                if (err) return console.error(err)
+
+                /* Retrieve the response body. */
+                const respBody = res.body
+// console.log('respBody', respBody)
+
+                /* Set cover image url. */
+                self.setState({ imageCoverUrl : respBody.data.link })
+            })
     }
 
     /* User agrees to the disclaimer. */
-    addPost() {
+    _addPost() {
         /* Retrieve the title. */
         const title = this.state.title
 

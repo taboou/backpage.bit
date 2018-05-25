@@ -10,6 +10,9 @@ import { Post } from '../components'
 
 import moment from 'moment'
 
+/* Initialize array of active posts. */
+let activePosts = []
+
 function PostList(_props) {
     /* Retrieve the posts from props. */
     const posts = _props.posts
@@ -137,6 +140,13 @@ export default class District extends React.Component {
     }
 
     displayPost(_owner, _postId, _post) {
+        /* Validate unique post. */
+        if (activePosts.includes(_postId))
+            return
+
+        /* Add posts to active list. */
+        activePosts.push(_postId)
+
         /* Add owner to post data. */
         _post.owner = _owner
 

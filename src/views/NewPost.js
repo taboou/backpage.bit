@@ -50,7 +50,7 @@ export default class NewPost extends React.Component {
 
         /* Verify available accounts. */
         if (accounts[0] == null)
-            return <Redirect to="/signin"/>
+            return <Redirect to="/signin" />
             // return <SignIn store={ this.store } />
 
         return <div class="container-fluid">
@@ -234,7 +234,7 @@ export default class NewPost extends React.Component {
                 .test(window.navigator.userAgent),
             // previewMaxWidth: 300,
             // previewMaxHeight: 300,
-            previewCrop: false
+            // previewCrop: true
         }).on('fileuploadadd', function (e, data) {
             data.context = $('<div/>').appendTo('#files');
 
@@ -252,8 +252,7 @@ export default class NewPost extends React.Component {
             if (file.preview) {
 console.log('data', data);
                 try {
-                    let img = data.files[0]
-                    // let img = file.preview
+                    let img = file.preview
                         img.crossOrigin = "Anonymous"   // TODO Do we still need this???
 
                     let dataUrl = img.toDataURL()
@@ -271,9 +270,9 @@ console.log('data', data);
                     reader.readAsDataURL(data.files[0])
                 }
 
-                node
-                    .prepend('<br>')
-                    .prepend(file.preview);
+                // node
+                //     .prepend('<br>')
+                //     .prepend(file.preview);
             }
 
             if (file.error) {

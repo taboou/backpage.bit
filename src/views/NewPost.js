@@ -191,7 +191,7 @@ export default class NewPost extends React.Component {
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Rate Limit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Posting Rate Limit</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -250,7 +250,6 @@ export default class NewPost extends React.Component {
                 node = $(data.context.children()[index]);
 
             if (file.preview) {
-console.log('data', data);
                 try {
                     let img = file.preview
                         img.crossOrigin = "Anonymous"   // TODO Do we still need this???

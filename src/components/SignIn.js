@@ -21,7 +21,8 @@ export default class SignIn extends React.Component {
 
     render() {
         if (this.state.hasAuth && this.store.activeDistrict)
-            return <Redirect to={ '/district/' + this.store.activeDistrict } />
+            return <Redirect to={ '/new-post' } />
+            // return <Redirect to={ '/district/' + this.store.activeDistrict } />
         else if (this.state.hasAuth)
             return <Redirect to={ '/' } />
 

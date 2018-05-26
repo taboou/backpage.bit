@@ -10,6 +10,8 @@ const districts = {}
 // US | Alabama (AL)
 districts['us-al-auburn']     = { name: 'Auburn',     manager: '0x64991997308EE37F299fFB02509Ea1027Ae2Ce53' }
 districts['us-al-birmingham'] = { name: 'Birmingham', manager: '0x55178d57eec0476b9A6cBbfeB1E80e082dA2fCEa' }
+districts['us-al-dothan'] = { name: 'Dothan', manager: '0x539fE47cfE69416C53515508DFef84e040b9b652' }
+districts['us-al-montgomery'] = { name: 'Montgomery', manager: '0x8b1bA2333e7aCA67C25F0D2116F47F3B42308973' }
 
 // US | Alaska (AK)
 districts['us-ak-anchorage'] = { name: 'Anchorage', manager: '0xfD917817E00936d1fa62CFB09978141F02849ab9' }
@@ -22,8 +24,11 @@ districts['us-ar-little-rock'] = { name: 'Little Rock', manager: '0xd1dae31df76D
 
 // US | California (CA)
 districts['us-ca-los-angeles'] = { name: 'Los Angeles', manager: '0x9F34CF486A4078f79fA97F2a499913aE7be7A4d3' }
+districts['us-ca-san-diego'] = { name: 'San Diego', manager: '0x3E8126ce271874bdC43173bb08f5754a8055A173' }
+districts['us-ca-san-francisco'] = { name: 'San Francisco', manager: '0xf3E27daE0Cf444522af42941c01B79827d4c4dF3' }
 
 // US | Colorado (CO)
+districts['us-co-boulder'] = { name: 'Boulder', manager: '0xE8395564Dd30Fc5C932aa4A21F60d6b6f7159a9A' }
 districts['us-co-denver'] = { name: 'Denver', manager: '0xaFd17E7f0296db152E5Bbc800120ed6eCc1D62C2' }
 
 // US | Connecticut (CT)
@@ -36,6 +41,7 @@ districts['us-dc'] = { name: 'Washington D.C.', manager: '0x88129c616a7fb56CE879
 
 // US | Florida (FL)
 districts['us-fl-miami'] = { name: 'Miami', manager: '0x48Aaf85e8C754e6fDbF01878849285ac02b6DEC3' }
+districts['us-fl-tampa'] = { name: 'Tampa', manager: '0xbD5F0d88484DC800e95fDB49930b0dc24C1bD200' }
 
 // US | Georgia (GA)
 districts['us-ga-atlanta'] = { name: 'Atlanta', manager: '0x96b3816af6970D42C13bd74BD307743Ed8326A1a' }
@@ -45,6 +51,12 @@ districts['us-il-chicago'] = { name: 'Chicago', manager: '0x508C00Ff412841b845Cc
 
 // US | Indiana (IN)
 districts['us-in-indianapolis'] = { name: 'Indianapolis', manager: '0x219a0A0250F8Da2CcD9AF34B952Ba92c2b12CD81' }
+
+// US | Kentucky (KY)
+districts['us-ky-louisville'] = { name: 'Louisville', manager: '0x586dD3e038586e47BEd9521137a65a664aEBdA87' }
+
+// US | Louisiana (LA)
+districts['us-la-new-orleans'] = { name: 'New Orleans', manager: '0xf29bA32c112f385f496Ed8D99C2755B8C6217476' }
 
 // US | Maryland (MD)
 districts['us-md-baltimore'] = { name: 'Baltimore', manager: '0xAa8e3FaA51a93b563779B7160F325f5a53cBf5DC' }
@@ -67,14 +79,41 @@ districts['us-ny-queens']    = { name: 'Queens',    manager: '0xD7cBB037dD33b0CA
 // US | Pennsylvania (PA)
 districts['us-pa-philadelphia'] = { name: 'Philadelphia', manager: '0x6B4B8fB6F00E5A2d435472EF32601369F1137e0d' }
 
+// US | Tennessee (TN)
+districts['us-tn-memphis'] = { name: 'Memphis', manager: '0x29549bAE65646a6a90f9e920D7cfDA005185Acf0' }
+
 // US | Texas (TX)
 districts['us-tx-austin'] = { name: 'Austin', manager: '0xd01C2a47ceEb389cc08580e34c26a7d600B50B60' }
+districts['us-tx-dallas'] = { name: 'Dallas', manager: '0x85d85d542C1eCE02A15b9bbFAc0eB3A9490e2460' }
+districts['us-tx-houston'] = { name: 'Houston', manager: '0x4830a36b75caCb5e6E7c6876b0b2018402E9a44c' }
+districts['us-tx-san-antonio'] = { name: 'San Antonio', manager: '0xfa0ec0Bd093f703aa5c4aC6eCf10a8205a20A2e9' }
+
+// US | Utah (UT)
+districts['us-vt-salt-lake-city'] = { name: 'Salt Lake City', manager: '0x6808Db0317D0A20017d16B9C23a1419656DE1aCF' }
+
+// US | Vermont (VT)
+districts['us-vt-burlington'] = { name: 'Burlington', manager: '0xC03e3031359DFb1B5a5F2e1e9AE65feb0e114AF4' }
+
+// US | Virginia (VA)
+districts['us-va-richmond'] = { name: 'Richmond', manager: '0x3B30f4DC832a5175116efD75f4e9C9c0CFaBE33f' }
+
+// US | Washington (WA)
+districts['us-wa-seattle'] = { name: 'Seattle', manager: '0x192156231cDb6d03c3BacBBA3CB4823Dea4A0623' }
+
+// US | West Virginia (WV)
+districts['us-wv-charleston'] = { name: 'Charleston', manager: '0x3ce3Fe736738550dDD477BfccF27774E801A2399' }
+
+// US | Wyoming (WY)
+districts['us-wy-cheyenne'] = { name: 'Cheyenne', manager: '0x4778Ceab9C7F02eeff25b711877291564D412C5e' }
 
 // CA | British Columbia (BC)
 districts['ca-bc-vancouver'] = { name: 'Vancouver', manager: '0xF6bc0e1FaD17298DE52C2afEDb10fAc8C3541D15' }
 
 // CA | Ontario (ON)
 districts['ca-on-toronto'] = { name: 'Toronto', manager: '0x9035c0b30775b3DE338eAE0eB3a7EdCee1651b45' }
+
+// CA | Quebec (QC)
+districts['ca-qc-montreal'] = { name: 'Montreal', manager: '0x971988f65c59fb78f1312E9578AbF9385F3a686b' }
 
 // EU | France (FR)
 districts['eu-fr-paris'] = { name: 'Paris', manager: '0x7cbd5131e74D46C4ef514d9BFf7d46883271F083' }

@@ -18,7 +18,7 @@ districts[us_regions[regionIndex++]] = ['Fayetteville', 'Fort Smith', 'Jonesboro
 // California (CA)
 districts[us_regions[regionIndex++]] = [{ id: 'us-ca-bakersfield', name: 'Bakersfield' }, { id: 'us-ca-chico', name: 'Chico' }, { id: 'us-ca-fresno', name: 'Fresno' }, { id: 'us-ca-humboldt-county', name: 'Humboldt County' }, { id: 'us-ca-imperial-county', name: 'Imperial County' }, { id: 'us-ca-inland-empire', name: 'Inland Empire' }, { id: 'us-ca-long-beach', name: 'Long Beach' }, { id: 'us-ca-los-angeles', name: 'Los Angeles' }, { id: 'us-ca-mendocino', name: 'Mendocino' }, { id: 'us-ca-merced', name: 'Merced' }, { id: 'us-ca-modesto', name: 'Modesto' }, { id: 'us-ca-monterey', name: 'Monterey' }, { id: 'us-ca-north-bay', name: 'North Bay' }, { id: 'us-ca-oakland-east-bay', name: 'Oakland/East Bay' }, { id: 'us-ca-orange-county', name: 'Orange County' }, { id: 'us-ca-palm-springs', name: 'Palm Springs' }, { id: 'us-ca-palmdale-lancaster', name: 'Palmdale/lancaster' }, { id: 'us-ca-redding', name: 'Redding' }, { id: 'us-ca-sacramento', name: 'Sacramento' }, { id: 'us-ca-san-diego', name: 'San Diego' }, { id: 'us-ca-san-fernando-valley', name: 'San Fernando Valley' }, { id: 'us-ca-san-francisco', name: 'San Francisco' }, { id: 'us-ca-san-gabriel-valley', name: 'San Gabriel Valley' }, { id: 'us-ca-san-jose', name: 'San Jose' }, { id: 'us-ca-san-luis-obispo', name: 'San Luis Obispo' }, { id: 'us-ca-san-mateo', name: 'San Mateo' }, { id: 'us-ca-santa-barbara', name: 'Santa Barbara' }, { id: 'us-ca-santa-cruz', name: 'Santa Cruz' }, { id: 'us-ca-santa-maria', name: 'Santa Maria' }, { id: 'us-ca-siskiyou', name: 'Siskiyou' }, { id: 'us-ca-stockton', name: 'Stockton' }, { id: 'us-ca-susanville', name: 'Susanville' }, { id: 'us-ca-ventura', name: 'Ventura' }, { id: 'us-ca-visalia', name: 'Visalia' }]
 // Colorado (CO)
-districts[us_regions[regionIndex++]] = ['Boulder', 'Colorado Springs', { id: 'us-co-denver', name: 'Denver' }, 'Fort Collins', 'Pueblo', 'Rockies', 'Western Slope']
+districts[us_regions[regionIndex++]] = [{ id: 'us-co-boulder', name: 'Boulder' }, 'Colorado Springs', { id: 'us-co-denver', name: 'Denver' }, { id: 'us-co-fort-collins', name: 'Fort Collins' }, { id: 'us-co-pueblo', name: 'Pueblo' }, { id: 'us-co-rockies', name: 'Rockies' }, { id: 'us-co-western-slope', name: 'Western Slope' }]
 // Connecticut (CT)
 districts[us_regions[regionIndex++]] = ['Bridgeport', 'Eastern Connecticut', { id: 'us-ct-hartford', name: 'Hartford' }, 'New Haven', 'Northwest Connecticut']
 // Delaware (DE)
@@ -34,7 +34,7 @@ districts[us_regions[regionIndex++]] = ['Big Island', 'Honolulu', 'Kauai', 'Maui
 // Idaho (ID)
 districts[us_regions[regionIndex++]] = ['Boise', 'East Idaho', 'Lewiston', 'Twin Falls']
 // Illinois (IL)
-districts[us_regions[regionIndex++]] = ['Bloomington', 'Carbondale', 'Chambana', { id: 'us-il-chicago', name: 'Chicago' }, 'Decatur', 'La Salle County', 'Mattoon', 'Peoria', 'Rockford', 'Springfield', 'Western Illinois']
+districts[us_regions[regionIndex++]] = [{ id: 'us-il-bloomington', name: 'Bloomington' }, { id: 'us-il-carbondale', name: 'Carbondale' }, { id: 'us-il-chambana', name: 'Chambana' }, { id: 'us-il-chicago', name: 'Chicago' }, { id: 'us-il-decatur', name: 'Decatur' }, { id: 'us-il-la-salle-county', name: 'La Salle County' }, { id: 'us-il-mattoon', name: 'Mattoon' }, { id: 'us-il-peoria', name: 'Peoria' }, { id: 'us-il-rockford', name: 'Rockford' }, { id: 'us-il-springfield', name: 'Springfield' }, { id: 'us-il-western-illinois', name: 'Western Illinois' }]
 // Indiana (IN)
 districts[us_regions[regionIndex++]] = ['Bloomington', 'Evansville', 'Ft Wayne', { id: 'us-in-indianapolis', name: 'Indianapolis' }, 'Kokomo', 'Lafayette', 'Muncie', 'Richmond', 'South Bend', 'Terre Haute']
 // Iowa (IA)
@@ -42,9 +42,9 @@ districts[us_regions[regionIndex++]] = ['Ames', 'Cedar Rapids', 'Desmoines', 'Du
 // Kansas (KS)
 districts[us_regions[regionIndex++]] = ['Lawrence', 'Manhattan', 'Salina', 'Topeka', 'Wichita']
 // Kentucky (KY)
-districts[us_regions[regionIndex++]] = ['Bowling Green', 'Eastern Kentucky', 'Lexington', 'Louisville', 'Owensboro', 'Western Kentucky']
+districts[us_regions[regionIndex++]] = [{ id: 'us-ky-bowling-green', name: 'Bowling Green' }, { id: 'us-ky-indianapolis', name: 'eastern-kentucky' }, { id: 'us-ky-lexington', name: 'Lexington' }, { id: 'us-ky-louisville', name: 'Louisville' }, { id: 'us-ky-owensboro', name: 'Owensboro' }, { id: 'us-ky-western-kentucky', name: 'Western Kentucky' }]
 // Louisiana (LA)
-districts[us_regions[regionIndex++]] = ['Alexandria', 'Baton Rouge', 'Houma', 'Lafayette', 'Lake Charles', 'Monroe', 'New Orleans', 'Shreveport']
+districts[us_regions[regionIndex++]] = ['Alexandria', 'Baton Rouge', 'Houma', 'Lafayette', 'Lake Charles', 'Monroe', { id: 'us-la-new-orleans', name: 'New Orleans' }, 'Shreveport']
 // Maine (ME)
 districts[us_regions[regionIndex++]] = ['']
 // Maryland (MD)
@@ -92,23 +92,23 @@ districts[us_regions[regionIndex++]] = ['Charleston', 'Columbia', 'Florence', 'G
 // South Dakota (SD)
 districts[us_regions[regionIndex++]] = ['Aberdeen', 'Pierre', 'Rapid City', 'Sioux Falls']
 // Tennessee (TN)
-districts[us_regions[regionIndex++]] = ['Chattanooga', 'Clarksville', 'Cookeville', 'Johnson City', 'Knoxville', 'Memphis', 'Nashville', 'Tri-Cities']
+districts[us_regions[regionIndex++]] = [{ id: 'us-tn-chattanooga', name: 'Chattanooga' }, { id: 'us-tn-clarksville', name: 'Clarksville' }, { id: 'us-tn-cookeville', name: 'Cookeville' }, { id: 'us-tn-johnson-city', name: 'Johnson City' }, { id: 'us-tn-knoxville', name: 'Knoxville' }, { id: 'us-tn-memphis', name: 'Memphis' }, { id: 'us-tn-nashville', name: 'Nashville' }, { id: 'us-tn-tri-cities', name: 'Tri-Cities' }]
 // Texas (TX)
-districts[us_regions[regionIndex++]] = ['Abilene', 'Amarillo', { id: 'us-tx-austin', name: 'Austin' }, 'Beaumont', 'Brownsville', 'College Station', 'Corpus Christi', 'Dallas', 'Del Rio', 'Denton', 'El Paso', 'Fort Worth', 'Galveston', 'Houston', 'Huntsville', 'Killeen', 'Laredo', 'Longview', 'Lubbock', 'Mcallen', 'Mid Cities', 'Odessa', 'San Antonio', 'San Marcos', 'Texarkana', 'Texoma', 'Tyler', 'Victoria', 'Waco', 'Wichita Falls']
+districts[us_regions[regionIndex++]] = [{ id: 'us-tx-abilene', name: 'Abilene' }, { id: 'us-tx-amarillo', name: 'Amarillo' }, { id: 'us-tx-austin', name: 'Austin' }, { id: 'us-tx-beaumont', name: 'Beaumont' }, { id: 'us-tx-brownsville', name: 'Brownsville' }, { id: 'us-tx-college-station', name: 'College Station' }, { id: 'us-tx-corpus-christi', name: 'Corpus Christi' }, { id: 'us-tx-dallas', name: 'Dallas' }, { id: 'us-tx-del-rio', name: 'Del Rio' }, { id: 'us-tx-denton', name: 'Denton' }, { id: 'us-tx-el-paso', name: 'El Paso' }, { id: 'us-tx-fort-worth', name: 'Fort Worth' }, { id: 'us-tx-galveston', name: 'Galveston' }, { id: 'us-tx-houston', name: 'Houston' }, { id: 'us-tx-huntsville', name: 'Huntsville' }, { id: 'us-tx-killeen', name: 'Killeen' }, { id: 'us-tx-laredo', name: 'Laredo' }, { id: 'us-tx-longview', name: 'Longview' }, { id: 'us-tx-lubbock', name: 'Lubbock' }, { id: 'us-tx-mcallen', name: 'Mcallen' }, { id: 'us-tx-mid-cities', name: 'Mid Cities' }, { id: 'us-tx-odessa', name: 'Odessa' }, { id: 'us-tx-san-antonio', name: 'San Antonio' }, { id: 'us-tx-san-marcos', name: 'San Marcos' }, { id: 'us-tx-texarkana', name: 'Texarkana' }, { id: 'us-tx-texoma', name: 'Texoma' }, { id: 'us-tx-tyler', name: 'Tyler' }, { id: 'us-tx-victoria', name: 'Victoria' }, { id: 'us-tx-waco', name: 'Waco' }, { id: 'us-tx-wichita-falls', name: 'Wichita Falls' }]
 // Utah (UT)
-districts[us_regions[regionIndex++]] = ['Logan', 'Ogden', 'Provo', 'Salt Lake City', 'St. George']
+districts[us_regions[regionIndex++]] = [{ id: 'us-vt-logan', name: 'Logan' }, { id: 'us-vt-ogden', name: 'Ogden' }, { id: 'us-vt-provo', name: 'Provo' }, { id: 'us-vt-salt-lake-city', name: 'Salt Lake City' }, { id: 'us-vt-st-george', name: 'St. George' }]
 // Vermont (VT)
-districts[us_regions[regionIndex++]] = ['']
+districts[us_regions[regionIndex++]] = [{ id: 'us-vt-burlington', name: 'Burlington' }]
 // Virginia (VA)
-districts[us_regions[regionIndex++]] = ['Charlottesville', 'Chesapeake', 'Danville', 'Fredericksburg', 'Hampton', 'Harrisonburg', 'Lynchburg', 'New River Valley', 'Newport News', 'Norfolk', 'Portsmouth', 'Richmond', 'Roanoke', 'Southwest Virginia', 'Suffolk', 'Virginia Beach']
+districts[us_regions[regionIndex++]] = [{ id: 'us-va-charlottesville', name: 'Charlottesville' }, { id: 'us-va-chesapeake', name: 'Chesapeake' }, { id: 'us-va-danville', name: 'Danville' }, { id: 'us-va-fredericksburg', name: 'Fredericksburg' }, { id: 'us-va-hampton', name: 'Hampton' }, { id: 'us-va-harrisonburg', name: 'Harrisonburg' }, { id: 'us-va-lynchburg', name: 'Lynchburg' }, { id: 'us-va-new-river-valley', name: 'New River Valley' }, { id: 'us-va-newport-news', name: 'Newport News' }, { id: 'us-va-norfolk', name: 'Norfolk' }, { id: 'us-va-portsmouth', name: 'Portsmouth' }, { id: 'us-va-richmond', name: 'Richmond' }, { id: 'us-va-roanoke', name: 'Roanoke' }, { id: 'us-va-southwest-virginia', name: 'Southwest Virginia' }, { id: 'us-va-suffolk', name: 'Suffolk' }, { id: 'us-va-virginia-beach', name: 'Virginia Beach' }]
 // Washington (WA)
-districts[us_regions[regionIndex++]] = ['Bellingham', 'Everett', 'Moses Lake', 'Mt. Vernon', 'Olympia', 'Pullman', 'Seattle', 'Spokane / Coeur d\'Alene', 'Tacoma', 'Tri-Cities', 'Wenatchee', 'Yakima']
+districts[us_regions[regionIndex++]] = [{ id: 'us-wa-bellingham', name: 'Bellingham' }, { id: 'us-wa-everett', name: 'Everett' }, { id: 'us-wa-moses-lake', name: 'Moses Lake' }, { id: 'us-wa-mt-vernon', name: 'Mt. Vernon' }, { id: 'us-wa-olympia', name: 'Olympia' }, { id: 'us-wa-pullman', name: 'Pullman' }, { id: 'us-wa-seattle', name: 'Seattle' }, { id: 'us-wa-spokane', name: 'Spokane / Coeur d\'Alene' }, { id: 'us-wa-tacoma', name: 'Tacoma' }, { id: 'us-wa-tri-cities', name: 'Tri-Cities' }, { id: 'us-wa-wenatchee', name: 'Wenatchee' }, { id: 'us-wa-yakima', name: 'Yakima' }]
 // West Virginia (WV)
-districts[us_regions[regionIndex++]] = ['Charleston', 'Huntington', 'Martinsburg', 'Morgantown', 'Parkersburg', 'Southern West Virginia', 'Wheeling']
+districts[us_regions[regionIndex++]] = [{ id: 'us-wv-charleston', name: 'Charleston' }, { id: 'us-wv-huntington', name: 'Huntington' }, { id: 'us-wv-martinsburg', name: 'Martinsburg' }, { id: 'us-wv-morgantown', name: 'Morgantown' }, { id: 'us-wv-parkersburg', name: 'Parkersburg' }, { id: 'us-wv-southern-west-virginia', name: 'Southern West Virginia' }, { id: 'us-wv-wheeling', name: 'Wheeling' }]
 // Wisconsin (WI)
 districts[us_regions[regionIndex++]] = ['Appleton', 'Eau Claire', 'Green Bay', 'Janesville', 'La Crosse', 'Madison', 'Milwaukee', 'Racine', 'Sheboygan', 'Wausau']
 // Wyoming (WY)
-districts[us_regions[regionIndex++]] = ['']
+districts[us_regions[regionIndex++]] = [{ id: 'us-wy-cheyenne', name: 'Cheyenne' }]
 
 
 
@@ -135,7 +135,7 @@ districts[ca_regions[regionIndex++]] = ['']
 // Ontario (ON)
 districts[ca_regions[regionIndex++]] = [{ id: 'ca-on-barrie', name: 'Barrie' }, { id: 'ca-on-belleville', name: 'Belleville' }, { id: 'ca-on-brantford', name: 'Brantford' }, { id: 'ca-on-chatham', name: 'Chatham' }, { id: 'ca-on-cornwall', name: 'Cornwall' }, { id: 'ca-on-guelph', name: 'Guelph' }, { id: 'ca-on-hamilton', name: 'Hamilton' }, { id: 'ca-on-kingston', name: 'Kingston' }, { id: 'ca-on-kitchener', name: 'Kitchener' }, { id: 'ca-on-london', name: 'London' }, { id: 'ca-on-niagara', name: 'Niagara' }, { id: 'ca-on-ottawa', name: 'Ottawa' }, { id: 'ca-on-owen-sound', name: 'Owen Sound' }, { id: 'ca-on-peterborough', name: 'Peterborough' }, { id: 'ca-on-sarnia', name: 'Sarnia' }, { id: 'ca-on-sault-ste-marie', name: 'Sault Ste Marie' }, { id: 'ca-on-sudbury', name: 'Sudbury' }, { id: 'ca-on-thunder-bay', name: 'Thunder Bay' }, { id: 'ca-on-toronto', name: 'Toronto' }, { id: 'us-al-windsor', name: 'Windsor' }]
 // Quebec (QC)
-districts[ca_regions[regionIndex++]] = ['Montreal', 'Quebec City', 'Saguenay', 'Sherbrooke', 'Trois-Rivières']
+districts[ca_regions[regionIndex++]] = [{ id: 'ca-qc-montreal', name: 'Montreal' }, { id: 'ca-qc-quebec-city', name: 'Quebec City' }, { id: 'ca-qc-saguenay', name: 'Saguenay' }, { id: 'ca-qc-sherbrooke', name: 'Sherbrooke' }, { id: 'ca-qc-trois-rivieres', name: 'Trois-Rivières' }]
 // Saskatchewan (SK)
 districts[ca_regions[regionIndex++]] = ['Prince Albert', 'Regina', 'Saskatoon']
 // Yukon (YT)

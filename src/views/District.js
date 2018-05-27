@@ -58,7 +58,7 @@ export default class District extends React.Component {
 
                 { this.loadingPosts() }
             </div>
-
+console.log('this.store.device.width', this.store.device.width);
         return <div class="container-fluid">
             <h2>{ this.districtName }</h2>
 
@@ -67,7 +67,7 @@ export default class District extends React.Component {
                 { this.districtManager }</a>
             </div>
 
-            <div class="row">
+            <div class="card-columns" style={ (this.store.device.width <= 480) ? styles.cardColumns : (this.store.device.width <= 800) ? styles.cardColumns_2 : styles.cardColumns_3 }>
                 <PostList posts={ this.state.posts } />
             </div>
         </div>
@@ -178,5 +178,17 @@ const styles = {
         marginTop    : '-7px',
         marginBottom : '15px',
         marginLeft   : '5px'
-  	}
+  	},
+    cardColumns: {
+        // columnCount: 1
+  	},
+    cardColumns_2: {
+        // columnCount: 2
+  	},
+    cardColumns_3: {
+        // columnCount: 3
+  	},
+    cardColumns_4: {
+        // columnCount: 4
+    }
 }

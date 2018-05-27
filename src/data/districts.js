@@ -70,14 +70,41 @@ districts['us-nv-las-vegas'] = { name: 'Las Vegas', manager: '0x40f98A26e55DdEC0
 // US | North Jersey (NJ)
 districts['us-nj-north-jersey'] = { name: 'North Jersey', manager: '0x6082af630980db904bcC67E1BC0c1feB31d510e1' }
 
+// US | New Mexico (NM)
+districts['us-nm-albuquerque'] = { name: 'Albuquerque', manager: '0xc413B604383ef221f1dc12C7ff7313Ff51a7f170' }
+
 // US | New York (NY)
 districts['us-ny-bronx']     = { name: 'Bronx',     manager: '0xBF9438FfeaA029CE75B5aE620bbAdA0e84aE9130' }
 districts['us-ny-brooklyn']  = { name: 'Brooklyn',  manager: '0x88433F5948505605aCeC2659F3b6Ec2f2eAF13eD' }
 districts['us-ny-manhattan'] = { name: 'Manhattan', manager: '0x19dEab20C9358784045423bA7fDd0Ad59d650c96' }
 districts['us-ny-queens']    = { name: 'Queens',    manager: '0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6' }
 
+// US | North Carolina (NC)
+districts['us-nc-charlotte'] = { name: 'Charlotte', manager: '0x647d2D92b3CBD94c170Cd59e01A7E7c115e1aEA5' }
+
+// US | North Dakota (ND)
+districts['us-nd-bismarck'] = { name: 'Bismarck', manager: '0xfd03D874740E2D75F4381E89fe041DCd54A29a3C' }
+
+// US | Ohio (OH)
+districts['us-oh-cleveland'] = { name: 'Cleveland', manager: '0xbA20B696185327b1b1E339fE90e7EbcBeAcC225e' }
+
+// US | Oklahoma (OK)
+districts['us-ok-oklahoma-city'] = { name: 'Oklahoma City', manager: '0xB0808508EDF6f5c3B62dd5070DAeab9756bc656e' }
+
+// US | Oregon (OR)
+districts['us-or-portland'] = { name: 'Portland', manager: '0x7c7029e9aB82E3c744eFEF7E511153B881419c4D' }
+
 // US | Pennsylvania (PA)
 districts['us-pa-philadelphia'] = { name: 'Philadelphia', manager: '0x6B4B8fB6F00E5A2d435472EF32601369F1137e0d' }
+
+// US | Rhode Island (RI)
+districts['us-ri-providence'] = { name: 'Providence', manager: '0x728675c27E2f7B98FEadE1982d2ac9af67576161' }
+
+// US | South Carolina (SC)
+districts['us-sd-charleston'] = { name: 'Charleston', manager: '0x6dc016864Ff3B43e32a4928E87Ff333f9Ec7B11A' }
+
+// US | South Dakota (SD)
+districts['us-sd-sioux-falls'] = { name: 'Sioux Falls', manager: '0xD3f484370e42e8588ea8935872694b81142ED623' }
 
 // US | Tennessee (TN)
 districts['us-tn-memphis'] = { name: 'Memphis', manager: '0x29549bAE65646a6a90f9e920D7cfDA005185Acf0' }

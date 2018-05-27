@@ -13,6 +13,10 @@ export default class Blank extends React.Component {
         	<h1>Blank Component</h1>
         </div>
     }
+
+    componentDidMount() {
+
+    }
 }
 
 /* Initialize stylesheet. */

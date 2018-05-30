@@ -23,8 +23,7 @@ export default class Buy extends React.Component {
             hundoPakBtcVal : 0,
             kiloPakBtcVal  : 0,
 
-            currentScreen  : 'home',
-            depositAccount : ''
+            currentScreen  : 'home'
         }
     }
 
@@ -66,19 +65,19 @@ console.log('rate', rate)
     _displayManager() {
         if (this.state.currentScreen == 'home')
             return <CoinPakHome
-                parent = { this }
+                store = { this.store }
                 dimePakBtcVal  = { this.state.dimePakBtcVal }
                 hundoPakBtcVal = { this.state.hundoPakBtcVal }
                 kiloPakBtcVal  = { this.state.kiloPakBtcVal } />
 
         if (this.state.currentScreen == 'dime')
-            return <CoinPakDime parent = { this } />
+            return <CoinPakDime store = { this.store } />
 
         if (this.state.currentScreen == 'hundo')
-            return <CoinPakHundo parent = { this } />
+            return <CoinPakHundo store = { this.store } />
 
         if (this.state.currentScreen == 'kilo')
-            return <CoinPakKilo parent = { this } />
+            return <CoinPakKilo store = { this.store } />
     }
 
     async _handleNewOrder(_pak) {
@@ -127,8 +126,8 @@ console.log('res', res)
                 const depositAccount = res.body.success.deposit
 console.log('Deposit account', depositAccount)
 
-                /* Update the state. */
-                self.setState({ depositAccount })
+                /* Update the store. */
+                self.store.depositAccount = depositAccount
             })
     }
 

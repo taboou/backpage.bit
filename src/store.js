@@ -36,6 +36,9 @@ class TabooStore {
     /* Initialize the active (default) district. */
     @observable activeDistrict = null
 
+    /* Initialize the deposit account (used for buying coins). */
+    @observable depositAccount = ''
+
 	@observable posts = ['come by tonight', 'new provider']
 	@observable filter = ''
 	@observable errorMsg = ''

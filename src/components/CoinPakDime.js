@@ -1,17 +1,18 @@
 import React from 'react'
 
+import { observer } from 'mobx-react'
+
 // https://github.com/zpao/qrcode.react
 import QRCode from 'qrcode.react'
 
+@observer
 export default class CoinPakDime extends React.Component {
     constructor(props) {
         super(props)
 
         /* Localize store to class object. */
         this.store = this.props.store
-
-        /* Initialize parent. */
-        this.parent = this.props.parent
+console.log('dime store', this.store);
     }
 
     render() {
@@ -30,9 +31,9 @@ export default class CoinPakDime extends React.Component {
                     <div class="text-center" style={ styles.qrcode }>
                         <QRCode
                             size = { 256 }
-                            value= { this.parent.state.depositAccount } />
+                            value= { this.store.depositAccount } />
 
-                        <small>{ this.parent.state.depositAccount ? this.parent.state.depositAccount : 'loading...' }</small>
+                        <small>{ this.store.depositAccount ? this.store.depositAccount : 'loading...' }</small>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,8 @@ import request from 'superagent'
 
 import {
     CoinPakDime,
-    CoinPakHome
+    CoinPakHome,
+    Rewards
 } from '../components'
 
 @observer
@@ -49,16 +50,32 @@ export default class Buy extends React.Component {
         const pair = 'btc_eth'
 
         /* Initialize endpoint. */
-        const endpoint = 'https://shapeshift.io/marketinfo/' + pair
+        let endpoint = 'https://cors.shapeshift.io/marketinfo/' + pair
 
         request
             .get(endpoint)
             .end((err, res) => {
-                if (err) console.error(err)
+                /* Check for jurisdiction restriction. */
+                if (err || (res && res.status === 403)) {
+                    if (err) console.error(err)
 
-console.log('res', res)
-                const rate = res.body.rate
-console.log('rate', rate)
+                    /* Reset endpoint. */
+                    endpoint = 'https://api.taboou.com/v1/shapeshift/marketinfo/' + pair
+
+                    request
+                        .get(endpoint)
+                        .end((err, res2) => {
+                            console.log('res2', res2)
+                            if (err) console.error(err)
+
+                            const rate = res2.body.rate
+console.log('Shapeshift (proxy) BTC=>ETH rate:', rate)
+                        })
+                } else {
+                    const rate = res.body.rate
+console.log('Shapeshift BTC=>ETH rate:', rate)
+
+                }
             })
     }
 
@@ -78,6 +95,9 @@ console.log('rate', rate)
 
         if (this.state.currentScreen == 'kilo')
             return <CoinPakKilo store = { this.store } />
+
+        if (this.state.currentScreen == 'rewards')
+            return <Rewards store = { this.store } />
     }
 
     async _handleNewOrder(_pak) {
@@ -104,7 +124,7 @@ console.log('rate', rate)
 console.log('New Order for %s pak valued @ %s BTC', _pak.toUpperCase(), depositAmount)
 
         /* Initialize endpoint. */
-        const endpoint = 'https://shapeshift.io/sendamount'
+        let endpoint = 'https://cors.shapeshift.io/sendamount'
 
         /* Initialize trading pair. */
         const pair = 'btc_eth'
@@ -119,15 +139,36 @@ console.log('New Order for %s pak valued @ %s BTC', _pak.toUpperCase(), depositA
             .post(endpoint)
             .send({ pair, depositAmount, withdrawal, returnAddress })
             .end((err, res) => {
-console.log('res', res)
-                if (err) console.error(err)
+                /* Check for jurisdiction restriction. */
+                if (err || (res && res.status === 403)) {
+                    if (err) console.error(err)
 
-                /* Retrieve the deposit account (address). */
-                const depositAccount = res.body.success.deposit
-console.log('Deposit account', depositAccount)
+                    /* Reset endpoint. */
+                    endpoint = 'https://api.taboou.com/v1/shapeshift/sendamount'
 
-                /* Update the store. */
-                self.store.depositAccount = depositAccount
+                    /* Request api send details. */
+                    request
+                        .post(endpoint)
+                        .send({ pair, depositAmount, withdrawal, returnAddress })
+                        .end((err, res2) => {
+console.log('res2', res2)
+                            if (err) console.error(err)
+
+                            /* Retrieve the deposit account (address). */
+                            const depositAccount = res2.body.success.deposit
+console.log('Shapeshift (proxy) deposit account:', depositAccount)
+
+                            /* Update the store. */
+                            self.store.depositAccount = depositAccount
+                        })
+                } else {
+                    /* Retrieve the deposit account (address). */
+                    const depositAccount = res.body.success.deposit
+console.log('Shapeshift deposit account:', depositAccount)
+
+                    /* Update the store. */
+                    self.store.depositAccount = depositAccount
+                }
             })
     }
 
@@ -181,6 +222,12 @@ console.log('Deposit account', depositAccount)
             // $('#kiloOrder').prop('disabled', false)
             $('#kiloOrder').click(() => {
                 self._handleNewOrder('kilo')
+            })
+
+            /* Enable rewards button. */
+            // $('#rewards').prop('disabled', false)
+            $('#rewards').click(() => {
+                self._handleNewOrder('rewards')
             })
         })
     }

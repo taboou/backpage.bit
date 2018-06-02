@@ -30,7 +30,7 @@ export default class Post extends React.Component {
                     <small>expires { expiration }</small>
                 </p>
 
-                <a href="javascript://" class="btn btn-primary">open details</a>
+                <a href="javascript:alert('Coming soon...')" class="btn btn-primary">open details</a>
             </div>
         </div>
     }

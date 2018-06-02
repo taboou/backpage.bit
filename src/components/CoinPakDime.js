@@ -42,10 +42,11 @@ console.log('dime store', this.store);
 
     componentDidMount() {
         $('.btnCancelOrder').click(() => {
-            this.parent.setState({ currentScreen : 'home' }, () => {
-// TODO Make this a modal (attached to the parent)
-                alert('Your order has been canceled.')
-            })
+            alert('unable to cancel at this time')
+//             this.parent.setState({ currentScreen : 'home' }, () => {
+// // TODO Make this a modal (attached to the parent)
+//                 alert('Your order has been canceled.')
+//             })
         })
 
     }

@@ -87,6 +87,32 @@ export default class CoinPakHome extends React.Component {
                         </button>
                     </div>
                 </div>
+
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header bg-warning text-white">
+                        <h4 class="my-0 font-weight-normal">FREE GOLD!</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">
+                            $85
+                            <small class="text-muted" style={ styles.perCoinPrice }>
+                                &nbsp;{ this.props.hundoPakBtcVal } BTC
+                            </small>
+                        </h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li><span style={ styles.featuredTxt }>100 TABOO</span> Gold Coins</li>
+                            <li>Save 15% ($0.85 / coin)</li>
+                            <li><small class="text-muted">BONUS: up to 5 MILLION Gas <small>(gWei)</small></small></li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <button disabled type="button" id="hundoOrder" class="btn btn-lg btn-block btn-outline-primary">
+                            Learn more
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div class="row">

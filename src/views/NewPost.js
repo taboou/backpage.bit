@@ -329,7 +329,7 @@ console.log('submitted!!!!!');
         const auth = 'Client-ID ' + clientId
 
         /* Initialize imgur endpoint. */
-        const imgurUrl = 'https://api.imgur.com/3/image'
+        const endpoint = 'https://api.imgur.com/3/image'
 
         /* Initialize superagent request. */
         const request = require('superagent')
@@ -339,7 +339,7 @@ console.log('submitted!!!!!');
 
         /* Upload base64 data to imgur (anonymously). */
         request
-            .post(imgurUrl)
+            .post(endpoint)
             .send({ image: base64Data })
             .set('Authorization', auth)
             .set('accept', 'json')

@@ -84,7 +84,7 @@ console.log('this.store.device.width', this.store.device.width);
             return <div>
                 <br /><br />
 
-                <h3>Loading blockchain posts, please wait...</h3>
+                <h3>Loading posts from the blockchain.<br/>Please wait...</h3>
             </div>
     }
 

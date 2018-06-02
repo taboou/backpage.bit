@@ -20,9 +20,9 @@ districts[us_regions[regionIndex++]] = [{ id: 'us-ca-bakersfield', name: 'Bakers
 // Colorado (CO)
 districts[us_regions[regionIndex++]] = [{ id: 'us-co-boulder', name: 'Boulder' }, { id: 'us-co-colorado-springs', name: 'Colorado Springs' }, { id: 'us-co-denver', name: 'Denver' }, { id: 'us-co-fort-collins', name: 'Fort Collins' }, { id: 'us-co-pueblo', name: 'Pueblo' }, { id: 'us-co-rockies', name: 'Rockies' }, { id: 'us-co-western-slope', name: 'Western Slope' }]
 // Connecticut (CT)
-districts[us_regions[regionIndex++]] = [{ id: 'us-ct-bridgeport', name: 'Bridgeport' }, { id: 'us-ct-eastern-connecticut', name: 'Eastern Connecticut' }, { id: 'us-ct-hartford', name: 'Hartford' }, { id: 'us-ct-new-haven', name: 'New Haven' }, { id: 'us-ct-northwest-connecticut', name: 'Northwest Connecticut' }]
+districts[us_regions[regionIndex++]] = [{ id: 'us-ct-bridgeport', name: 'Bridgeport' }, { id: 'us-ct-eastern-connecticut', name: 'Eastern Connecticut' }, { id: 'us-ct-hartford', name: 'Hartford' }, { id: 'us-ct-new-haven', name: 'New Haven' }, { id: 'us-ct-northwest-connecticut', name: 'Northwest Connecticut' }, { id: 'us-ct-stamford', name: 'Stamford' }]
 // Delaware (DE)
-districts[us_regions[regionIndex++]] = [{ id: 'us-de-wilmington', name: 'Wilmington' }]
+districts[us_regions[regionIndex++]] = [{ id: 'us-de-dover', name: 'Dover' }, { id: 'us-de-wilmington', name: 'Wilmington' }]
 // District of Columbia (DC)
 districts[us_regions[regionIndex++]] = [{ id: 'us-dc-northern-virginia', name: 'Northern Virginia' }, { id: 'us-dc-southern-maryland', name: 'Southern Maryland' }, { id: 'us-dc', name: 'Washington D.C.' }]
 // Florida (FL)
@@ -68,7 +68,7 @@ districts[us_regions[regionIndex++]] = [{ id: 'us-nv-elko', name: 'Elko' }, { id
 // New Hampshire (NH)
 districts[us_regions[regionIndex++]] = [{ id: 'us-nh-manchester', name: 'Manchester' }]
 // New Jersey (NJ)
-districts[us_regions[regionIndex++]] = [{ id: 'us-nj-central-jersey', name: 'Central Jersey' }, { id: 'us-nj-jersey-shore', name: 'Jersey Shore' }, { id: 'us-nj-north-jersey', name: 'North Jersey' }, { id: 'us-nj-south-jersey', name: 'South Jersey' }]
+districts[us_regions[regionIndex++]] = [{ id: 'us-nj-atlantic-city', name: 'Atlantic City' }, { id: 'us-nj-central-jersey', name: 'Central Jersey' }, { id: 'us-nj-jersey-shore', name: 'Jersey Shore' }, { id: 'us-nj-north-jersey', name: 'North Jersey' }, { id: 'us-nj-south-jersey', name: 'South Jersey' }]
 // New Mexico (NM)
 districts[us_regions[regionIndex++]] = [{ id: 'us-nm-albuquerque', name: 'Albuquerque' }, { id: 'us-nm-clovis-portales', name: 'Clovis / Portales' }, { id: 'us-nm-farmington', name: 'Farmington' }, { id: 'us-nm-las-cruces', name: 'Las Cruces' }, { id: 'us-nm-roswell-carlsbad', name: 'Roswell / Carlsbad' }, { id: 'us-nm-santa-fe-taos', name: 'Santa Fe/Taos' }]
 // New York (NY)
@@ -88,7 +88,7 @@ districts[us_regions[regionIndex++]] = ['Allentown', 'Altoona', 'Chambersburg', 
 // Rhode Island (RI)
 districts[us_regions[regionIndex++]] = [{ id: 'us-ri-providence', name: 'Providence' }, { id: 'us-ri-warwick', name: 'Warwick' }]
 // South Carolina (SC)
-districts[us_regions[regionIndex++]] = [{ id: 'us-sd-charleston', name: 'Charleston' }, { id: 'us-sd-columbia', name: 'Columbia' }, { id: 'us-sd-florence', name: 'Florence' }, { id: 'us-sd-greenville', name: 'Greenville' }, { id: 'us-sd-hilton-head', name: 'Hilton Head' }, { id: 'us-sd-myrtle-beach', name: 'Myrtle Beach' }]
+districts[us_regions[regionIndex++]] = [{ id: 'us-sc-charleston', name: 'Charleston' }, { id: 'us-sc-columbia', name: 'Columbia' }, { id: 'us-sc-florence', name: 'Florence' }, { id: 'us-sc-greenville', name: 'Greenville' }, { id: 'us-sc-hilton-head', name: 'Hilton Head' }, { id: 'us-sc-myrtle-beach', name: 'Myrtle Beach' }]
 // South Dakota (SD)
 districts[us_regions[regionIndex++]] = [{ id: 'us-sd-aberdeen', name: 'Aberdeen' }, { id: 'us-sd-pierre', name: 'Pierre' }, { id: 'us-sd-rapid-city', name: 'Rapid City' }, { id: 'us-sd-sioux-falls', name: 'Sioux Falls' }]
 // Tennessee (TN)

@@ -2,16 +2,16 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
-import { NavLink, Redirect } from 'react-router-dom'
+import {
+    NavLink,
+    Redirect
+} from 'react-router-dom'
 
 import FontAwesome from 'react-fontawesome'
 
 import Dropzone from 'react-dropzone'
 
-import {
-    Disclaimer,
-    SignIn
-} from '../components'
+import { Disclaimer } from '../components'
 
 import districts from '../data/districts'
 
@@ -44,14 +44,6 @@ export default class NewPost extends React.Component {
         /* Verify agreement of disclaimer. */
         // if (!this.store.hasAgreedToDisclaimer)
         //     return <Disclaimer store={ this.store } />
-
-        /* Retrieve the available accounts. */
-        const { accounts } = this.store.eth
-
-        /* Verify available accounts. */
-        if (accounts[0] == null)
-            return <Redirect to="/signin" />
-            // return <SignIn store={ this.store } />
 
         return <div class="container-fluid">
             <h2>
@@ -212,6 +204,13 @@ export default class NewPost extends React.Component {
     componentDidMount() {
         /* Localize this. */
         const self = this
+
+        /* Retrieve the available accounts. */
+        const { accounts } = this.store.eth
+
+        /* Verify available accounts. */
+        if (accounts[0] === null)
+            return <Redirect to="/signin" />
 
         const url = 'https://api.imgur.com/3/image'
 

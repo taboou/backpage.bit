@@ -23,7 +23,7 @@ districts['us-az-phoenix'] = { name: 'Phoenix', manager: '0x3161130E0834ab833d36
 districts['us-ar-fayetteville'] = { name: 'Fayetteville', manager: '0x749696Fc45f373912c5CAEdCcf746bdbeE4ec618' }
 districts['us-ar-little-rock'] = { name: 'Little Rock', manager: '0xd1dae31df76D3Aee4B17c5b296726dE436D26a29' }
 
-// US | California (CA)
+// US | California (CA) ✓
 districts['us-ca-bakersfield']         = { name: 'Bakersfield',         manager: '0x9E1f309E70dD1EC122c7873a545Bdc7ab58E44FB' }
 districts['us-ca-chico']               = { name: 'Chico',               manager: '0x83B7535442f916D6c949C1abC4286781DAb8d329' }
 districts['us-ca-fresno']              = { name: 'Fresno',              manager: '0x29B9c6f11494E58Ed7F1B2eEd8Dca5957b2c4fFd' }
@@ -63,7 +63,7 @@ districts['us-ca-visalia']             = { name: 'Visalia',             manager:
 districts['us-co-boulder'] = { name: 'Boulder', manager: '0xE8395564Dd30Fc5C932aa4A21F60d6b6f7159a9A' }
 districts['us-co-denver'] = { name: 'Denver', manager: '0xaFd17E7f0296db152E5Bbc800120ed6eCc1D62C2' }
 
-// US | Connecticut (CT)
+// US | Connecticut (CT) ✓
 districts['us-ct-bridgeport']            = { name: 'Bridgeport',            manager: '0xe55fB09ABAF7BFcc3759eC562278587D2EE8dc33' }
 districts['us-ct-eastern-connecticut']   = { name: 'Eastern Connecticut',   manager: '0xeAccd0E330Db72DAaa61A16349BF52A6295B97BE' }
 districts['us-ct-hartford']              = { name: 'Hartford',              manager: '0x9FB54e00a1fe2dF35F685F46C9C78B7cFcc9c5CB' }
@@ -152,7 +152,7 @@ districts['us-nv-las-vegas'] = { name: 'Las Vegas', manager: '0x40f98A26e55DdEC0
 // US | New Hampshire (NH)
 districts['us-nh-manchester'] = { name: 'Manchester', manager: '0xbee4e0a52717a779f78fbcb4ac234283b3403fd3' }
 
-// US | North Jersey (NJ)
+// US | North Jersey (NJ) ✓
 districts['us-nj-atlantic-city']  = { name: 'Atlantic City',  manager: '0x657C162116e0907A843d963961A4280Cf76C464B' }
 districts['us-nj-central-jersey'] = { name: 'Central Jersey', manager: '0xBfC7E049bc770f29a00C39757754c6BBE4CE5b49' }
 districts['us-nj-jersey-shore']   = { name: 'Jersey Shore',   manager: '0xe894Df326f03a828532d76DCd8FAfC1d0FBaEcFE' }

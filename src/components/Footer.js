@@ -24,7 +24,7 @@ export default class Footer extends React.Component {
 
 	          	<ul style={ styles.navLinkList }>
 	              	<li style={ styles.navLinkList_li }><NavLink to="/account">My Account</NavLink></li>
-	              	<li style={ styles.navLinkList_li }><NavLink to="/buy">Buy Coins</NavLink></li>
+	              	<li style={ styles.navLinkList_li }><NavLink to="/coins">Buy Coins</NavLink></li>
 	            	<li style={ styles.navLinkList_li }><NavLink to="/help">Help</NavLink></li>
 	            	<li style={ styles.navLinkList_li }><NavLink to="/privacy">Privacy</NavLink></li>
 	            	<li style={ styles.navLinkList_li_last }><NavLink to="/terms">Terms</NavLink></li>

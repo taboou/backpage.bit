@@ -30,7 +30,9 @@ export default class Post extends React.Component {
                     <small>expires { expiration }</small>
                 </p>
 
-                <a href="javascript:alert('Coming soon...')" class="btn btn-primary">open details</a>
+                <button class="btn btn-info btn-block" onClick={ this._loadPost.bind(this) }>
+                    open details
+                </button>
             </div>
         </div>
     }
@@ -41,6 +43,35 @@ export default class Post extends React.Component {
             return body.slice(0, 500) + ' ...'
         else
             return body
+    }
+
+    _loadPost () {
+        /* Update the store title. */
+        this.store.postTitle = this.post.t
+
+        /* Update the store body. */
+        this.store.postBody = this.post.b
+
+        /* Test for iFrame, as when using a ZeroNet proxy. */
+        // BUG Test for iOS device within an iFrame and scroll to top.
+        if (window !== window.top) {
+            /* Test for iOS device. */
+            const isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(
+                navigator.platform)
+
+            if (isIOS) {
+                /* Jump to the top of the page. */
+                // window.scrollTo(0, 0)
+                parent.self.scrollTo(0, 0)
+                // $('html, body', parent.document)
+                //     .animate({
+                //         scrollTop: $("body").offset().top
+                //     }, 250, "easeOutQuart")
+            }
+        }
+
+        /* Open the modal window. */
+        $('#postDetails').modal()
     }
 }
 

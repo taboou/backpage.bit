@@ -14,12 +14,15 @@ import moment from 'moment'
 let activePosts = []
 
 function PostList(_props) {
+    /* Retrieve the store from props. */
+    const store = _props.store
+
     /* Retrieve the posts from props. */
     const posts = _props.posts
 
     /* Map all posts to list items. */
     const listItems = posts.map((post) =>
-        <Post key={ post.id } post={ post } />
+        <Post key={ post.id } store={ store } post={ post } />
     )
 
     /* Return the list items. */
@@ -68,7 +71,29 @@ console.log('this.store.device.width', this.store.device.width);
             </div>
 
             <div class="card-columns" style={ (this.store.device.width <= 480) ? styles.cardColumns : (this.store.device.width <= 800) ? styles.cardColumns_2 : styles.cardColumns_3 }>
-                <PostList posts={ this.state.posts } />
+                <PostList store={ this.store } posts={ this.state.posts } />
+            </div>
+
+            <div class="modal fade" id="postDetails" tabIndex="-1" role="dialog" aria-labelledby="postDetailsLabel" aria-hidden="true" style={ styles.modal }>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="postDetailsLabel">{ this.store.postTitle }</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            { this.store.postBody }
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     }
@@ -82,9 +107,9 @@ console.log('this.store.device.width', this.store.device.width);
     loadingPosts() {
         if (this.districtManager)
             return <div>
-                <br /><br />
+                <br/><br/>
 
-                <h3>Loading posts from the blockchain.<br/>Please wait...</h3>
+                <h3>Loading posts from the blockchain. Please wait...</h3>
             </div>
     }
 
@@ -190,5 +215,8 @@ const styles = {
   	},
     cardColumns_4: {
         // columnCount: 4
+    },
+    modal: {
+        marginRight: '18px'
     }
 }

@@ -39,8 +39,10 @@ class TabooStore {
     /* Initialize the deposit account (used for buying coins). */
     @observable depositAccount = ''
 
-	@observable posts = ['come by tonight', 'new provider']
-	@observable filter = ''
+	// @observable posts = ['come by tonight', 'new provider']
+    @observable postTitle = 'Sample Title'
+    @observable postBody = 'sample post body'
+	@observable searchFilter = ''
 	@observable errorMsg = ''
 
 	@observable eth = {

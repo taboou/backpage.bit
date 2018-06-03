@@ -22,7 +22,6 @@ import District  from './views/District'
 import Help      from './views/Help'
 import Account   from './views/Account'
 import NewPost   from './views/NewPost'
-import Post      from './views/Post'
 import Privacy   from './views/Privacy'
 import SignIn    from './views/SignIn'
 import SignOut   from './views/SignOut'
@@ -74,8 +73,6 @@ console.log('getConfirmation', message);
                 { /* Posts */ }
                 <Route path   = "/new-post"
                     component = { () => (<NewPost store={ this.store } />) }/>
-                <Route path   = "/post/:postId"
-                    component = { () => (<Post store={ this.store } />) }/>
 
                 { /* Privacy */ }
                 <Route path   = "/privacy"

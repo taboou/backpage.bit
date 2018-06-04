@@ -14,32 +14,32 @@ export default class Status extends React.Component {
     }
 
     render() {
-        return (
-            <div class="container-fluid">
-                <h2>Community &amp; Network Status</h2>
+        return <div class="container-fluid">
+            <h5>
+                Status &amp; Diagnostic Center
+            </h5>
 
-                <p>
-                    Where would you like to go?<br />
-                    <NavLink to="/">Take Me Home</NavLink>
-                </p>
-
-                <div class="row">
-                    <div class="col-7 text-right">
-                        Your Device Width
-                    </div>
-                    <div class="col-5">
-                        { this.store.device.width }
-                    </div>
+            <div class="row">
+                <div class="col-7 text-right">
+                    Your Device Width
                 </div>
-                <div class="row">
-                    <div class="col-7 text-right">
-                        Your Device Height
-                    </div>
-                    <div class="col-5">
-                        { this.store.device.height }
-                    </div>
+                <div class="col-5">
+                    { this.store.device.width }
                 </div>
             </div>
-        )
+
+            <div class="row">
+                <div class="col-7 text-right">
+                    Your Device Height
+                </div>
+                <div class="col-5">
+                    { this.store.device.height }
+                </div>
+            </div>
+        </div>
     }
+}
+
+/* Initialize stylesheet. */
+const styles = {
 }

@@ -30,7 +30,7 @@ export default class Post extends React.Component {
                     <small>expires { expiration }</small>
                 </p>
 
-                <button class="btn btn-info btn-block" onClick={ this._loadPost.bind(this) }>
+                <button class="btn btn-lg btn-info btn-block" onClick={ this._loadPost.bind(this) }>
                     open details
                 </button>
             </div>

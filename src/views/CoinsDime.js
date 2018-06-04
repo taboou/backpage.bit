@@ -22,8 +22,11 @@ export default class CoinsDime extends React.Component {
 
         /* Initialize the state. */
         this.state = {
+            orderId: '',
             depositAccount: '',
-            depositAmount: 0.0
+            depositAmount: 0.0,
+            withdrawalAmount: 0.0,
+            expiration: 0
         }
     }
 
@@ -46,6 +49,11 @@ export default class CoinsDime extends React.Component {
                         </button>
                     </NavLink>
 
+                    <div>
+                        Deposit Amount: { this.state.depositAmount }<br/>
+                        Withdrawal Amount: { this.state.withdrawalAmount }<br/>
+                        Expiration: { this.state.expiration }
+                    </div>
                 </div>
 
                 <div class="col-12 col-sm-6">
@@ -94,6 +102,7 @@ export default class CoinsDime extends React.Component {
             .post(endpoint)
             .send({ pair, depositAmount, withdrawal })
             .end((err, res) => {
+console.log('Shapeshift success', res.body.success)
                 /* Check for jurisdiction restriction. */
                 if (err || (res && res.status === 403)) {
                     if (err) console.error(err)
@@ -109,20 +118,46 @@ export default class CoinsDime extends React.Component {
                             /* Display error, then continue. */
                             if (err) console.error(err)
 
+                            /* Retrieve the order id. */
+                            const orderId = res2.body.success.orderId
+
                             /* Retrieve the deposit account (address). */
                             const depositAccount = res2.body.success.deposit
-                            console.log('Shapeshift (proxy) deposit account:', depositAccount)
+
+                            /* Retrieve the withdrawal amount. */
+                            const withdrawalAmount = res2.body.success.withdrawalAmount
+
+                            /* Retrieve the expiration. */
+                            const expiration = res2.body.success.expiration
 
                             /* Update the state. */
-                            self.setState({ depositAccount })
+                            self.setState({
+                                orderId,
+                                depositAccount,
+                                withdrawalAmount,
+                                expiration
+                            })
                         })
                 } else {
+                    /* Retrieve the order id. */
+                    const orderId = res.body.success.orderId
+
                     /* Retrieve the deposit account (address). */
                     const depositAccount = res.body.success.deposit
-                    console.log('Shapeshift deposit account:', depositAccount)
+
+                    /* Retrieve the withdrawal amount. */
+                    const withdrawalAmount = res.body.success.withdrawalAmount
+
+                    /* Retrieve the expiration. */
+                    const expiration = res.body.success.expiration
 
                     /* Update the state. */
-                    self.setState({ depositAccount })
+                    self.setState({
+                        orderId,
+                        depositAccount,
+                        withdrawalAmount,
+                        expiration
+                    })
                 }
             })
     }

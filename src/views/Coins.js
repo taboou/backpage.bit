@@ -30,7 +30,7 @@ export default class Coins extends React.Component {
                 <h1 class="display-4 hidden-block">Taboo Gold Coin Paks</h1>
 
                 <p class="lead">
-                    Buy gold coins to instantly boost the <strong style={ styles.featuredTxt}>Lit Status</strong> of your ad posts.
+                    Buy gold coins to instantly boost the <strong style={ styles.featuredTxt}>Lit Count</strong> of your ad posts.
                 </p>
             </div>
 
@@ -49,7 +49,6 @@ export default class Coins extends React.Component {
                         </h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><span style={ styles.featuredTxt }>10 TABOO</span> Gold Coins</li>
-                            <li><small class="text-muted">BONUS: up to 1 MILLION Gas <small>(gWei)</small></small></li>
                         </ul>
                     </div>
 
@@ -77,7 +76,6 @@ export default class Coins extends React.Component {
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><span style={ styles.featuredTxt }>100 TABOO</span> Gold Coins</li>
                             <li>Save 15% ($0.85 / coin)</li>
-                            <li><small class="text-muted">BONUS: up to 5 MILLION Gas <small>(gWei)</small></small></li>
                         </ul>
                     </div>
 
@@ -103,7 +101,6 @@ export default class Coins extends React.Component {
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><span style={ styles.featuredTxt }>1,000 TABOO</span> Gold Coins</li>
                             <li>Save 25% ($0.75 / coin)</li>
-                            <li><small class="text-muted">BONUS: up to 25 MILLION Gas <small>(gWei)</small></small></li>
                         </ul>
                     </div>
 
@@ -128,8 +125,9 @@ export default class Coins extends React.Component {
                         </h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><span style={ styles.featuredTxt }>1 TABOO</span> <u>per day</u> for each</li>
-                            <li><small>use of @Backpage0 on Twitter</small></li>
-                            <li><small>use of @Backpage0 on Reddit</small></li>
+                            <li><small>use of #Backpage0 on Twitter</small></li>
+                            <li><small>use of #Backpage0 on Instagram</small></li>
+                            <li><small>link to Backpage0.com on Reddit</small></li>
                             <li><small class="text-muted">RESTRICTIONS APPLY</small></li>
                         </ul>
                     </div>

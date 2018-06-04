@@ -47,7 +47,7 @@ export class EU_Directory extends React.Component {
 export class Asia_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
-            <h2 style={ styles.geoBlock_h2 }>Asia, Pacific, and Middle East</h2>
+            <h2 style={ styles.geoBlock_h2 }>Asia, Pacific, &amp; Middle East</h2>
             <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.asia_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
@@ -60,7 +60,7 @@ export class Asia_Directory extends React.Component {
 export class AU_Oceania_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
-            <h2 style={ styles.geoBlock_h2 }>Australia and Oceania</h2>
+            <h2 style={ styles.geoBlock_h2 }>Australia &amp; Oceania</h2>
             <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.oceania_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
@@ -73,7 +73,7 @@ export class AU_Oceania_Directory extends React.Component {
 export class Latin_America_Caribbean_Directory extends React.Component {
     render() {
         return <div style={ styles.geoBlock }>
-            <h2 style={ styles.geoBlock_h2 }>Latin America and Caribbean</h2>
+            <h2 style={ styles.geoBlock_h2 }>Latin America &amp; Caribbean</h2>
             <div style={ (this.props.deviceWidth <= 480) ? styles.geoBlock_inner_480 : styles.geoBlock_inner }>
                 { locations.latin_regions.map((region, index) => {
                     return <Region key={ index } region={ region } />
@@ -106,7 +106,12 @@ class Region extends React.Component {
 
     render() {
         return <div style={ styles.geoBlock_geoUnit }>
-            <h3 style={ styles.home_h3 }><NavLink style={ styles.h3_navLink } to={ "/district/africa-" + this.region.replace(/ /g, '-').toLowerCase() }>{ this.region }</NavLink></h3>
+            <h3 style={ styles.home_h3 }>
+                <NavLink style={ styles.h3_navLink } to={ "/district/africa-" + this.region.replace(/ /g, '-').toLowerCase() }>
+                    { this.region }
+                </NavLink>
+            </h3>
+
             <ul style={ styles.home_ul }>
                 { locations.districts[this.region].map((district, index) => {
                     /* Retrieve only active districts. */
@@ -129,7 +134,9 @@ class District extends React.Component {
     render() {
         return <li style={ styles.home_li } class="active">
             <NavLink style={ styles.navLink } to={ "/district/" + this.district.id }>
-                <button type="button" class="btn btn-sm">{ this.district.name }</button>
+                <button type="button" class="btn btn-sm btn-primary text-truncate" style={ styles.navLinkText }>
+                    { this.district.name }
+                </button>
             </NavLink>
         </li>
     }
@@ -150,7 +157,7 @@ const styles = {
     },
     home_h3: {
         margin: '0',
-        fontSize: '16px'
+        fontSize: '1.1em'
     },
     home_sup: {
         lineHeight: '1',
@@ -161,7 +168,8 @@ const styles = {
         padding: '0'
     },
     home_li: {
-        paddingLeft: '0.5em'
+        // paddingLeft: '0.5em',
+        marginTop: '5px'
     },
 
     /* geoBlock */
@@ -171,6 +179,7 @@ const styles = {
     geoBlock_h2: {
         backgroundColor: '#405E8F',
         color: '#fff',
+        fontSize: '1.8em',
 
         maxWidth: '100%',
         marginTop: '8px',
@@ -184,7 +193,7 @@ const styles = {
         WebkitColumnCount: 3,
         MozColumnCount: 3,
         columnCount: 3,
-        overflow: 'hidden'
+        // overflow: 'hidden'
     },
     geoBlock_inner_310: {
         WebkitColumnCount: 'auto',
@@ -201,7 +210,8 @@ const styles = {
     geoBlock_geoUnit: {
         minWidth: '100%',
 
-        overflow: 'hidden',
+        // overflow: 'hidden',
+        // textOverflow: 'ellipsis',
         marginBottom: '0.75em',
         maxWidth: '150px',
 
@@ -218,7 +228,7 @@ const styles = {
 
         backgroundColor: '#405E8F',
         color: '#fff',
-        fontSize: '1.4em',
+        fontSize: '1.8em',
 
         maxWidth: '100%',
         marginTop: '8px',
@@ -231,8 +241,12 @@ const styles = {
     navLink: {
         color: '#b59a28'
     },
+    navLinkText: {
+        fontSize: '0.7em'
+    },
     h3_navLink: {
-        color: '#000',
-        textDecoration: 'none'
+        color: 'rgba(30, 30, 210, 0.7)',
+        textDecoration: 'none',
+        // textOverflow: 'ellipsis'
     }
 }

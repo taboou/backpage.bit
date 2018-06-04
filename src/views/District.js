@@ -53,6 +53,7 @@ export default class District extends React.Component {
         this.state = {
             redirect: null,
             isLoading: true,
+            isBoosting: false,
             posts: []
         }
     }
@@ -66,7 +67,7 @@ export default class District extends React.Component {
                 <h2>{ this.districtName }</h2>
 
                 <div style={ styles.districtManager }>
-                    => <a href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
+                    <a class="btn btn-info" style={ styles.districtManagerText } href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
                     { this.districtManager }</a>
                 </div>
 
@@ -77,7 +78,7 @@ export default class District extends React.Component {
             <h2>{ this.districtName }</h2>
 
             <div style={ styles.districtManager }>
-                => <a href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
+                <a class="btn btn-info" style={ styles.districtManagerText } href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
                 { this.districtManager }</a>
             </div>
 
@@ -88,22 +89,7 @@ export default class District extends React.Component {
             <div class="modal fade" id="postDetails" tabIndex="-1" role="dialog" aria-labelledby="postDetailsLabel" aria-hidden="true" style={ styles.modal }>
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="postDetailsLabel">{ this.store.postTitle }</h5>
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            { this.store.postBody }
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary" onClick={ () => this._buyCoins(true) }>Boost Lit Value</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
+                        { this._modalContent() }
                     </div>
                 </div>
             </div>
@@ -117,11 +103,14 @@ export default class District extends React.Component {
     }
 
     _loadingPosts() {
-        if (this.districtManager)
-            return <div>
-                <br/><br/>
+        // NOTE Customize loading icons at https://loading.io/
+        const loading_sm = 'https://i.imgur.com/bZBh3D4.gif'    // 286px
+        const loading_lg = 'https://i.imgur.com/WsP51cT.gif'    // 384px
 
-                <h3>Loading posts from the blockchain. Please wait...</h3>
+        if (this.districtManager)
+            return <div class="text-center">
+                <h3>Scanning the blockchain<br/>Please wait</h3>
+                <img class="img-fluid" style={ styles.loading } src={ loading_lg } />
             </div>
     }
 
@@ -215,6 +204,123 @@ export default class District extends React.Component {
         /* Update the state. */
         this.setState({ redirect })
     }
+
+    _showBoost () {
+        /* Initialize boosting flag. */
+        const isBoosting = true
+
+        this.setState({ isBoosting })
+    }
+
+    _addBoost () {
+        alert('boosting!')
+    }
+
+    _cancelBoost () {
+        /* Initialize boosting flag. */
+        const isBoosting = false
+
+        this.setState({ isBoosting })
+    }
+
+    _needsCoins () {
+        return <div style={ styles.needCoins }>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <small>
+                    Oops! It looks like you're all out of Gold Coins.
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-danger"
+                        style={ styles.buyCoins }
+                        onClick={ () => this._buyCoins(true) }>
+                        buy more coins
+                    </button>
+                </small>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    }
+
+    _modalContent () {
+        /* Retrive the active district name. */
+        const districtName = districts[this.store.activeDistrict].name
+
+        if (this.state.isBoosting)
+            return <div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postDetailsLabel">{ this.store.postTitle }</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="text-center">
+                        <h2 class="text-secondary">BOOST YOUR LIT</h2>
+                    </div>
+
+                    <h5>Instantly bump this post to the TOP of <span class="text-info">{ districtName }!</span></h5>
+
+                    <p>
+                        Srsly, how <strong>LIT</strong> is this post right now?
+                    </p>
+
+                    <div class="progress">
+                        <div
+                            class="progress-bar bg-warning"
+                            role="progressbar"
+                            style={{ width: '15%' }}
+                            aria-valuenow="0"
+                            aria-valuemin="0"
+                            aria-valuemax="100">0 LIT</div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <small>LIT Level</small><br/>
+                            <strong>0</strong>
+                        </div>
+
+                        <div class="col-6 text-center">
+                            <small>LIT Rank</small><br/>
+                            <strong>Unknown</strong>
+                        </div>
+                    </div>
+
+                    { this._needsCoins() }
+                </div>
+
+                <div class="modal-footer">
+                    <button disabled type="button" class="btn btn-primary" onClick={ () => this._addBoost() }>Boost My LIT</button>
+                    <button type="button" class="btn btn-danger" onClick={ () => this._cancelBoost() }>Cancel</button>
+                </div>
+            </div>
+        else
+            return <div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postDetailsLabel">{ this.store.postTitle }</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    { this.store.postBody }
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" onClick={ () => this._showBoost() }>Boost LIT</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+    }
 }
 
 /* Initialize stylesheet. */
@@ -228,6 +334,10 @@ const styles = {
         marginBottom : '15px',
         marginLeft   : '5px'
   	},
+    districtManagerText: {
+        fontSize: '0.7em',
+        padding: '2px 5px'
+    },
     cardColumns: {
         // columnCount: 1
   	},
@@ -242,5 +352,16 @@ const styles = {
     },
     modal: {
         marginRight: '18px'
+    },
+    loading: {
+        marginTop: '25px',
+        width: '50%'
+    },
+    buyCoins: {
+        margin: '0px 5px',
+        padding: '0px 5px'
+    },
+    needCoins: {
+        marginTop: '15px'
     }
 }

@@ -45,6 +45,9 @@ class TabooStore {
 	@observable searchFilter = ''
 	@observable errorMsg = ''
 
+    /* Tracks the location of any post-authorizaton redirects. */
+	@observable authRedirect = ''
+
 	@observable eth = {
 		lastBlockNum : 'loading...',
 		network      : 'ropsten',

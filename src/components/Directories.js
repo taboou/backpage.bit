@@ -129,7 +129,7 @@ class District extends React.Component {
     render() {
         return <li style={ styles.home_li } class="active">
             <NavLink style={ styles.navLink } to={ "/district/" + this.district.id }>
-                { this.district.name }
+                <button type="button" class="btn btn-sm">{ this.district.name }</button>
             </NavLink>
         </li>
     }
@@ -218,6 +218,7 @@ const styles = {
 
         backgroundColor: '#405E8F',
         color: '#fff',
+        fontSize: '1.4em',
 
         maxWidth: '100%',
         marginTop: '8px',

@@ -19,7 +19,7 @@ export default class Footer extends React.Component {
         return (
 			<div id="container" style={ styles.container }>
 	          	<div style={ styles.tagline }>
-	            	Place free classified ads to the <em><u>blockchain</u></em>.
+	            	Place free classified ads on the <a href="https://www.ethereum.org/" target="_blank"><em><u>blockchain!</u></em></a>
 	          	</div>
 
 	          	<ul style={ styles.navLinkList }>
@@ -74,7 +74,7 @@ const styles = {
         display: 'inline',
     },
     copyright: {
-        margin: 0,
+        marginBottom: '15px',
         fontSize: '0.8em',
         padding: '0 0.5em',
         display: 'inline',

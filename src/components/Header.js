@@ -57,7 +57,7 @@ export default class Header extends React.Component {
             </div>
         else
             return <div style={ (deviceWidth <= 480) ? styles.accountLinks_480 : styles.accountLinks }>
-                [ <NavLink to="/signin">Sign in to your account</NavLink> ]
+                <NavLink to="/signin"><button class="btn btn-light btn-sm">Sign in to your account</button></NavLink>
             </div>
     }
 
@@ -110,6 +110,7 @@ const styles = {
         fontSize: '1.1em'
     },
     accountLinks_480: {
-        fontSize: '0.75em'
+        fontSize: '0.7em',
+        marginTop: '5px'
     }
 }

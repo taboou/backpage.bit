@@ -35,56 +35,46 @@ export default class SignInScreen extends React.Component {
             return <Redirect to={ '/' } />
 
         return <div class="container-fluid">
-            <h2>Sign In</h2>
+            <h2>Sign In <span class="text-muted">or</span> Register</h2>
 
-            <form class="form-signin">
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autoFocus />
+            <div class="alert alert-warning" role="alert">
+                <small>
+                    <div class="text-center">
+                        <strong>Welcome • 欢迎 • Bienvenido • أهلا وسهلا</strong>
+                    </div>
 
-                <br />
+                    <div>
+                        Is this your <u>first time</u> signing in?&nbsp;
+                        Just enter your email and password below and a new account will be <u>automagically</u> created for you.
+                    </div>
+                </small>
+            </div>
 
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
-
-                <br />
-
-                <div class="form-group">
-                    <label for="exampleInputFile" class="bmd-label-floating">
-                        <strong>Advanced Security (optional)</strong>
-
-                        <div class="col-10"><small class="text-muted">
-                            Are you looking for extra security?
-                            Choose a <strong>"random" and "unique" file</strong> from your device.
-                            This file will NEVER be sent to our server.
-                            <strong>But...</strong>
-                        </small></div>
-
-                        <div class="col-10"><small class="text-muted">
-                            <strong style={ styles.warning }>
-                                WARNING!!!
-                                Any loss <em>(deletion, corruption, etc)</em> of this security file WILL result in <u>PERMANENT</u> loss of access to your account, including ALL funds and saved data.
-                                <u>WE CANNOT HELP YOU!</u>
-                            </strong>
-                        </small></div>
-                    </label>
-                    <input type="file" class="form-control-file" id="imageCover" onChange={ this.readFile.bind(this) } />
-                    <small class="text-muted">
-                        Supported file types include <em>(txt, jpg, mp4, pdf and more)</em>
-                    </small>
-                </div>
+            <form class="form-signin" style={ styles.formSignin }>
+                <label for="inputEmail" class="sr-only">Enter your email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Enter your email address" autoFocus />
 
                 <br />
 
-                File Preview<br/>
-                <img class="img-thumbnail" id="img" width="150" height="150" />
+                <label for="inputPassword" class="sr-only">Enter a strong password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Enter a strong password" />
+
+                { /*this._advancedSecurity()*/ }
             </form>
 
-            <br /><hr />
+            <div class="alert alert-danger" role="alert">
+                <small>
+                    <div class="text-center">
+                        <h5>⚠️ BLOCKCHAIN WARNING ⚠️</h5>
+                    </div>
 
-            <div class="row">
-                <div class="col">
-                    <strong>By signing into this service, you understand that your password cannot be recovered in the case of loss.</strong>
-                </div>
+                    <hr/>
+
+                    <div>
+                        Backpage Zero runs <strong><u>100%</u> on the <a href="https://www.bitcoin.org/" target="_blank">BTC</a> and <a href="https://www.ethereum.org/" target="_blank">ETH</a> blockchains.</strong>
+                        &nbsp;By continuing, you acknowledge that your account <strong><u>CANNOT</u></strong> be recovered if you forget or lose your password.
+                    </div>
+                </small>
             </div>
 
             <br />
@@ -145,10 +135,48 @@ console.log('hashedData', hashedData)
         }
 
     }
+
+    _advancedSecurity () {
+        return <div class="form-group">
+            <br /><hr />
+
+            <label for="exampleInputFile" class="bmd-label-floating">
+                <strong>Advanced Security (optional)</strong>
+
+                <div class="col-10"><small class="text-muted">
+                    Are you looking for extra security?
+                    Choose a <strong>"random" and "unique" file</strong> from your device.
+                    This file will NEVER be sent to our server.
+                    <strong>But...</strong>
+                </small></div>
+
+                <div class="col-10"><small class="text-muted">
+                    <strong style={ styles.warning }>
+                        WARNING!!!
+                        Any loss <em>(deletion, corruption, etc)</em> of this security file WILL result in <u>PERMANENT</u> loss of access to your account, including ALL funds and saved data.
+                        <u>WE CANNOT HELP YOU!</u>
+                    </strong>
+                </small></div>
+            </label>
+            <input type="file" class="form-control-file" id="imageCover" onChange={ this.readFile.bind(this) } />
+            <small class="text-muted">
+                Supported file types include <em>(txt, jpg, mp4, pdf and more)</em>
+            </small>
+
+            <br />
+
+            File Preview<br/>
+            <img class="img-thumbnail" id="img" width="150" height="150" />
+        </div>
+
+    }
 }
 
 /* Initialize stylesheet. */
 const styles = {
+    formSignin: {
+        marginBottom: '20px'
+    },
     warning: {
         color: '#c33'
     }

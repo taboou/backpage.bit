@@ -2,7 +2,10 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
-import { NavLink } from 'react-router-dom'
+import {
+    NavLink,
+    Redirect
+} from 'react-router-dom'
 
 import districts from '../data/districts'
 
@@ -43,13 +46,21 @@ export default class District extends React.Component {
         /* Retrive the district manager. */
         this.districtManager = districts[this.store.loadedDistrict] ? districts[this.store.loadedDistrict].manager : null
 
+        /* Bind buttons. */
+        this._buyCoins = this._buyCoins.bind(this)
+
+        /* Initialize the state. */
         this.state = {
+            redirect: null,
             isLoading: true,
             posts: []
         }
     }
 
     render() {
+        if (this.state.redirect)
+            return <Redirect push to={ this.state.redirect } />
+
         if (this.state.isLoading)
             return <div class="container-fluid">
                 <h2>{ this.districtName }</h2>
@@ -59,9 +70,9 @@ export default class District extends React.Component {
                     { this.districtManager }</a>
                 </div>
 
-                { this.loadingPosts() }
+                { this._loadingPosts() }
             </div>
-console.log('this.store.device.width', this.store.device.width);
+
         return <div class="container-fluid">
             <h2>{ this.districtName }</h2>
 
@@ -90,6 +101,7 @@ console.log('this.store.device.width', this.store.device.width);
                         </div>
 
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary" onClick={ () => this._buyCoins(true) }>Boost Lit Value</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -101,10 +113,10 @@ console.log('this.store.device.width', this.store.device.width);
     componentDidMount() {
         /* Load the most recent posts. */
         if (this.districtManager)
-            this.loadPosts()
+            this._loadPosts()
     }
 
-    loadingPosts() {
+    _loadingPosts() {
         if (this.districtManager)
             return <div>
                 <br/><br/>
@@ -113,7 +125,7 @@ console.log('this.store.device.width', this.store.device.width);
             </div>
     }
 
-    loadPosts() {
+    _loadPosts() {
         /* Initialize the current network. */
         const network = this.store.eth.network
 
@@ -156,7 +168,7 @@ console.log('this.store.device.width', this.store.device.width);
                     return
 
                 /* Display post. */
-                this.displayPost(_owner, _postId, post)
+                this._displayPost(_owner, _postId, post)
             } catch(e) {
                 // silently fail if data format is incorrect
                 return console.error('Check the data for [ %s ]', _post)
@@ -164,7 +176,7 @@ console.log('this.store.device.width', this.store.device.width);
         }
     }
 
-    displayPost(_owner, _postId, _post) {
+    _displayPost(_owner, _postId, _post) {
         /* Validate unique post. */
         if (activePosts.includes(_postId))
             return
@@ -190,6 +202,18 @@ console.log('this.store.device.width', this.store.device.width);
             this.setState({ isLoading: false, posts: [_post] })
         else
             this.setState({ isLoading: false, posts: [_post, ...posts] })
+    }
+
+    _buyCoins (_modalCaller = false) {
+        /* Close the modal window (if necessary). */
+        if (_modalCaller)
+            $('#postDetails').modal('hide')
+
+        /* Initialize redirect target. */
+        const redirect = '/coins'
+
+        /* Update the state. */
+        this.setState({ redirect })
     }
 }
 

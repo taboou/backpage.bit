@@ -108,7 +108,7 @@ console.log('Shapeshift success', res.body.success)
                     if (err) console.error(err)
 
                     /* Reset endpoint. */
-                    endpoint = 'https://api.taboou.com/v1/shapeshift/sendamount'
+                    endpoint = 'https://api.taboou.com/v1/shapeshift/sendamount/'
 
                     /* Request api send details. */
                     request

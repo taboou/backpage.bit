@@ -154,8 +154,11 @@ class TabooStore {
         /* Initialize superagent request. */
         const request = require('superagent')
 
-let endpoint = 'https://api.taboou.com/v1/posts'
-let auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
+        /* Initialize api endpoint. */
+        const endpoint = 'https://api.taboou.com/v1/posts/'
+
+        /* Initilize authorization signature. */
+        const auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
 
         /* Add the current district manager to the request. */
         _post.dm = districts[this.activeDistrict].manager

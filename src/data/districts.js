@@ -90,8 +90,18 @@ districts['us-fl-orlando'] = { name: 'Orlando', manager: '0xc8A1a680B204C634D9Bf
 districts['us-fl-tallahassee'] = { name: 'Tallahassee', manager: '0xf61760360Fe770A3035BC774b9881EA2EAb5DdBF' }
 districts['us-fl-tampa'] = { name: 'Tampa', manager: '0xbD5F0d88484DC800e95fDB49930b0dc24C1bD200' }
 
-// US | Georgia (GA)
-districts['us-ga-atlanta'] = { name: 'Atlanta', manager: '0x96b3816af6970D42C13bd74BD307743Ed8326A1a' }
+// US | Georgia (GA) ✓
+districts['us-ga-albany']            = { name: 'Albany',            manager: '0x625556f53E1D3dab8dA51d41AeE212F323972350' }
+districts['us-ga-athens']            = { name: 'Athens',            manager: '0x6e478c2FdaD785B8233fBE2919F0e7E2F5E8cE89' }
+districts['us-ga-atlanta']           = { name: 'Atlanta',           manager: '0x96b3816af6970D42C13bd74BD307743Ed8326A1a' }
+districts['us-ga-augusta']           = { name: 'Augusta',           manager: '0x47A00F78b608D31518392b49C9c1Ab524f2DeDcB' }
+districts['us-ga-brunswick']         = { name: 'Brunswick',         manager: '0x2626a2c5111b52dbBf3340555EFd01F7A65C799c' }
+districts['us-ga-columbus']          = { name: 'Columbus',          manager: '0x8D9E49f56ACe139017E2bA88BBA72FF4d34caB66' }
+districts['us-ga-macon']             = { name: 'Macon',             manager: '0x03dF3ae0325BD4FB856F0464f4688A1Dd2f67ea3' }
+districts['us-ga-northwest-georgia'] = { name: 'Northwest Georgia', manager: '0x86040c92224Ae8C465dC6cF11d1564dB95f5786c' }
+districts['us-ga-savannah']          = { name: 'Savannah',          manager: '0x3c83e461e9b88A256b2ec7d6580a8F1d3d1480fD' }
+districts['us-ga-statesboro']        = { name: 'Statesboro',        manager: '0xE9A83e17e9cc68319f6E72aD70a184C67FfA62D0' }
+districts['us-ga-valdosta']          = { name: 'Valdosta',          manager: '0xEd25a52D5768519A50F03f1996E7239b90194C1A' }
 
 // US | Hawaii (HI)
 districts['us-id-honolulu'] = { name: 'Honolulu', manager: '0x67DafF4DF11c6a6036b3FE90FcF989ffFC57299f' }
@@ -162,13 +172,33 @@ districts['us-nj-south-jersey']   = { name: 'South Jersey',   manager: '0xE2b464
 // US | New Mexico (NM)
 districts['us-nm-albuquerque'] = { name: 'Albuquerque', manager: '0xc413B604383ef221f1dc12C7ff7313Ff51a7f170' }
 
-// US | New York (NY)
-districts['us-ny-bronx']       = { name: 'Bronx',       manager: '0xBF9438FfeaA029CE75B5aE620bbAdA0e84aE9130' }
-districts['us-ny-brooklyn']    = { name: 'Brooklyn',    manager: '0x88433F5948505605aCeC2659F3b6Ec2f2eAF13eD' }
-districts['us-ny-long-island'] = { name: 'Long Island', manager: '0x5449443C3E1a049aCcb9D072C36E072c441d70aD' }
-districts['us-ny-manhattan']   = { name: 'Manhattan',   manager: '0x19dEab20C9358784045423bA7fDd0Ad59d650c96' }
-districts['us-ny-queens']      = { name: 'Queens',      manager: '0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6' }
-districts['us-ny-westchester'] = { name: 'Westchester', manager: '0x3E50cCc8ed4235E69Cb59014da0452B173e8e614' }
+// US | New York (NY) ✓
+districts['us-ny-albany']        = { name: 'Albany',        manager: '0xa5716DeCFa5ded6415DC0E374b2fE1B0b1731961' }
+districts['us-ny-binghamton']    = { name: 'Binghamton',    manager: '0xbC0130E4E4bd69C77e2A61333757d1C5e7F785a7' }
+districts['us-ny-bronx']         = { name: 'Bronx',         manager: '0xBF9438FfeaA029CE75B5aE620bbAdA0e84aE9130' }
+districts['us-ny-brooklyn']      = { name: 'Brooklyn',      manager: '0x88433F5948505605aCeC2659F3b6Ec2f2eAF13eD' }
+districts['us-ny-buffalo']       = { name: 'Buffalo',       manager: '0xBe808E06aFD7014cF39c5E5E4af68462c045055F' }
+districts['us-ny-catskills']     = { name: 'Catskills',     manager: '0xc4622B7CaD117b68Af994861623a7d234A961784' }
+districts['us-ny-chautauqua']    = { name: 'Chautauqua',    manager: '0x6541Df8f5801Df45Dc87C6737bEe55Ed325f78A3' }
+districts['us-ny-elmira']        = { name: 'Elmira',        manager: '0x4C29954b0D62e77414faed1D119b2A3F943F7501' }
+districts['us-ny-fairfield']     = { name: 'Fairfield',     manager: '0x74B618B04595A19192C40b8A53D544E8d2979469' }
+districts['us-ny-finger-lakes']  = { name: 'Finger Lakes',  manager: '0x9D787684aA990Ef8cda3161e3B10412FdEbaB72A' }
+districts['us-ny-glens-falls']   = { name: 'Glens Falls',   manager: '0x162F2C20cf64a28829E99109D78fAd89F7c6C262' }
+districts['us-ny-hudson-valley'] = { name: 'Hudson Valley', manager: '0x5Eb2678DD04F0e8Bb4d0F690dDC8fF1A3e3BD99c' }
+districts['us-ny-ithaca']        = { name: 'Ithaca',        manager: '0xF428CfecAE94740cAd314F51FB68A5846d2e20C7' }
+districts['us-ny-long-island']   = { name: 'Long Island',   manager: '0x5449443C3E1a049aCcb9D072C36E072c441d70aD' }
+districts['us-ny-manhattan']     = { name: 'Manhattan',     manager: '0x19dEab20C9358784045423bA7fDd0Ad59d650c96' }
+districts['us-ny-oneonta']       = { name: 'Oneonta',       manager: '0x0916B8e80d12a8D461DD4FB13d1c670fa9513EBd' }
+districts['us-ny-plattsburgh']   = { name: 'Plattsburgh',   manager: '0xfc81D72049372822064C36A1e2d3F072415fFc16' }
+districts['us-ny-potsdam']       = { name: 'Potsdam',       manager: '0x344b9B232B6cC099354cdC23C2CB7D9abbaBB10a' }
+districts['us-ny-queens']        = { name: 'Queens',        manager: '0xD7cBB037dD33b0CA53aF77d7704CA886082F2AD6' }
+districts['us-ny-rochester']     = { name: 'Rochester',     manager: '0x59e752f998A59D6Bc0A976c582C68354db84cd32' }
+districts['us-ny-staten-island'] = { name: 'Staten Island', manager: '0x4279aF30883787DB66ce7950403C7b4A6e18C6E9' }
+districts['us-ny-syracuse']      = { name: 'Syracuse',      manager: '0x59F63EEDb0FD66fd2DdF13D516490e9A649E8c5D' }
+districts['us-ny-twin-tiers']    = { name: 'Twin Tiers',    manager: '0xaC550eb35E067D4b91dF0C68862B273d33869b55' }
+districts['us-ny-utica']         = { name: 'Utica',         manager: '0x5216CEC5039faf77825834f21Fe941a82E0D862d' }
+districts['us-ny-watertown']     = { name: 'Watertown',     manager: '0x5E14e1DE2B354757312c3b8FDCEE43b8aBbd56e7' }
+districts['us-ny-westchester']   = { name: 'Westchester',   manager: '0x3E50cCc8ed4235E69Cb59014da0452B173e8e614' }
 
 // US | North Carolina (NC)
 districts['us-nc-charlotte'] = { name: 'Charlotte', manager: '0x647d2D92b3CBD94c170Cd59e01A7E7c115e1aEA5' }

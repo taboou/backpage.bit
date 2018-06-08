@@ -38,9 +38,12 @@ class TabooStore {
     /* Initialize the deposit account (used for buying coins). */
     @observable depositAccount = ''
 
+    /* Initialize gold balance. */
+    @observable gold = 0
+
 	// @observable posts = ['come by tonight', 'new provider']
-    @observable postTitle = 'Sample Title'
-    @observable postBody = 'sample post body'
+    // @observable postTitle = 'Sample Title'
+    // @observable postBody = 'sample post body'
 	@observable searchFilter = ''
 	@observable errorMsg = ''
 
@@ -53,13 +56,13 @@ class TabooStore {
 		provider     : 'https://ropsten.infura.io/',	// mainnet.infura.io
 		networkId    : null,
 		accounts     : [null],        // NOTE: static page render problem w/out `[null]`
-		balance      : ''
+		balance      : null
 	}
 
     @observable btc = {
         lastBlockNum : 'loading...',
 		accounts     : [null],        // NOTE: static page render problem w/out `[null]`
-		balance      : ''
+		balance      : null
     }
 
     @observable provider = {
@@ -76,17 +79,36 @@ class TabooStore {
     /* Set global prvodier object (especially for blockchain requests). */
     provider = Ethers.providers.getDefaultProvider(this.eth.network)
 
+	@computed get weiBalance() {
+		/* Retrieve the balance. */
+		let balance = this.eth.balance
+
+		return balance
+	}
+
 	@computed get ethBalance() {
+        /* Validate ether balance. */
+        if (!this.eth.balance)
+            return null
+
 		/* Retrieve the balance. */
 		let balance = this.eth.balance
 
 		/* Convert balance to Wei. */
-		balance = this.web3.utils.fromWei(balance, 'ether')
+		balance = this.ethers.utils.formatEther(balance)
 
 		/* Format to 6 decimals. */
 		balance = parseFloat(balance).toFixed(6)
 
-		return balance
+		return parseFloat(balance)
+	}
+
+	@computed get goldBalance() {
+        /* Validate gold balance. */
+        if (!this.gold)
+            return null
+
+        return parseFloat((this.gold / 1000000).toFixed(2))
 	}
 
 	@computed get networkName() {
@@ -100,39 +122,44 @@ class TabooStore {
         }
 	}
 
-
-    /* A formatted address display for the active Ethereum account. */
-    // FIXME How do we abbreviate this code block???
+    /* Account address formatted for display purposes. */
     get addressDisplay() {
         /* Import the component. */
-        const _addressDisplay = require('./store/addressDisplay').default
+        const _component = require('./store/addressDisplay').default
 
-        /* Return the component. */
-        return _addressDisplay.bind(this)()
+        /* Assign context then return the "executed" component. */
+        return _component.bind(this)()
     }
 
-    /**
-     * Retrieves the district's id (slug) from the url.
-     *
-     * @notice A helper function to parse out the post id from the url.
-     *
-     * @dev TODO Handle this using ReactJs native router function.
-     */
+    /* Shorter account address formatted for display purposes. */
+    get addressShortDisplay() {
+        /* Import the component. */
+        const _component = require('./store/addressShortDisplay').default
+
+        /* Assign context then return the "executed" component. */
+        return _component.bind(this)()
+    }
+
+    /* Determines the loaded district based on the browser's url. */
     get loadedDistrict() {
-        /* Retrieve the current url. */
-        const currentUrl = window.location.href
+        /* Import the component. */
+        const _component = require('./store/loadedDistrict').default
 
-        /* Retrieve the postid as the last argument of the url. */
-        const postId = currentUrl.split('/').pop()
-
-        /* Update the store's active district. */
-        this.activeDistrict = postId
-
-        return postId
+        /* Assign context then return the "executed" component. */
+        return _component.bind(this)()
     }
 
+    /* District manager ABI. */
     get districtManagerAbi() {
-        return [{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"districtId","type":"address"},{"indexed":true,"name":"owner","type":"address"},{"indexed":false,"name":"postId","type":"bytes32"},{"indexed":false,"name":"post","type":"string"}],"name":"TabooSocialPost","type":"event"},{"constant":false,"inputs":[],"name":"acceptOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"},{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_post","type":"string"}],"name":"addPost","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenAddress","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferAnyERC20Token","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_tabooDb","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"constant":true,"inputs":[],"name":"child","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"coinBalanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minBudget","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"minRent","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"newOwner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"parent","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pctBudgetIncrease","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"taxRate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}]
+        return require('./store/abiDistrictManager').default
+    }
+
+    get goldMineAbi() {
+        return require('./store/abiGoldMine').default
+    }
+
+    get tabooGoldAbi() {
+        return require('./store/abiTabooGold').default
     }
 
     set addPost(_post) {
@@ -153,6 +180,34 @@ class TabooStore {
     agreeToDisclaimer = require('./store/agreeToDisclaimer').default
     denyDisclaimer    = require('./store/denyDisclaimer').default
     hashDataUrl       = require('./store/hashDataUrl').default
+
+    async loadGoldBalance() {
+        /* Localize this. */
+        const self = this
+
+        /* Initialize Taboo Gold address. */
+        const account = '0x2B758418542D30B0B16247c5D96df9b5864C86EA'
+
+        /* Initialize provider. */
+        const provider = this.ethers.providers.getDefaultProvider('ropsten')
+
+        /* Initialize contract. */
+        const contract = new this.ethers.Contract(
+            account, this.tabooGoldAbi, provider)
+
+        /* Retrieve current account address. */
+        const address = this.eth.accounts[0].address
+
+        console.log('Contract loaded', address, contract)
+
+        var callPromise = contract.balanceOf(address)
+            .then(function (balance) {
+                console.log('balance', balance.toString())
+
+                /* Update the gold balance. */
+                self.gold = balance.toNumber()
+            })
+    }
 
     async loadProvider() {
         const Web3 = require('web3')

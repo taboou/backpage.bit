@@ -7,7 +7,7 @@
  *             3. Other 3rd-party service verification
  */
 export default function (_email, _password, _hash) {
-console.log('Signing in with', _email, _password, _hash)
+// console.log('Signing in with', _email, _password, _hash)
 
     /* Generate a new private key from the user's email, password and/or hash. */
     const privateKey = this.web3.utils.soliditySha3(_email, _password, _hash)

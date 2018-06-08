@@ -45,6 +45,18 @@ export default class NewPost extends React.Component {
         // if (!this.store.hasAgreedToDisclaimer)
         //     return <Disclaimer store={ this.store } />
 
+        /* Retrieve the available accounts. */
+        const { accounts } = this.store.eth
+
+        /* Verify available accounts. */
+        if (accounts[0] === null) {
+            /* Set authorization redirect target. */
+            this.store.authRedirect = '/new-post'
+
+            /* Redirect to sign in screen. */
+            return <Redirect to="/signin" />
+        }
+
         return <div class="container-fluid">
             <h2>
                 Post in <NavLink to={ '/district/' + this.store.activeDistrict }>{ this.districtName }</NavLink>
@@ -204,13 +216,6 @@ export default class NewPost extends React.Component {
     componentDidMount() {
         /* Localize this. */
         const self = this
-
-        /* Retrieve the available accounts. */
-        const { accounts } = this.store.eth
-
-        /* Verify available accounts. */
-        if (accounts[0] === null)
-            return <Redirect to="/signin" />
 
         const url = 'https://api.imgur.com/3/image'
 

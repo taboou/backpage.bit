@@ -25,8 +25,7 @@ export default class CoinsDime extends React.Component {
             orderId: '',
             depositAccount: '',
             depositAmount: 0.0,
-            withdrawalAmount: 0.0,
-            expiration: 0
+            withdrawalAmount: 0.0
         }
     }
 
@@ -35,8 +34,13 @@ export default class CoinsDime extends React.Component {
         const { accounts } = this.store.eth
 
         /* Request a new deposit account. */
-        if (accounts[0] === null)
+        if (accounts[0] === null) {
+            /* Set authorization redirect target. */
+            this.store.authRedirect = '/coins-dime'
+
+            /* Redirect to sign in screen. */
             return <Redirect to="/signin" />
+        }
 
         return <div class="container-fluid">
             <div class="row">
@@ -50,9 +54,7 @@ export default class CoinsDime extends React.Component {
                     </NavLink>
 
                     <div>
-                        Deposit Amount: { this.state.depositAmount }<br/>
-                        Withdrawal Amount: { this.state.withdrawalAmount }<br/>
-                        Expiration: { this.state.expiration }
+                        Deposit Amount: { this.state.depositAmount }
                     </div>
                 </div>
 
@@ -86,7 +88,7 @@ export default class CoinsDime extends React.Component {
         const self = this
 
         /* Initialize endpoint. */
-        let endpoint = 'https://cors.shapeshift.io/sendamount'
+        let endpoint = 'https://cors.shapeshift.io/shift'
 
         /* Initialize trading pair. */
         const pair = 'btc_eth'
@@ -97,68 +99,110 @@ export default class CoinsDime extends React.Component {
         /* Initialize withdrawal address. */
         const withdrawal = self.store.eth.accounts[0].address
 
+        /* Initilize purchase amount. */
+        const purchaseAmount = 10
+
         /* Send api request. */
         request
             .post(endpoint)
-            .send({ pair, depositAmount, withdrawal })
+            .send({ pair, withdrawal })
             .end((err, res) => {
-console.log('Shapeshift success', res.body.success)
+console.log('Shapeshift', res.body)
                 /* Check for jurisdiction restriction. */
                 if (err || (res && res.status === 403)) {
                     if (err) console.error(err)
 
                     /* Reset endpoint. */
-                    endpoint = 'https://api.taboou.com/v1/shapeshift/sendamount/'
+                    endpoint = 'https://api.taboou.com/v1/shapeshift/shift/'
 
                     /* Request api send details. */
                     request
                         .post(endpoint)
-                        .send({ pair, depositAmount, withdrawal })
+                        .send({ pair, withdrawal })
                         .end((err, res2) => {
                             /* Display error, then continue. */
                             if (err) console.error(err)
 
                             /* Retrieve the order id. */
-                            const orderId = res2.body.success.orderId
+                            const orderId = res2.body.orderId
 
                             /* Retrieve the deposit account (address). */
-                            const depositAccount = res2.body.success.deposit
+                            const depositAccount = res2.body.deposit
 
                             /* Retrieve the withdrawal amount. */
-                            const withdrawalAmount = res2.body.success.withdrawalAmount
-
-                            /* Retrieve the expiration. */
-                            const expiration = res2.body.success.expiration
+                            const withdrawalAmount = res2.body.withdrawalAmount
 
                             /* Update the state. */
                             self.setState({
                                 orderId,
                                 depositAccount,
-                                withdrawalAmount,
-                                expiration
+                                withdrawalAmount
+                            }, () => {
+                                /* Send order request to the API server. */
+                                self._createOrder(depositAccount, orderId, purchaseAmount)
                             })
                         })
                 } else {
                     /* Retrieve the order id. */
-                    const orderId = res.body.success.orderId
+                    const orderId = res.body.orderId
 
                     /* Retrieve the deposit account (address). */
-                    const depositAccount = res.body.success.deposit
+                    const depositAccount = res.body.deposit
 
                     /* Retrieve the withdrawal amount. */
-                    const withdrawalAmount = res.body.success.withdrawalAmount
-
-                    /* Retrieve the expiration. */
-                    const expiration = res.body.success.expiration
+                    const withdrawalAmount = res.body.withdrawalAmount
 
                     /* Update the state. */
                     self.setState({
                         orderId,
                         depositAccount,
-                        withdrawalAmount,
-                        expiration
+                        withdrawalAmount
+                    }, () => {
+                        /* Send order request to the API server. */
+                        self._createOrder(depositAccount, orderId, purchaseAmount)
                     })
                 }
+            })
+    }
+
+    _createOrder(paymentAccount, xchgOrderId, amount) {
+        /* Localize this. */
+        const self = this
+
+        /* Initialize moment module. */
+        const moment = require('moment')
+
+        /* Retrieve private key from active account. */
+        const privateKey = this.store.eth.accounts[0].privateKey
+
+        /* Initizlize the wallet. */
+        const wallet = new this.store.ethers.Wallet(privateKey)
+
+        /* Generate timestamp (in milliseconds). */
+        const nonce = moment().valueOf()
+
+        /* Create message for signing. */
+        const msgForSigning = 'auth.for.taboou.api.v1.' + nonce
+
+        /* Create signed message. */
+        const signed = wallet.signMessage(msgForSigning)
+
+        /* Initilize authorization signature. */
+        const auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
+
+        /* Initialize endpoint. */
+        let endpoint = 'https://api.taboou.com/v1/coins/'
+
+        /* Send api request. */
+        request
+            .post(endpoint)
+            .send({ paymentAccount, xchgOrderId, amount })
+            .set('Authorization', auth)
+            .set('accept', 'json')
+            .end((err, res) => {
+                if (err) return console.error(err)
+
+                console.log('Coins API Response', res)
             })
     }
 
@@ -170,7 +214,7 @@ console.log('Shapeshift success', res.body.success)
         const ccxt = require('ccxt')
 
         /* Initialize CoinMarketCap exchange. */
-        const cmc = new ccxt.coinmarketcap
+        const cmc = new ccxt.coinmarketcap()
 
         /* Initialize markets. */
         const markets = await cmc.loadMarkets()

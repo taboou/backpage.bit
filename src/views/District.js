@@ -144,10 +144,6 @@ export default class District extends React.Component {
 
         /* Initialize listener for log events. */
         contract.ontaboosocialpost = (_districtId, _owner, _postId, _post) => {
-// console.log('owner  : ', _owner)
-// console.log('postId : ', _postId)
-// console.log('post   : ', _post)
-
             try {
                 /* Parse the JSON data. */
                 const post = JSON.parse(_post)

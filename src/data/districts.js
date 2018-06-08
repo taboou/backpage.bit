@@ -7,6 +7,9 @@
  */
 const districts = {}
 
+// FOR DEVELOPMENT PURPOSES ONLY
+districts['dev'] = { name: 'Development', manager: '0x4AaB2AB2Ed0558A4e829f815EbA530c2DD8eAA7f' }
+
 // US | Alabama (AL)
 districts['us-al-auburn']     = { name: 'Auburn',     manager: '0x64991997308EE37F299fFB02509Ea1027Ae2Ce53' }
 districts['us-al-birmingham'] = { name: 'Birmingham', manager: '0x55178d57eec0476b9A6cBbfeB1E80e082dA2fCEa' }

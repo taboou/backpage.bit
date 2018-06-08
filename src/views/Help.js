@@ -54,6 +54,16 @@ export default class Help extends React.Component {
                 </div>
             </div>
 
+            <div class="row align-items-center" style={ styles.helpSection }>
+                <div class="col-4 text-right">
+                    Email
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-primary" href="mailto:support@taboou.com">
+                        support@taboou.com</a>
+                </div>
+            </div>
+
             <hr />
 
             <h5>
@@ -140,6 +150,12 @@ export default class Help extends React.Component {
             <div class="text-right">
                 <NavLink to="/status"><button class="btn btn-sm text-muted">
                     Status Page <em>(for support use only)</em>
+                </button></NavLink>
+            </div>
+
+            <div class="text-right">
+                <NavLink to="/district/dev"><button class="btn btn-sm text-muted">
+                    District Dev <em>(for dev use only)</em>
                 </button></NavLink>
             </div>
         </div>

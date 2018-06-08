@@ -23,15 +23,19 @@ export default class SignInScreen extends React.Component {
         this.fileHash = ''
 
         this.state = {
-            hashAuth : false
+            hashAuth : false,
+            authRedirect: this.store.authRedirect
         }
     }
 
     render() {
-        if (this.state.hasAuth && this.store.activeDistrict)
-            return <Redirect to={ '/new-post' } />
-            // return <Redirect to={ '/district/' + this.store.activeDistrict } />
-        else if (this.state.hasAuth)
+console.log(this.state.hasAuth, this.state.authRedirect);
+        /* Check for a redirect target. */
+        if (this.state.hasAuth && this.state.authRedirect)
+            return <Redirect to={ this.state.authRedirect } />
+
+        /* Check for authorization and redirect to home. */
+        if (this.state.hasAuth)
             return <Redirect to={ '/' } />
 
         return <div class="container-fluid">
@@ -99,7 +103,10 @@ export default class SignInScreen extends React.Component {
             document.getElementById('inputPassword').value,
             this.fileHash)
 
-        this.setState({ hasAuth : true })
+        /* Clear the target. */
+        this.store.authRedirect = ''
+
+        this.setState({ hasAuth: true })
     }
 
     /* User denies to the disclaimer. */

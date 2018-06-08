@@ -129,14 +129,11 @@ class TabooStore {
         /* Initialize moment module. */
         const moment = require('moment')
 
-        /* Initialize default provider. */
-        const provider = this.ethers.providers.getDefaultProvider('ropsten')
-
         /* Retrieve private key from active account. */
         const privateKey = this.eth.accounts[0].privateKey
 // console.log('privateKey', privateKey)
 
-        const wallet = new this.ethers.Wallet(privateKey, provider)
+        const wallet = new this.ethers.Wallet(privateKey)
 // console.log('wallet', wallet)
 
         /* Generate timestamp (in milliseconds). */
@@ -151,14 +148,14 @@ class TabooStore {
         const signed = wallet.signMessage(msgForSigning)
 // console.log('signed', signed)
 
+        /* Initilize authorization signature. */
+        const auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
+
         /* Initialize superagent request. */
         const request = require('superagent')
 
         /* Initialize api endpoint. */
         const endpoint = 'https://api.taboou.com/v1/posts/'
-
-        /* Initilize authorization signature. */
-        const auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
 
         /* Add the current district manager to the request. */
         _post.dm = districts[this.activeDistrict].manager

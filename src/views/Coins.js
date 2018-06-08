@@ -218,7 +218,7 @@ console.log('New Order for %s pak valued @ %s BTC', _pak.toUpperCase(), depositA
         const ccxt = require('ccxt')
 
         /* Initialize CoinMarketCap exchange. */
-        const cmc = new ccxt.coinmarketcap
+        const cmc = new ccxt.coinmarketcap()
 
         /* Initialize markets. */
         const markets = await cmc.loadMarkets()

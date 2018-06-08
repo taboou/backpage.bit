@@ -53,23 +53,12 @@ export default class Header extends React.Component {
         if (this.store.eth.accounts[0])
             return <div style={ (deviceWidth <= 480) ? styles.accountAddr_480 : styles.accountAddr }>
                 You are signed in. [ <NavLink to="/signout">sign out</NavLink> ]<br />
-            <NavLink to="/account">{ this.accountDisplay() }</NavLink>
+            <NavLink to="/account">{ this.store.addressDisplay }</NavLink>
             </div>
         else
             return <div style={ (deviceWidth <= 480) ? styles.accountLinks_480 : styles.accountLinks }>
                 <NavLink to="/signin"><button class="btn btn-light btn-sm">Sign in to your account</button></NavLink>
             </div>
-    }
-
-    accountDisplay() {
-        /* Retrieve the account. */
-        const account = this.store.eth.accounts[0].address
-
-        /* Validate anonymous (default) account. */
-        if (account == '0xaCADc1e8515774C42615f3085e0C06283aFa7E72')
-            return 'Anonymous Guest'
-        else
-            return account
     }
 }
 

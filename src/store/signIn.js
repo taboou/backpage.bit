@@ -6,7 +6,7 @@
  *             2. ID verification
  *             3. Other 3rd-party service verification
  */
-export default function(_email, _password, _hash) {
+export default function (_email, _password, _hash) {
 console.log('Signing in with', _email, _password, _hash)
 
     /* Generate a new private key from the user's email, password and/or hash. */

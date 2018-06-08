@@ -6,7 +6,7 @@
  * @dev Uses the `Web3` library to communicate with the blockchain.
  *      Use http://web3js.readthedocs.io/en/1.0/index.html as a reference.
  */
-export default async function() {
+export default async function () {
     console.info('Now loading the network status...')
 
     /* Initialize Web3 library. */

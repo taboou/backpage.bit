@@ -29,7 +29,6 @@ export default class SignInScreen extends React.Component {
     }
 
     render() {
-console.log(this.state.hasAuth, this.state.authRedirect);
         /* Check for a redirect target. */
         if (this.state.hasAuth && this.state.authRedirect)
             return <Redirect to={ this.state.authRedirect } />

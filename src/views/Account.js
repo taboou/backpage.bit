@@ -2,6 +2,11 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
+import {
+    NavLink,
+    Redirect
+} from 'react-router-dom'
+
 @observer
 export default class Account extends React.Component {
     constructor(props) {
@@ -15,9 +20,18 @@ export default class Account extends React.Component {
     }
 
     render() {
-        /* Retrieve the current account. */
+        /* Retrieve crypto accounts. */
         const ethAccount = this.store.eth.accounts[0]
         const btcAccount = this.store.btc.accounts[0]
+
+        /* Request a new deposit account. */
+        if (ethAccount === null || btcAccount === null) {
+            /* Set authorization redirect target. */
+            this.store.authRedirect = '/account'
+
+            /* Redirect to sign in screen. */
+            return <Redirect to="/signin" />
+        }
 
         /* Initialize address. */
         let ethAddress = null

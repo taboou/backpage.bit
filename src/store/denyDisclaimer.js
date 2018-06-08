@@ -6,7 +6,7 @@
  *             2. ID verification
  *             3. Other 3rd-party service verification
  */
-export default function() {
+export default function () {
     /* Toggle denied for boolean. */
     this.hasAgreedToDisclaimer = false
 

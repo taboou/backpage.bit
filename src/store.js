@@ -6,7 +6,6 @@ import Web3 from 'web3'
 import districts from './data/districts'
 
 class TabooStore {
-
     /* Constructor. */
     constructor() {
         /* Load and set the current network status. */
@@ -101,6 +100,17 @@ class TabooStore {
         }
 	}
 
+
+    /* A formatted address display for the active Ethereum account. */
+    // FIXME How do we abbreviate this code block???
+    get addressDisplay() {
+        /* Import the component. */
+        const _addressDisplay = require('./store/addressDisplay').default
+
+        /* Return the component. */
+        return _addressDisplay.bind(this)()
+    }
+
     /**
      * Retrieves the district's id (slug) from the url.
      *
@@ -126,67 +136,17 @@ class TabooStore {
     }
 
     set addPost(_post) {
-        /* Initialize moment module. */
-        const moment = require('moment')
+        /* Import the component. */
+        const _addPost = require('./store/addPost').default
 
-        /* Retrieve private key from active account. */
-        const privateKey = this.eth.accounts[0].privateKey
-// console.log('privateKey', privateKey)
-
-        const wallet = new this.ethers.Wallet(privateKey)
-// console.log('wallet', wallet)
-
-        /* Generate timestamp (in milliseconds). */
-        const nonce = moment().valueOf()
-// console.log('nonce', nonce)
-
-        /* Create message for signing. */
-        const msgForSigning = 'auth.for.taboou.api.v1.' + nonce
-// console.log('msg to be signed ->', msgForSigning)
-
-        /* Create signed message. */
-        const signed = wallet.signMessage(msgForSigning)
-// console.log('signed', signed)
-
-        /* Initilize authorization signature. */
-        const auth = `TABOO-TOKEN Signature=${signed}, Nonce=${nonce}`
-
-        /* Initialize superagent request. */
-        const request = require('superagent')
-
-        /* Initialize api endpoint. */
-        const endpoint = 'https://api.taboou.com/v1/posts/'
+        /* Retrieve the district manager. */
+        const districtManager = districts[this.activeDistrict].manager
 
         /* Add the current district manager to the request. */
-        _post.dm = districts[this.activeDistrict].manager
+        _post.dm = districtManager
 
-        /* Upload base64 data to imgur (anonymously). */
-        request
-            .post(endpoint)
-            .send(_post)
-            .set('Authorization', auth)
-            .set('accept', 'json')
-            .end((err, res) => {
-                if (err) console.error(err)
-
-// console.log('res.body', res.body)
-                if (res.body && res.body.errorMsg) {
-                    /* Retrieve the error message. */
-                    const errorMsg = res.body.errorMsg
-
-                    /* Update the error message. */
-                    this.errorMsg = errorMsg
-
-                    /* Alert the user of the error. */
-                    $('#modalRateLimit').modal()
-                } else {
-                    /* Retrieve the active district url. */
-                    const target = `#/district/${this.activeDistrict}`
-
-                    /* Redirect to district page. */
-                    document.location = target
-                }
-            })
+        /* Return the component. */
+        return _addPost.bind(this)(_post)
 	}
 
     signIn            = require('./store/signIn').default
@@ -254,6 +214,8 @@ console.log('[ %s ] %s', provider.name, JSON.stringify(provider))
 
 }
 
+/* Create a new store. */
 const store = window.store = new TabooStore
 
+/* Export the default store. */
 export default store

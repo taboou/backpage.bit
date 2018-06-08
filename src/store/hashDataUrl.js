@@ -1,5 +1,5 @@
 /* Hash a data url to solidity sha3. */
-export default function(dataUrl) {
+export default function (dataUrl) {
     /* Extract base64 data. */
     const base64Data = dataUrl.split(',')[1]
 // console.log('base64Data', base64Data)

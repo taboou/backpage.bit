@@ -22,14 +22,14 @@ export default class Header extends React.Component {
         const deviceWidth = this.store.device.width
 
         return <div id="container" style={ styles.container }>
-      		<div class="row">
-	      		<div class="col-6 justify-content-center align-self-center" style={ styles.logo }>
+      		<div class="row align-items-center">
+	      		<div class="col-6 mt-1 ml-3">
 		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="images/logo0bit.png" />
-                    <div>{ this.accountLinks(deviceWidth) }</div>
+                    <div class="mt-1">{ this.accountLinks(deviceWidth) }</div>
 	      		</div>
 
 	      		<div class="col-5 text-right" style={ styles.navLinks }>
-                    <div style={ styles.buttons }>
+                    <div class="mt-1">
                         <NavLink to="/">
                             <button type="submit" class="btn btn-outline-info">
                                 Home <FontAwesome name='home' />
@@ -37,7 +37,7 @@ export default class Header extends React.Component {
                         </NavLink>
                     </div>
 
-                    <div style={ styles.buttons }>
+                    <div class="mt-1">
                         <NavLink to="/new-post">
                             <button type="submit" class="btn btn-outline-secondary">
                                 Post ad <FontAwesome name='bullhorn' />
@@ -52,7 +52,7 @@ export default class Header extends React.Component {
     accountLinks(deviceWidth) {
         if (this.store.eth.accounts[0])
             return <div style={ (deviceWidth <= 480) ? styles.accountAddr_480 : styles.accountAddr }>
-                You are signed in. [ <NavLink to="/signout">sign out</NavLink> ]<br />
+                <small>You are signed in</small> [ <NavLink to="/signout">sign out</NavLink> ]<br />
             <NavLink to="/account">{ this.store.addressDisplay }</NavLink>
             </div>
         else
@@ -73,10 +73,6 @@ const styles = {
   		marginBottom  : '1em',
     	paddingBottom : '0.5em',
   	},
-  	logo: {
-  		marginTop  : '5px',
-  		marginLeft : '10px'
-  	},
     logoImg: {
         width: '265px'
     },
@@ -86,14 +82,11 @@ const styles = {
   	navLinks: {
     	fontSize: '1.2em'
   	},
-    buttons: {
-        marginTop: '5px'
-    },
     accountAddr: {
         fontSize: '0.8em'
     },
     accountAddr_480: {
-        fontSize: '0.55em'
+        fontSize: '0.75em'
     },
     accountLinks: {
         fontSize: '1.1em'

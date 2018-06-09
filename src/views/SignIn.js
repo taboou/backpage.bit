@@ -35,7 +35,7 @@ export default class SignInScreen extends React.Component {
 
         /* Check for authorization and redirect to home. */
         if (this.state.hasAuth)
-            return <Redirect to={ '/' } />
+            return <Redirect to={ '/account' } />
 
         return <div class="container-fluid">
             <h2>Sign In <span class="text-muted">or</span> Register</h2>

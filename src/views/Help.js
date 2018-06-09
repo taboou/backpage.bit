@@ -24,7 +24,7 @@ export default class Help extends React.Component {
                 Connect with us 24 hours a day on social media.
             </h5>
 
-            <div class="row align-items-center" style={ styles.helpSection }>
+            <div class="row align-items-center mt-3">
                 <div class="col-4 text-right">
                     Telegram
                 </div>
@@ -34,7 +34,7 @@ export default class Help extends React.Component {
                 </div>
             </div>
 
-            <div class="row align-items-center" style={ styles.helpSection }>
+            <div class="row align-items-center mt-3">
                 <div class="col-4 text-right">
                     Reddit
                 </div>
@@ -44,7 +44,7 @@ export default class Help extends React.Component {
                 </div>
             </div>
 
-            <div class="row align-items-center" style={ styles.helpSection }>
+            <div class="row align-items-center mt-3">
                 <div class="col-4 text-right">
                     Twitter
                 </div>
@@ -54,7 +54,7 @@ export default class Help extends React.Component {
                 </div>
             </div>
 
-            <div class="row align-items-center" style={ styles.helpSection }>
+            <div class="row align-items-center mt-3">
                 <div class="col-4 text-right">
                     Email
                 </div>
@@ -153,7 +153,7 @@ export default class Help extends React.Component {
                 </button></NavLink>
             </div>
 
-            <div class="text-right">
+            <div class="text-right mt-3">
                 <NavLink to="/district/dev"><button class="btn btn-sm text-muted">
                     District Dev <em>(for dev use only)</em>
                 </button></NavLink>
@@ -170,7 +170,4 @@ export default class Help extends React.Component {
 
 /* Initialize stylesheet. */
 const styles = {
-    helpSection: {
-        marginTop: '20px'
-    }
 }

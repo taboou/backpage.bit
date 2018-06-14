@@ -16,6 +16,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 import Home      from './views/Home'
+import BlogPost  from './views/BlogPost'
 import Coins     from './views/Coins'
 import CoinsDime from './views/CoinsDime'
 import District  from './views/District'
@@ -51,6 +52,10 @@ console.log('getConfirmation', message);
                 { /* Homepage */ }
                 <Route path   = "/" exact
                     component = { () => (<Home store={ this.store } />) }/>
+
+                { /* Blog Posts */ }
+                <Route path   = "/blog/:postId"
+                    component = { () => (<BlogPost store={ this.store } />) }/>
 
                 { /* Buy Coins */ }
                 <Route path   = "/coins"

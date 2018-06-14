@@ -24,6 +24,7 @@ export default class Header extends React.Component {
         return <div id="container" style={ styles.container }>
       		<div class="row align-items-center">
 	      		<div class="col-6 mt-1 ml-3">
+                    {/* TODO Move all images to IPFS */}
 		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="images/logo0bit.png" />
                     <div class="mt-1">{ this.accountLinks(deviceWidth) }</div>
 	      		</div>

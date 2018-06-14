@@ -19,6 +19,10 @@ export default class Account extends React.Component {
 
         /* Initialize default account settings. */
         this.accounts = []
+
+        this.state = {
+            accountType: 'guest'
+        }
     }
 
     render() {
@@ -94,7 +98,14 @@ export default class Account extends React.Component {
 
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="optAccountType" id="optGuestAccount" value="guest" checked />
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="optAccountType"
+                                            id="optGuestAccount"
+                                            value="guest"
+                                            onChange= { this._handleAccountType }
+                                            checked = { this.state.accountType === 'guest' } />
                                         <label class="form-check-label" for="optGuestAccount">
                                             Guest
                                         </label>
@@ -468,6 +479,10 @@ console.log('ethAddress', ethAddress)
 
         /* Load gold coin balance. */
         this.store.loadGoldBalance()
+    }
+
+    _handleAccountType (e) {
+        console.log('Account type change', e.currentTarget.value)
     }
 }
 

@@ -52,7 +52,7 @@ export default class BlogPost extends React.Component {
 
         switch(this.state.postId) {
             case 'golden-pen':
-                title = 'The Golden Pen'
+                title = 'A Golden Pen'
                 body = `
                     <div>
                         Welcome Sex Workers,<br>

@@ -32,7 +32,7 @@ export default class Footer extends React.Component {
 
                 <div class="row">
                     <div class="col text-center" style={ styles.copyright }>
-                        &copy; 2018 Backpage0.bit
+                        &copy; 2018 Backpage Zero, MDAO
                     </div>
                 </div>
 	      	</div>

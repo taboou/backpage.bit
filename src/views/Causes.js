@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
 
 @observer
-export default class Blank extends React.Component {
+export default class Causes extends React.Component {
     constructor(props) {
         super(props)
 
@@ -17,12 +17,17 @@ export default class Blank extends React.Component {
 
     render() {
         return <div class="container-fluid">
-            <h2>Blank View</h2>
+            <h2>Our Causes</h2>
 
-            <p>
-                Where would you like to go?<br />
-                <NavLink to="/">Take Me Home</NavLink>
+            <p class="lead">
+                There is just nothing like helping others.
             </p>
+
+            <div>
+                <ol>
+                    <li>coming soon...</li>
+                </ol>
+            </div>
         </div>
     }
 

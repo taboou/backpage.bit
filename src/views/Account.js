@@ -222,7 +222,9 @@ export default class Account extends React.Component {
 
                     <div class="row mt-3">
                         <div class="col-10 offset-1">
-                            <button class="btn btn-lg btn-block btn-warning">BUY GOLD</button>
+                            <NavLink to="/coins">
+                                <button class="btn btn-lg btn-block btn-warning">BUY GOLD</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -283,7 +285,9 @@ export default class Account extends React.Component {
 
                     <div class="row mt-3">
                         <div class="col-10 offset-1">
-                            <button class="btn btn-lg btn-block btn-secondary">BUY MΞTH</button>
+                            <NavLink to="/trade">
+                                <button class="btn btn-lg btn-block btn-secondary">BUY/SELL MΞTH</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
@@ -344,7 +348,9 @@ export default class Account extends React.Component {
 
                     <div class="row mt-3">
                         <div class="col-10 offset-1">
-                            <button class="btn btn-lg btn-block btn-success">BUY <FontAwesome name='btc'/>ITCOIN</button>
+                            <NavLink to="/trade">
+                                <button class="btn btn-lg btn-block btn-success">BUY/SELL <FontAwesome name='btc'/>ITCOIN</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>

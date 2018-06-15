@@ -35,20 +35,13 @@ export default class Header extends React.Component {
                     <div class="mt-1">
                         <div class="btn-group dropleft">
                             <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Menu <FontAwesome name='bars' />
+                                Menu &nbsp;<FontAwesome name='bars' />
                             </button>
 
                             <div class="dropdown-menu">
-                                <NavLink to="/coins" style={ styles.menuItem }>
-                                    <button class="dropdown-item text-warning" type="button">
-                                        <FontAwesome name='money' style={ styles.menuIcon } />
-                                        &nbsp;<strong><FontAwesome name='btc' />uy Gold Coins</strong>
-                                    </button>
-                                </NavLink>
-
-                                <NavLink to="/account" style={ styles.menuItem }>
+                                <NavLink to="/" style={ styles.menuItem }>
                                     <button class="dropdown-item" type="button">
-                                        <FontAwesome name='id-badge' style={ styles.menuIcon } /> My Account
+                                        <FontAwesome name='sitemap' style={ styles.menuIcon } /> Districts
                                     </button>
                                 </NavLink>
 
@@ -58,29 +51,37 @@ export default class Header extends React.Component {
                                     </button>
                                 </NavLink>
 
-                                <NavLink to="/msg" style={ styles.menuItem }>
+                                <NavLink to="/msgs" style={ styles.menuItem }>
                                     <button class="dropdown-item" type="button">
                                         <FontAwesome name='comments' style={ styles.menuIcon } /> Messaging
                                     </button>
                                 </NavLink>
 
+                                <NavLink to="/screener" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='exclamation-triangle' style={ styles.menuIcon } /> Screener
+                                    </button>
+                                </NavLink>
+
                                 <div class="dropdown-divider"></div>
 
-                                <NavLink to="/" style={ styles.menuItem }>
+                                <NavLink to="/coins" style={ styles.menuItem }>
                                     <button class="dropdown-item" type="button">
-                                        <FontAwesome name='home' style={ styles.menuIcon } /> Homepage
+                                        <strong><FontAwesome name='btc' />uy <span class="text-warning">Gold</span> Coins</strong>
+                                    </button>
+                                </NavLink>
+
+                                <div class="dropdown-divider"></div>
+
+                                <NavLink to="/account" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='id-card' style={ styles.menuIcon } /> My Account
                                     </button>
                                 </NavLink>
 
                                 <NavLink to="/favs" style={ styles.menuItem }>
                                     <button class="dropdown-item" type="button">
                                         <FontAwesome name='star' style={ styles.menuIcon } /> Favorites
-                                    </button>
-                                </NavLink>
-
-                                <NavLink to="/screen" style={ styles.menuItem }>
-                                    <button class="dropdown-item" type="button">
-                                        <FontAwesome name='exclamation-triangle' style={ styles.menuIcon } /> Client Screener
                                     </button>
                                 </NavLink>
 
@@ -96,7 +97,7 @@ export default class Header extends React.Component {
                     <div class="mt-1">
                         <NavLink to="/new-post">
                             <button type="submit" class="btn btn-outline-secondary">
-                                Post ad <FontAwesome name='bullhorn' />
+                                Post ad &nbsp;<FontAwesome name='bullhorn' />
                             </button>
                         </NavLink>
                     </div>
@@ -133,7 +134,7 @@ const styles = {
         width: '265px'
     },
     logoImgPhone: {
-        width: '225px'
+        width: '200px'
     },
   	navLinks: {
     	fontSize: '1.2em'

@@ -18,6 +18,7 @@ import Footer from './components/Footer'
 import Home      from './views/Home'
 import Account   from './views/Account'
 import BlogPost  from './views/BlogPost'
+import Causes    from './views/Causes'
 import Chat      from './views/Chat'
 import Coins     from './views/Coins'
 import CoinsDime from './views/CoinsDime'
@@ -30,12 +31,14 @@ import News      from './views/News'
 import NewsPost  from './views/NewsPost'
 import Privacy   from './views/Privacy'
 import Referral  from './views/Referral'
+import Rewards   from './views/Rewards'
 import Screener  from './views/Screener'
 import SignIn    from './views/SignIn'
 import SignOut   from './views/SignOut'
 import Spot      from './views/Spot'
 import Status    from './views/Status'
 import Terms     from './views/Terms'
+import Trade     from './views/Trade'
 
 @observer
 export default class App extends React.Component {
@@ -61,15 +64,21 @@ console.log('getConfirmation', message);
                 <Route path   = "/" exact
                     component = { () => (<Home store={ this.store } />) }/>
 
-                { /* Account Manager */ }
+                { /* Account Features */ }
                 <Route path   = "/account"
                     component = { () => (<Account store={ this.store } />) }/>
                 <Route path   = "/favs"
                     component = { () => (<Favs store={ this.store } />) }/>
+                <Route path   = "/spot/:account"
+                    component = { () => (<Spot store={ this.store } />) }/>
 
-                { /* Blog Posts */ }
+                { /* Content Pages */ }
                 <Route path   = "/blog/:postId"
                     component = { () => (<BlogPost store={ this.store } />) }/>
+                <Route path   = "/news"
+                    component = { () => (<News store={ this.store } />) }/>
+                <Route path   = "/news/:postId"
+                    component = { () => (<NewsPost store={ this.store } />) }/>
 
                 { /* Buy Coins */ }
                 <Route path   = "/coins"
@@ -77,51 +86,45 @@ console.log('getConfirmation', message);
                 <Route path   = "/coins-dime"
                     component = { () => (<CoinsDime store={ this.store } />) }/>
 
-                { /* Districts */ }
-                <Route path   = "/district/:districtId"
-                    component = { () => (<District store={ this.store } />) }/>
-
-                { /* Help & Support */ }
-                <Route path   = "/help"
-                    component = { () => (<Help store={ this.store } />) }/>
-                <Route path   = "/screen"
-                    component = { () => (<Screener store={ this.store } />) }/>
-
                 { /* Posts */ }
                 <Route path   = "/new-post"
                     component = { () => (<NewPost store={ this.store } />) }/>
+                <Route path   = "/district/:districtId"
+                    component = { () => (<District store={ this.store } />) }/>
 
-                { /* News Posts */ }
-                <Route path   = "/news"
-                    component = { () => (<News store={ this.store } />) }/>
-                <Route path   = "/news/:postId"
-                    component = { () => (<NewsPost store={ this.store } />) }/>
+                { /* Messaging */ }
+                <Route path   = "/msgs"
+                    component = { () => (<Messaging store={ this.store } />) }/>
+                <Route path   = "/chat"
+                    component = { () => (<Chat store={ this.store } />) }/>
 
-                { /* Privacy */ }
+                { /* Services */ }
+                <Route path   = "/screener"
+                    component = { () => (<Screener store={ this.store } />) }/>
+                <Route path   = "/trade"
+                    component = { () => (<Trade store={ this.store } />) }/>
+
+                { /* Resources */ }
+                <Route path   = "/causes"
+                    component = { () => (<Causes store={ this.store } />) }/>
+                <Route path   = "/help"
+                    component = { () => (<Help store={ this.store } />) }/>
                 <Route path   = "/privacy"
                     component = { () => (<Privacy store={ this.store } />) }/>
+                <Route path   = "/rewards"
+                    component = { () => (<Rewards store={ this.store } />) }/>
+                <Route path   = "/terms"
+                    component = { () => (<Terms store={ this.store } />) }/>
 
-                { /* Referral */ }
+                { /* Adminisration */ }
                 <Route path   = "/ref/:referralId"
                     component = { () => (<Referral store={ this.store } />) }/>
-
-                { /* User Authentication */ }
                 <Route path   = "/signin"
                     component = { () => (<SignIn store={ this.store } />) }/>
                 <Route path   = "/signout"
                     component = { () => (<SignOut store={ this.store } />) }/>
-
-                { /* Spots */ }
-                <Route path   = "/spot/:account"
-                    component = { () => (<Spot store={ this.store } />) }/>
-
-                { /* System Status */ }
                 <Route path   = "/status"
                     component = { () => (<Status store={ this.store } />) }/>
-
-                { /* Terms Of Use */ }
-                <Route path   = "/terms"
-                    component = { () => (<Terms store={ this.store } />) }/>
 
                 <Footer store={ this.store } />
             </div>

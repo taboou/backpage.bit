@@ -7,6 +7,8 @@ import {
     Redirect
 } from 'react-router-dom'
 
+import FontAwesome from 'react-fontawesome'
+
 import districts from '../data/districts'
 
 import { Post } from '../components'
@@ -67,8 +69,13 @@ export default class District extends React.Component {
                 <h2>{ this.districtName }</h2>
 
                 <div style={ styles.districtManager }>
-                    <a class="btn btn-info" style={ styles.districtManagerText } href={ 'https://ropsten.etherscan.io/address/' + this.districtManager } target="_blank">
-                    { this.districtManager }</a>
+                    <a class="btn btn-info"
+                        style={ styles.districtManagerText }
+                        href={ 'https://ropsten.etherscan.io/address/' + this.districtManager }
+                        target="_blank">
+                        { this.districtManager }
+                        &nbsp;<FontAwesome name='external-link' />
+                    </a>
                 </div>
 
                 { this._loadingPosts() }

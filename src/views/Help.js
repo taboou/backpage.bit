@@ -147,7 +147,13 @@ export default class Help extends React.Component {
 
             <hr />
 
-            <div class="text-right">
+            <div class="text-right mt-3">
+                <NavLink to="/trade"><button class="btn btn-sm text-muted">
+                    Trading Post <em>(restricted preview)</em>
+                </button></NavLink>
+            </div>
+
+            <div class="text-right mt-3">
                 <NavLink to="/status"><button class="btn btn-sm text-muted">
                     Status Page <em>(for support use only)</em>
                 </button></NavLink>

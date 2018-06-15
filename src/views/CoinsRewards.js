@@ -32,6 +32,8 @@ export default class CoinsRewards extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
     }
 }
 

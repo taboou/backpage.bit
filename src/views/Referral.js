@@ -5,7 +5,7 @@ import { observer } from 'mobx-react'
 import { NavLink } from 'react-router-dom'
 
 @observer
-export default class Blank extends React.Component {
+export default class Referrer extends React.Component {
     constructor(props) {
         super(props)
 
@@ -14,19 +14,21 @@ export default class Blank extends React.Component {
     }
 
     render() {
+        /* Retrieve the current url. */
+        const currentUrl = window.location.href
+
+        /* Retrieve the district id as the last argument of the url. */
+        const referralId = currentUrl.split('/').pop()
+        console.log('referralId', referralId)
+
         return <div class="container-fluid">
-            <h2>Blank View</h2>
+            <h2>{ referralId }</h2>
 
             <p>
                 Where would you like to go?<br />
                 <NavLink to="/">Take Me Home</NavLink>
             </p>
         </div>
-    }
-
-    componentDidMount() {
-        /* Scroll to top. */
-        $('html,body').scrollTop(0)
     }
 }
 

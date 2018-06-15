@@ -354,6 +354,9 @@ export default class Account extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         setTimeout(this._updateBalances, 2000)
     }
 

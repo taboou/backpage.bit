@@ -97,6 +97,9 @@ export default class District extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         /* Load the most recent posts. */
         if (this.districtManager)
             this._loadPosts()

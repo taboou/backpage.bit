@@ -214,6 +214,9 @@ export default class NewPost extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         /* Localize this. */
         const self = this
 

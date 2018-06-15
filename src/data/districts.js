@@ -8,7 +8,7 @@
 const districts = {}
 
 // FOR DEVELOPMENT PURPOSES ONLY
-districts['dev'] = { name: 'Development', manager: '0x4AaB2AB2Ed0558A4e829f815EbA530c2DD8eAA7f' }
+districts['dev'] = { name: 'Development', manager: '0x69a2f841313603F027986344eF5eca1bc560ae41' }
 
 // US | Alabama (AL)
 districts['us-al-auburn']     = { name: 'Auburn',     manager: '0x64991997308EE37F299fFB02509Ea1027Ae2Ce53' }

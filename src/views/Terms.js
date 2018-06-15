@@ -259,7 +259,7 @@ export default class Terms extends React.Component {
     }
 
     componentDidMount() {
-        const self = this
-
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
     }
 }

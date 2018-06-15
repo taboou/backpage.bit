@@ -149,6 +149,9 @@ export default class Coins extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         /* Update the spot price. */
         this._updateQuotes()
 

@@ -69,6 +69,9 @@ export default class CoinsDime extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         /* Retrieve the available accounts. */
         const { accounts } = this.store.eth
 

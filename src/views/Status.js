@@ -38,6 +38,11 @@ export default class Status extends React.Component {
             </div>
         </div>
     }
+
+    componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+    }
 }
 
 /* Initialize stylesheet. */

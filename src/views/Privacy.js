@@ -220,4 +220,9 @@ export default class Privacy extends React.Component {
             </ul>
         </div>
     }
+
+    componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+    }
 }

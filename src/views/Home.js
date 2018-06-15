@@ -2,6 +2,8 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 
+import { Redirect } from 'react-router-dom'
+
 import {
     US_Directory,
     CA_Directory,
@@ -19,9 +21,16 @@ export default class Home extends React.Component {
 
         /* Localize store to class object. */
         this.store = this.props.store
+
+        this.state = {
+            redirect: null
+        }
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={ this.state.redirect } />
+        }
         /* Retrieve the device width. */
         const deviceWidth = this.store.device.width
 
@@ -47,9 +56,38 @@ export default class Home extends React.Component {
         </div>
     }
 
-    loadRegion = (regionName) => {
-    	alert('loading ' + regionName + '...')
-    	// document.location = 'disclaimer.html'
+    componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
+        this._handleRedirection()
+    }
+
+    _handleRedirection() {
+        /* Retrieve the query string. */
+        let qs = window.location.href.slice(window.location.href.indexOf('?') + 1)
+        console.log('qs', qs)
+
+        /* Retrieve the action. */
+        if (qs.indexOf('&') > 0) {
+            let action = qs.split('&')[0]
+            console.log('action', action)
+
+            /* Initialize endpoint. */
+            const endpoint = action.slice(0, action.indexOf('-'))
+            console.log('endpoint', endpoint)
+
+            /* Initialize param. */
+            const param = action.slice(action.indexOf('-') + 1)
+            console.log('param', param)
+
+            /* Initialize redirect. */
+            const redirect = `/${endpoint}/${param}`
+            console.log('redirect', redirect)
+
+            /* Update state. */
+            this.setState({ redirect })
+        }
     }
 }
 

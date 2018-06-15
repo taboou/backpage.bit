@@ -162,8 +162,8 @@ export default class Help extends React.Component {
     }
 
     componentDidMount() {
-        /* Load the accont info from the blockchain. */
-        // this.loadNetworkStatus()
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
     }
 
 }

@@ -22,6 +22,9 @@ export default class BlogPost extends React.Component {
     }
 
     componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+
         /* Initialize post id. */
         this._initPostId()
     }
@@ -47,12 +50,9 @@ export default class BlogPost extends React.Component {
         /* Initialize post author. */
         let author = null
 
-        /* Initialize post date. */
-        let postedAt = null
-
         switch(this.state.postId) {
-            case 'golden-pen':
-                title = 'The Golden Pen'
+            case 'backpage-shutdown':
+                title = 'Backpage Shutdown'
                 body = `
                     <div>
                         Welcome Sex Workers,<br>
@@ -72,13 +72,11 @@ export default class BlogPost extends React.Component {
                         <em>, up to $1.00 per word.</em>
                     </div>
                 `
-                postedAt = 'Jun 01, 2018'
                 author = 'Londynn Lee'
                 break
             default:
                 title = 'Unknown'
                 body = '...'
-                postedAt = '...'
                 author = 'Anonymous'
         }
 
@@ -87,11 +85,7 @@ export default class BlogPost extends React.Component {
             <h2 dangerouslySetInnerHTML = {{ __html: title }} class="mb-0" />
 
             <footer class="blockquote-footer mt-0 mb-3 ml-1">
-                <small>
-                    { postedAt.toUpperCase() }
-                    &nbsp;/&nbsp;
-                    <NavLink to="/spot/LondynnLee">{ author.toUpperCase() }</NavLink>
-                </small>
+                author: { author }
             </footer>
 
             <div dangerouslySetInnerHTML = {{ __html: body }} />

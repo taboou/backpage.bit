@@ -95,6 +95,11 @@ export default class SignInScreen extends React.Component {
         </div>
     }
 
+    componentDidMount() {
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
+    }
+
     /* User agrees to the disclaimer. */
     signIn() {
         this.store.signIn(

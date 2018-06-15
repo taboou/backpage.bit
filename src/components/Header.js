@@ -25,17 +25,72 @@ export default class Header extends React.Component {
       		<div class="row align-items-center">
 	      		<div class="col-6 mt-1 ml-3">
                     {/* TODO Move all images to IPFS */}
-		          	<img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="images/logo0bit.png" />
+                    <NavLink to="/">
+		          	    <img style={ this.store.device.isPhone ? styles.logoImgPhone : styles.logoImg } src="images/logo0bit.png" />
+                    </NavLink>
                     <div class="mt-1">{ this.accountLinks(deviceWidth) }</div>
 	      		</div>
 
 	      		<div class="col-5 text-right" style={ styles.navLinks }>
                     <div class="mt-1">
-                        <NavLink to="/">
-                            <button type="submit" class="btn btn-outline-info">
-                                Home <FontAwesome name='home' />
+                        <div class="btn-group dropleft">
+                            <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menu <FontAwesome name='bars' />
                             </button>
-                        </NavLink>
+
+                            <div class="dropdown-menu">
+                                <NavLink to="/coins" style={ styles.menuItem }>
+                                    <button class="dropdown-item text-warning" type="button">
+                                        <FontAwesome name='money' style={ styles.menuIcon } />
+                                        &nbsp;<strong><FontAwesome name='btc' />uy Gold Coins</strong>
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/account" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='id-badge' style={ styles.menuIcon } /> My Account
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/news" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='calendar' style={ styles.menuIcon } /> Daily News
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/msg" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='comments' style={ styles.menuIcon } /> Messaging
+                                    </button>
+                                </NavLink>
+
+                                <div class="dropdown-divider"></div>
+
+                                <NavLink to="/" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='home' style={ styles.menuIcon } /> Homepage
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/favs" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='star' style={ styles.menuIcon } /> Favorites
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/screen" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='exclamation-triangle' style={ styles.menuIcon } /> Client Screener
+                                    </button>
+                                </NavLink>
+
+                                <NavLink to="/help" style={ styles.menuItem }>
+                                    <button class="dropdown-item" type="button">
+                                        <FontAwesome name='support' style={ styles.menuIcon } /> Need help?
+                                    </button>
+                                </NavLink>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mt-1">
@@ -95,5 +150,12 @@ const styles = {
     accountLinks_480: {
         fontSize: '0.7em',
         marginTop: '5px'
+    },
+    menuItem: {
+        textDecoration: 'none'
+    },
+    menuIcon: {
+        width: '25px',
+        textAlign: 'center'
     }
 }

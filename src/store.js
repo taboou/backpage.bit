@@ -42,8 +42,8 @@ class TabooStore {
     @observable gold = 0
 
 	// @observable posts = ['come by tonight', 'new provider']
-    // @observable postTitle = 'Sample Title'
-    // @observable postBody = 'sample post body'
+    @observable postTitle = ''
+    @observable postBody = ''
 	@observable searchFilter = ''
 	@observable errorMsg = ''
 

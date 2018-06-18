@@ -6,8 +6,10 @@ import { NavLink } from 'react-router-dom'
 
 import FontAwesome from 'react-fontawesome'
 
+import { Heading } from '../components'
+
 @observer
-export default class Blank extends React.Component {
+export default class Reviews extends React.Component {
     constructor(props) {
         super(props)
 
@@ -16,13 +18,18 @@ export default class Blank extends React.Component {
     }
 
     render() {
-        return <div>
-        	<h1>Blank Component</h1>
+        return <div class="container-fluid">
+            <Heading title={ 'Reviews' } />
+
+            <p>
+                Backpage Zero introduces the world's first decentralized review board.
+            </p>
         </div>
     }
 
     componentDidMount() {
-
+        /* Scroll to top. */
+        $('html,body').scrollTop(0)
     }
 }
 

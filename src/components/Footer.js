@@ -35,6 +35,11 @@ export default class Footer extends React.Component {
                         &copy; 2018 Backpage Zero, MDAO
                     </div>
                 </div>
+
+                <div class="text-center mt-0 mb-3">
+                    <a href="http://www.rtalabel.org/" target="_blank">
+                        <img src="https://i.imgur.com/NnqKpv0.png" /></a>
+                </div>
 	      	</div>
         )
     }

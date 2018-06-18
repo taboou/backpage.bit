@@ -4,6 +4,13 @@ import { observer } from 'mobx-react'
 
 import { NavLink } from 'react-router-dom'
 
+import FontAwesome from 'react-fontawesome'
+
+import {
+    Bootstrap,
+    Heading
+} from '../components'
+
 @observer
 export default class News extends React.Component {
     constructor(props) {
@@ -15,12 +22,34 @@ export default class News extends React.Component {
 
     render() {
         return <div class="container-fluid">
-            <h2>Daily News</h2>
+            <Heading title={ 'Daily News' } />
 
-            <p>
-                Where would you like to go?<br />
-                <NavLink to="/">Take Me Home</NavLink>
+            <p class="lead text-center">
+                Daily News is coming soon...
             </p>
+
+            <Bootstrap store={ this.store } />
+
+            <div>
+                <h5>Here is what's on the way...</h5>
+                
+                <ol class="list-unstyled ml-4">
+                    <li><FontAwesome name="check" /> Articles from your favorite providers</li>
+                    <li><FontAwesome name="check" /> Community events</li>
+                </ol>
+            </div>
+
+            <div>
+                <h5>Sample Articles</h5>
+
+                <ol>
+                    <li>
+                        <NavLink to="/news/getting-a-better-response">
+                            Getting a Better Response
+                        </NavLink>
+                    </li>
+                </ol>
+            </div>
         </div>
     }
 

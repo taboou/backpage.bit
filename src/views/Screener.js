@@ -6,6 +6,11 @@ import { NavLink } from 'react-router-dom'
 
 import FontAwesome from 'react-fontawesome'
 
+import {
+    Bootstrap,
+    Heading
+} from '../components'
+
 @observer
 export default class Screener extends React.Component {
     constructor(props) {
@@ -21,11 +26,13 @@ export default class Screener extends React.Component {
 
     render() {
         return <div class="container-fluid">
-            <h2>Screener</h2>
+            <Heading title={ 'Screener' } />
 
             { this._manageDisplay() }
 
-            <div class="alert alert-danger mt-3" role="alert">
+            <hr />
+
+            <div class="alert alert-danger mt-4" role="alert">
                 <h5 class="alert-heading text-center">
                     !!! YOU <u>MUST</u> READ THIS !!!
                 </h5>
@@ -61,20 +68,20 @@ export default class Screener extends React.Component {
         if (this.state.currentDisplay == 'sw')
             return this._forSexWorkers()
 
-        if (this.state.currentDisplay == 'cust')
-            return this._forCustomers()
+        if (this.state.currentDisplay == 'hobby')
+            return this._forHobbyists()
     }
 
     _welcome() {
         return <div>
             <p class="lead text-center">
-                We treat your <FontAwesome name="shield" /> very seriously.
-                &nbsp;Take a few moments to <FontAwesome name="search" /> our lists for any crazy <FontAwesome name="user-secret" /> and put your mind at ease.
+                Here at BPZ, we take your <FontAwesome name="medkit" /> and <FontAwesome name="shield" /> very seriously.
+                &nbsp;Whether you're a <FontAwesome name="venus" /> or <FontAwesome name="mars" />, always <FontAwesome name="search" /> our lists before booking with a <FontAwesome name="user-secret" /> to put your mind at ease.
             </p>
 
-            <div class="row">
+            <div class="row py-3">
                 <div class="col-6">
-                    <button class="btn btn-block btn-lg btn-info"
+                    <button class="btn btn-block btn-lg btn-outline-info"
                         onClick={ () => this.setState({ currentDisplay: 'sw' }) }>
                         I'M A SEX<br/>WORKER
                     </button>
@@ -82,8 +89,8 @@ export default class Screener extends React.Component {
 
                 <div class="col-6">
                     <button class="btn btn-block btn-lg btn-outline-info"
-                        onClick={ () => this.setState({ currentDisplay: 'cust' }) }>
-                        I'M A<br/>CUSTOMER
+                        onClick={ () => this.setState({ currentDisplay: 'hobby' }) }>
+                        I'M A<br/>HOBBYIST
                     </button>
                 </div>
             </div>
@@ -91,22 +98,194 @@ export default class Screener extends React.Component {
     }
 
     _forSexWorkers() {
+        const Intro = require('./Screener/Intro').default
+        const MeetingClients = require('./Screener/MeetingClients').default
+        const NameSearch = require('./Screener/NameSearch').default
+        const PhoneSearch = require('./Screener/PhoneSearch').default
+        const EmailSearch = require('./Screener/EmailSearch').default
+
         return <div>
-            It depends on the prostitute and the prostitution culture of a given place.
+            <div class="lead">
+                Welcome Sex Worker,<br/>
+                We are here to help you feel safe when going about your business.
+            </div>
 
-            Some screen only to the extent that they know the customer has the cash to pay for the services.
+            <div class="accordion mt-3" id="accordionExample">
+                <Intro />
+                <MeetingClients />
+                <NameSearch />
+                <PhoneSearch />
+                <EmailSearch />
 
-            Others work only by word-of-mouth references from previous clients.
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                LINKEDIN ACCOUNT
+                            </button>
+                        </h5>
+                    </div>
 
-            Some use prostitute-oriented websites that offer warnings about problem customers.
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
 
-            Others work for agencies that do the pre-screening.
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                FACEBOOK ACCOUNT
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                (HOTEL) FRONT DESK
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                TIMED CALL FROM FRIEND
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Sex offender check
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            We'll check your details in a national sex offender registry.
+                            Currently this list contains more than 43.481 offenders.
+                            Should we find you listed then we'll have to decline your application.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Blacklist check
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Your details will be checked against a national blacklist with bad incidents filed by escorts. This might not be 100% accurate
+                            but again, should we suspect a listing then we'll decline your application.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Government check
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            We're checking your details againt a list of know agencies, addresses and names or any other suspicious data - should anything
+                            appear then we'll decline your application.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Sex offender check
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0 text-center">
+                            <button class="btn btn-outline-info btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Username Search
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            If the person has any nicknames or handles you can fill them all here.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     }
 
-    _forCustomers() {
+    _forHobbyists() {
         return <div>
-            If you're worried about your first time with a provider or have questions about a specific provider in particular, we are here to offer you some helpful advice.
+            <div class="lead">
+                Welcome Friend,<br/>
+                Is this your first time? 100th time? No worries, we got you covered.
+            </div>
+
+            <Bootstrap store={ this.store } />
+
+            <div>
+                <h5>What can you expect to see?</h5>
+
+                <ol>
+                    <li>Search for providers by name.</li>
+                    <li>Read customer reviews and ratings.</li>
+                </ol>
+            </div>
         </div>
     }
 }

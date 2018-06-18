@@ -16,6 +16,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 import Home      from './views/Home'
+import About     from './views/About'
 import Account   from './views/Account'
 import BlogPost  from './views/BlogPost'
 import Causes    from './views/Causes'
@@ -24,14 +25,18 @@ import Coins     from './views/Coins'
 import CoinsDime from './views/CoinsDime'
 import District  from './views/District'
 import Favs      from './views/Favs'
+import Glossary  from './views/Glossary'
 import Help      from './views/Help'
+import Legal     from './views/Legal'
 import Messaging from './views/Messaging'
 import NewPost   from './views/NewPost'
 import News      from './views/News'
 import NewsPost  from './views/NewsPost'
 import Privacy   from './views/Privacy'
 import Referral  from './views/Referral'
+import Reviews   from './views/Reviews'
 import Rewards   from './views/Rewards'
+import Safety    from './views/Safety'
 import Screener  from './views/Screener'
 import SignIn    from './views/SignIn'
 import SignOut   from './views/SignOut'
@@ -51,7 +56,7 @@ export default class App extends React.Component {
 
     render() {
         const getConfirmation = (message, callback) => {
-console.log('getConfirmation', message);
+console.log('App.js getConfirmation', message);
             const allowTransition = window.confirm(message)
             callback(allowTransition)
         }
@@ -75,7 +80,7 @@ console.log('getConfirmation', message);
                 { /* Content Pages */ }
                 <Route path   = "/blog/:postId"
                     component = { () => (<BlogPost store={ this.store } />) }/>
-                <Route path   = "/news"
+                <Route path   = "/news" exact
                     component = { () => (<News store={ this.store } />) }/>
                 <Route path   = "/news/:postId"
                     component = { () => (<NewsPost store={ this.store } />) }/>
@@ -99,20 +104,30 @@ console.log('getConfirmation', message);
                     component = { () => (<Chat store={ this.store } />) }/>
 
                 { /* Services */ }
+                <Route path   = "/legal"
+                    component = { () => (<Legal store={ this.store } />) }/>
+                <Route path   = "/reviews"
+                    component = { () => (<Reviews store={ this.store } />) }/>
                 <Route path   = "/screener"
                     component = { () => (<Screener store={ this.store } />) }/>
                 <Route path   = "/trade"
                     component = { () => (<Trade store={ this.store } />) }/>
 
                 { /* Resources */ }
+                <Route path   = "/about"
+                    component = { () => (<About store={ this.store } />) }/>
                 <Route path   = "/causes"
                     component = { () => (<Causes store={ this.store } />) }/>
+                <Route path   = "/glossary"
+                    component = { () => (<Glossary store={ this.store } />) }/>
                 <Route path   = "/help"
                     component = { () => (<Help store={ this.store } />) }/>
                 <Route path   = "/privacy"
                     component = { () => (<Privacy store={ this.store } />) }/>
                 <Route path   = "/rewards"
                     component = { () => (<Rewards store={ this.store } />) }/>
+                <Route path   = "/safety"
+                    component = { () => (<Safety store={ this.store } />) }/>
                 <Route path   = "/terms"
                     component = { () => (<Terms store={ this.store } />) }/>
 

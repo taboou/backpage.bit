@@ -15,6 +15,7 @@ export default class Post extends React.Component {
 
     render() {
         const expiration = moment(this.post.e).fromNow()
+console.log('Post', this.post.id, this.post.t)
 
         return <div class="card">
             <img class="card-img-top" src={ this.post.ic } alt={ this.post.t } />

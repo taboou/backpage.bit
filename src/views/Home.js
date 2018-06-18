@@ -74,16 +74,28 @@ export default class Home extends React.Component {
             console.log('action', action)
 
             /* Initialize endpoint. */
-            const endpoint = action.slice(0, action.indexOf('-'))
-            console.log('endpoint', endpoint)
-
-            /* Initialize param. */
-            const param = action.slice(action.indexOf('-') + 1)
-            console.log('param', param)
+            let endpoint = ''
 
             /* Initialize redirect. */
-            const redirect = `/${endpoint}/${param}`
-            console.log('redirect', redirect)
+            let redirect = ''
+
+            if (action.indexOf('-') !== -1) {
+                /* Initialize endpoint. */
+                endpoint = action.slice(0, action.indexOf('-'))
+                console.log('endpoint', endpoint)
+
+                /* Initialize param. */
+                const param = action.slice(action.indexOf('-') + 1)
+                console.log('param', param)
+
+                /* Initialize redirect. */
+                redirect = `/${endpoint}/${param}`
+                console.log('redirect', redirect)
+            } else {
+                /* Initialize redirect. */
+                redirect = `/${action}`
+                console.log('redirect', redirect)
+            }
 
             /* Update state. */
             this.setState({ redirect })

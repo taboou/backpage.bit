@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom'
 
 import FontAwesome from 'react-fontawesome'
 
+import { Heading } from '../components'
+
 @observer
 export default class Blank extends React.Component {
     constructor(props) {
@@ -17,7 +19,7 @@ export default class Blank extends React.Component {
 
     render() {
         return <div class="container-fluid">
-            <h2>Blank View</h2>
+            <Heading title={ 'Blank View' } />
 
             <p>
                 Where would you like to go?<br />

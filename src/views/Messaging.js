@@ -4,6 +4,13 @@ import { observer } from 'mobx-react'
 
 import { NavLink } from 'react-router-dom'
 
+import FontAwesome from 'react-fontawesome'
+
+import {
+    Bootstrap,
+    Heading
+} from '../components'
+
 @observer
 export default class Messaging extends React.Component {
     constructor(props) {
@@ -15,11 +22,20 @@ export default class Messaging extends React.Component {
 
     render() {
         return <div class="container-fluid">
-            <h2>Messaging</h2>
+            <Heading title={ 'Messaging' } />
 
-            <p>
-                <NavLink to="/chat">Live Chat</NavLink>
+            <p class="lead text-center">
+                Our NEW Messaging is coming soon...
             </p>
+
+            <Bootstrap store={ this.store } />
+
+            <div>
+                <ol>
+                    <li>Live Chat</li>
+                    <li>Direct Messaging</li>
+                </ol>
+            </div>
         </div>
     }
 
